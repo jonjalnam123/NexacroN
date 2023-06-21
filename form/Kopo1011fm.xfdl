@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="IntronHistory" width="1280" titletext="학원 소개 및 연혁" onload="IntronHistory_onload" height="470">
+    <Layouts>
+      <Layout height="470" width="1280">
+        <Grid id="Grid00" taborder="0" top="60" binddataset="dsData" width="270" right="1290" bottom="26" autofittype="col" visible="false">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="레슨"/>
+                <Cell col="1" text="인기순위"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:레슨"/>
+                <Cell col="1" text="bind:인기순위"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btnColumn" taborder="1" text="Column" left="-150" top="10" width="80" height="28" onclick="btnColumn_onclick" visible="false"/>
+        <Static id="staHistoryInfo" taborder="3" text="&lt;2019년&gt;&#13;&#10;서울시 소재 &quot;석이드럼&quot; 실용음악학원 설립&#13;&#10;&#13;&#10;&lt;2020년&gt;&#13;&#10;서울시 주관 실용음악 페스티벌 &quot;석이드럼&quot; 찬조공연&#13;&#10;서울시 선정 현재 가장 HOT 한 음악학원 TOP100 등극&#13;&#10;&#13;&#10;&lt;2021년&gt;&#13;&#10;&quot;석이드럼&quot; 학원생 단독 공연 주최&#13;&#10;뚝섬유원지역 고정 버스킹팀 등록&#13;&#10;서울시 선정 잘 가르치는 학원 TOP10 등극&#13;&#10;&#13;&#10;&lt;2022년&gt;&#13;&#10;서울예술대학교, 동아방송예술대학교, 호원대학교 입시률 &quot;80%&quot;&#13;&#10;홍익대학교, 서경대학교, 한양대학교, 경희대학교 입시률 &quot;70%&quot;&#13;&#10;백석예술대학교 입시률 &quot;90%&quot;&#13;&#10;&#13;&#10;&lt;2023년&gt;&#13;&#10;&quot;석이드럼&quot; x &quot;투비소프트&quot; 형제계약 체결" font="bold 19px/normal &quot;한컴 고딕&quot;" textAlign="left" right="100" width="530" onclick="staHistoryInfo_onclick" top="0" bottom="0"/>
+        <Div id="divChartParentParent" taborder="2" text="div00" left="100" top="30" bottom="30" cssclass="div_WF_Area" right="staHistoryInfo:60">
+          <Layouts>
+            <Layout>
+              <Div id="divChartParent" taborder="0" left="0" top="0" right="0" cssclass="div_WF_Area" bottom="0">
+                <Layouts>
+                  <Layout>
+                    <WebBrowser id="webChart" taborder="0" left="0" top="0" bottom="0" onusernotify="divChartParentParent_divChartParent_webChart_onusernotify" right="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsData">
+        <ColumnInfo>
+          <Column id="레슨" type="STRING" size="256"/>
+          <Column id="레슨진행률" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="레슨">보컬</Col>
+            <Col id="레슨진행률">95</Col>
+          </Row>
+          <Row>
+            <Col id="레슨">키보드</Col>
+            <Col id="레슨진행률">85</Col>
+          </Row>
+          <Row>
+            <Col id="레슨">일렉</Col>
+            <Col id="레슨진행률">80</Col>
+          </Row>
+          <Row>
+            <Col id="레슨">베이스</Col>
+            <Col id="레슨진행률">55</Col>
+          </Row>
+          <Row>
+            <Col id="레슨">드럼</Col>
+            <Col id="레슨진행률">70</Col>
+          </Row>
+          <Row>
+            <Col id="레슨">작곡/미디</Col>
+            <Col id="레슨진행률">60</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*	개발 표준화 작업
+*	@MenuPath C:\Users\CNCNetworks\Documents\TOBESOFT\Nexacro N\projects\Seok2Drum\form
+*	@FileName Kopo10111fm.xfdl
+*	@Creator 최정석
+*	@CreateDate 2023/06/15
+*	@Desction 해당 폼 정보 설명
+******************소스 수정 이력**********************************************
+*	date		Modifier	Description
+********************************************************************************
+*	2023/06/15		최정석		최초 생성
+*	
+*
+*/
+
+/************************************************************************************************
+ * include 영역(업무화면에서 꼭 필요한 경우에만 사용하세요)
+ ************************************************************************************************/
+include "Lib::rMateChartH5.xjs";
+
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+	
+/************************************************************************************************
+ * FORM EVENT 영역(onload, onbeforeclose)
+ ************************************************************************************************/
+this.IntronHistory_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.ufnFormOnLoad(this);
+	this.ufnCreateChart(this.divChartParentParent.form.divChartParent.form.webChart);
+	
+};
+
+/************************************************************************************************
+ * CALLBACK 콜백 처리부분(Transaction, Popup)
+ ************************************************************************************************/
+ 
+/************************************************************************************************
+ * CRUD 및 TRANSACTION 서비스 호출 처리
+ ************************************************************************************************/
+
+/************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+ 
+//아래 함수명 변경 불가
+this.rMateChartOnLoad = function()
+{
+
+	var arrOption = {title:"Rainfall", subtitle:"( mm )", xfield:"Month", yfield:"Vancouver", displayName : "Vancouver", minimum:"40",  maximum:"100", interval:"5"};
+	var sType = "Line";	
+	this.ufnSetChart(this.divChartParentParent.form.divChartParent.form.webChart, this.dsData, sType, arrOption);	
+	this.btnColumn.click();
+};
+
+/************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+ ************************************************************************************************/
+ 
+/**
+* 컬럼 차트 그리기
+* @param  : obj		   - [object]Button
+* @param  : e		   - [string]ClickEventInfo
+* @return : N/A
+* @example : 
+*/
+this.btnColumn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var arrOption = {title:"학원생 레슨 현황", subtitle:"( % )", xfield:"레슨", yfield:"레슨진행률", displayName : "레슨진행률", minimum:"40",  maximum:"100", interval:"5"};
+	var sType = "Column";
+	this.ufnSetChart(this.divChartParentParent.form.divChartParent.form.webChart, this.dsData, sType, arrOption);	
+};]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,796 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="FormCommnunityWrite" width="1280" height="470" titletext="커뮤니티 글쓰기" onload="FormCommnunityWrite_onload">
+    <Layouts>
+      <Layout height="470" width="1280">
+        <Div id="divContactWrite" taborder="0" text="" top="0" left="100" right="100" bottom="0">
+          <Layouts>
+            <Layout>
+              <WebBrowser id="webEditor" taborder="0" top="160" onusernotify="webEditor_onusernotify" onloadcompleted="divContactWrite_webEditor_onloadcompleted" bottom="140" left="430" right="0" border="1px solid pink"/>
+              <Edit id="edtTitle" taborder="1" left="100" top="100" height="50" border="1px solid pink" right="0" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+              <Static id="staTitle" taborder="2" text="제목" left="0" top="100" width="100" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Static id="staId" taborder="3" text="작성자" left="350" top="51" width="100" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Edit id="edtConNo" taborder="4" left="100" top="51" width="250" height="50" border="1px solid pink" readonly="true" background="white" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+              <Static id="staID01" taborder="5" text="번호" left="0" top="51" width="100" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Button id="btnCancel" taborder="6" text="뒤로" top="5" height="40" background="pink" color="white" font="bold 16pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="102" right="0" onclick="divContactWrite_btnCancel_onclick"/>
+              <Static id="staDate" taborder="7" text="작성일" left="720" top="51" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center" width="100"/>
+              <Edit id="edtId" taborder="8" left="450" top="51" width="270" height="50" border="1px solid pink" readonly="true" background="white" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+              <Grid id="grdFileList" taborder="9" left="0" binddataset="dsFile" autofittype="col" ondrop="divContactWrite_grdFileList_ondrop" oncellclick="divContactWrite_grdFileList_oncellclick" bottom="10" height="59" border="1px solid pink" width="420">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="131"/>
+                      <Column size="48"/>
+                      <Column size="48"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="파일이름" font="bold 14px/normal &quot;휴먼매직체&quot;" background="pink" color="white"/>
+                      <Cell col="1" text="삭제" background="pink" color="white" font="bold 14px/normal &quot;휴먼매직체&quot;"/>
+                      <Cell col="2" text="다운" background="pink" color="white" font="bold 14px/normal &quot;휴먼매직체&quot;"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:FILE_NAME"/>
+                      <Cell col="1" text="삭제" edittype="button" displaytype="buttoncontrol"/>
+                      <Cell col="2" displaytype="buttoncontrol" text="다운" edittype="button"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="btnFileClick" taborder="10" text="파일 선택" height="38" borderRadius="0px" color="white" font="bold 14pt/normal &quot;휴먼매직체&quot;" onclick="divContactWrite_btnFileClick_onclick" bottom="97" right="0" width="90"/>
+              <ImageViewer id="imgRoom" taborder="12" text="" stretch="fit" ondrop="divRoom_imgRoom_ondrop" visible="true" border="1px solid pink" top="160" left="0" bottom="80" width="420"/>
+              <MaskEdit id="mskConBoardWriteDate" taborder="11" top="51" height="50" type="string" format="####-##-##" textAlign="center" readonly="true" left="staDate:-1" right="0" border="1px solid pink" background="white" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+              <Grid id="grdComRep" taborder="13" binddataset="dsComRep" oncellclick="divContactWrite_grdComRep_oncellclick" autofittype="col" bottom="10" height="125" nodatatext="등록된 댓글이 없습니다." left="430" right="315" border="1px solid pink" autosizingtype="row" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="190"/>
+                      <Column size="100"/>
+                      <Column size="60"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell text="bind:USERID" wordWrap="char" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+                      <Cell col="1" text="expr:comp.parent.parent.parent.fnDepth(REP_DEPTH,REP_CONTENT)" wordWrap="char" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+                      <Cell col="2" text="bind:REP_DATE" displaytype="date" wordWrap="char" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+                      <Cell col="3" displaytype="buttoncontrol" edittype="button" text="리플달기" wordWrap="char"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="btnWriteRep" taborder="14" text="댓글쓰기" width="90" onclick="btnWriteRep_onclick" borderRadius="0px" color="white" font="bold 14pt/normal &quot;휴먼매직체&quot;" right="0" bottom="54" height="38"/>
+              <Button id="btnDeleteRep" taborder="15" text="댓글삭제" width="90" borderRadius="0px" color="white" font="bold 14pt/normal &quot;휴먼매직체&quot;" right="0" bottom="11" height="38" onclick="divContactWrite_btnDeleteRep_onclick"/>
+              <TextArea id="txtComRep" taborder="16" bottom="10" height="125" right="95" width="215" border="1px solid pink"/>
+              <Button id="btnUpdate" taborder="17" text="수정" top="5" height="40" background="pink" color="white" font="bold 16pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="102" right="106" onclick="divContactWrite_btnUpdate_onclick"/>
+              <Button id="btnDelete" taborder="18" text="삭제" top="5" height="40" background="pink" color="white" font="bold 16pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="102" right="212" onclick="divContactWrite_divBtnG_btnDelete_onclick"/>
+              <Button id="btnOk" taborder="19" text="글쓰기" top="5" height="40" background="pink" color="white" font="bold 16pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="102" right="106" onclick="divContactWrite_divBtnG_btnOk_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsFile" useclientlayout="false">
+        <ColumnInfo>
+          <Column id="FILE_ID" type="STRING" size="256"/>
+          <Column id="FILE_NAME" type="STRING" size="256"/>
+          <Column id="FILE_TYPE" type="STRING" size="256"/>
+          <Column id="FILED_SIZE" type="INT" size="256"/>
+          <Column id="COMBOARD_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTemp">
+        <ColumnInfo>
+          <Column id="FILE_ID" type="STRING" size="256"/>
+          <Column id="FILE_NAME" type="STRING" size="256"/>
+          <Column id="FILE_TYPE" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileUpTransfer id="FileUpTransfer" onsuccess="FileUpTransfer_onsuccess"/>
+      <FileDownTransfer id="FileDownTransfer"/>
+      <FileDialog id="FileDialog" onclose="FileDialog_onclose"/>
+      <Dataset id="dsComBoard">
+        <ColumnInfo>
+          <Column id="COMBOARD_NO" type="INT" size="256"/>
+          <Column id="USERID" type="STRING" size="50"/>
+          <Column id="COMBOARD_TITLE" type="STRING" size="100"/>
+          <Column id="COMBOARD_CONTENT" type="STRING" size="4000"/>
+          <Column id="COMBOARD_HIT" type="INT" size="256"/>
+          <Column id="COMBOARD_WRITEDATE" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBoardKey">
+        <ColumnInfo>
+          <Column id="BOARD_KEY" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSearch">
+        <ColumnInfo>
+          <Column id="COMBOARD_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsComRep">
+        <ColumnInfo>
+          <Column id="REP_NO" type="STRING" size="256"/>
+          <Column id="USERID" type="STRING" size="256"/>
+          <Column id="COMBOARD_NO" type="INT" size="256"/>
+          <Column id="REP_CONTENT" type="STRING" size="1000"/>
+          <Column id="REP_DATE" type="STRING" size="256"/>
+          <Column id="REP_DEPTH" type="STRING" size="256"/>
+          <Column id="REP_PARENT" type="STRING" size="256"/>
+          <Column id="REP_ORDER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*	개발 표준화 작업
+*	@MenuPath C:\Users\CNCNetworks\Documents\TOBESOFT\Nexacro N\projects\Seok2Drum\form
+*	@FileName Kopo1022fm.xfdl
+*	@Creator 최정석
+*	@CreateDate 2023/05/22
+*	@Desction 해당 폼 정보 설명
+******************소스 수정 이력**********************************************
+*	date		Modifier	Description
+********************************************************************************
+*	2023/05/22		최정석		최초 생성
+*	
+*
+*/
+
+/**************************************************************************
+* include 영역
+**************************************************************************/
+
+/**************************************************************************
+* FORM 변수 선언 영역 (fv)
+**************************************************************************/
+
+this.fvApp = nexacro.getApplication();
+this.fvDocWeb = "";
+this.fvDeleteFileName = "";
+
+/**************************************************************************
+* FORM EVENT 영역(onload, onbeforeclose)
+**************************************************************************/
+
+/**
+* @description 온로드 플래그 값으로 나눠서 보여주기
+*/
+this.FormCommnunityWrite_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.ufnFormOnLoad(this);
+	
+	if(this.fvApp.avWorkFrame.objParam.Flag == "ComWrite") {
+		
+		var sUrl = this.ufnGetServerUrl() + "smartEditor/SmartEditor2.html";
+		this.divContactWrite.form.webEditor.set_url(sUrl);
+		
+		this.divContactWrite.form.btnDelete.set_visible(false);
+		this.divContactWrite.form.btnUpdate.set_visible(false);
+		this.divContactWrite.form.btnWriteRep.set_visible(false);
+		this.divContactWrite.form.btnDeleteRep.set_visible(false);		
+		
+		this.dsComBoard.addRow();
+		this.dsComBoard.setColumn(this.dsComBoard.rowposition, "COMBOARD_WRITEDATE", this.ufnGetDate());
+		this.dsComBoard.setColumn(this.dsComBoard.rowposition, "NAME", this.fvApp.gdsMember.getColumn(this.fvApp.gdsMember.rowposition,"NAME"));
+		this.dsComBoard.setColumn(this.dsComBoard.rowposition, "USERID", this.fvApp.gdsMember.getColumn(this.fvApp.gdsMember.rowposition,"USERID"))
+		
+		trace(this.dsComBoard.saveXML());
+		
+	}else if(this.fvApp.avWorkFrame.objParam.Flag == "ComModify") {
+		this.fnSelectComment();
+		if(this.fvApp.gdsMember.getColumn(0,"USERID") == this.fvApp.avWorkFrame.objParam.USERID) {
+			this.divContactWrite.form.btnOk.set_visible(false);
+			
+			var sUrl = this.ufnGetServerUrl() + "smartEditor/SmartEditor2.html";
+			this.divContactWrite.form.webEditor.set_url(sUrl);
+			
+		}else if(this.fvApp.gdsMember.getColumn(0,"USERID") == "Admin"){
+			this.divContactWrite.form.btnOk.set_visible(false);
+			
+			var sUrl = this.ufnGetServerUrl() + "smartEditor/SmartEditor2.html";
+			this.divContactWrite.form.webEditor.set_url(sUrl);
+			
+		}else if(this.fvApp.gdsMember.getColumn(0,"USERID") != this.fvApp.avWorkFrame.objParam.USERID) {
+			var sUrl = this.ufnGetServerUrl() + "smartEditor/SmartEditor2_readonly.html";
+			this.divContactWrite.form.webEditor.set_url(sUrl);
+			
+			this.divContactWrite.form.edtTitle.set_readonly(true);
+			this.divContactWrite.form.edtTitle.set_background("white");
+			this.divContactWrite.form.btnFileClick.set_visible(false);
+			this.divContactWrite.form.btnDelete.set_visible(false);
+			this.divContactWrite.form.btnOk.set_visible(false);
+			this.divContactWrite.form.btnUpdate.set_visible(false);
+			
+		}
+		
+		this.dsSearch.clearData();
+		this.dsSearch.addRow();
+		this.dsSearch.setColumn(this.dsSearch.rowposition, "COMBOARD_NO", this.fvApp.avWorkFrame.objParam.COMBOARD_NO);
+		
+		this.ufnTransaction("boardDetailView" 
+			,"nexa/boardDetailView.do" 
+			,"dsSearch=dsSearch"  
+			,"dsComBoard=dsComBoard"
+			,"COMBOARD_NO=" + this.fvApp.avWorkFrame.objParam.COMBOARD_NO //조회수 증가 파라미터보내주기
+			,"fnCallback")
+	}
+};
+
+/**************************************************************************
+* CRUD 및 TRANSACTION 서비스 호출 처리
+**************************************************************************/
+
+/**
+* @description 파일목록 조회
+*/
+this.divContactWrite_btnFileList_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ufnTransaction("svcFileList"
+		,"nexa/getFileList.do"
+		,""
+		,"dsFile=dsFile"
+		,"userPath='nexa_edu'"
+		,"fnCallback")
+};
+
+/**
+* @description 셀에 버튼 만들어준 곳 삭제 또는 다운로드 기능
+*/
+this.divContactWrite_grdFileList_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.col == 1) {
+		if(this.fvApp.avWorkFrame.objParam.USERID == this.fvApp.gdsMember.getColumn(0,"USERID")){ //아이디 일치시 삭제
+			//삭제
+			var sFileName = this.dsFile.getColumn(e.row, "FILE_ID");
+			this.ufnTransaction("svcFileDelete"
+				,"nexa/deleteFile.do"
+				,""
+				,""
+				,"fileid=" + nexacro.wrapQuote(sFileName)
+				,"fnCallback")
+		}else if(this.fvApp.gdsMember.getColumn(0,"USERID") == "Admin"){ //관리자 삭제버튼 활성
+			//삭제
+			var sFileName = this.dsFile.getColumn(e.row, "FILE_ID");
+			this.ufnTransaction("svcFileDelete"
+				,"nexa/deleteFile.do"
+				,""
+				,""
+				,"fileid=" + nexacro.wrapQuote(sFileName)
+				,"fnCallback")
+		}else{
+			return;
+		}
+	}
+	else if(e.col == 2) {
+		//다운
+		var sFileId = this.dsFile.getColumn(e.row, "FILE_ID");
+		var sUrl = "SvcUrl::nexa/downloadFile.do";
+		trace("파일아이디==========" + sFileId);
+		this.FileDownTransfer.setPostData("downFileId", sFileId); //"a.text,b.text,ctxt"
+		this.FileDownTransfer.set_downloadfilename(encodeURIComponent(encodeURIComponent(sFileId))); //NRE 에서만 작동하는데 다운로드 누르면 파일명 확장자까지 입력되어 있는 것
+		this.FileDownTransfer.download(sUrl);
+	}
+};
+
+/**
+* @description 삭제버튼 클릭시 컨펌 
+*/
+this.divContactWrite_divBtnG_btnDelete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sMsgId = "msg.before.delete";
+	var arrArg = "";
+	var sPopId = "popMsgAbstractComplete";
+	var sCallback = "fnMsgCallback";
+	
+	this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);
+};
+
+/**
+* @description 글쓰기 버튼
+*/
+this.divContactWrite_divBtnG_btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	
+	this.ufnClearValidation(this.dsComBoard);
+	this.ufnSetValidation(this.dsComBoard, "COMBOARD_TITLE", "제목", "required");
+	if (this.ufnValidation(this.dsComBoard, "A") == false) return;
+	this.ufnTransaction("GetBoardKey"
+		,"nexa/GetBoardKey.do"
+		,"" 
+		,"dsBoardKey=dsBoardKey" 
+		,""
+		,"fnCallback");
+};
+
+/**
+* @description 댓글 입력
+*/
+this.fnInsertComment = function ()
+{
+	this.ufnTransaction("comReply"
+		,"nexa/comReply.do"
+		,"dsComRep=dsComRep:u" 
+		,"" 
+		,"" 
+		,"fnCallback");
+};
+
+/**
+* @description 댓글 조회
+*/
+this.fnSelectComment = function () {
+	this.ufnTransaction("selectComReply"
+		,"nexa/selectComReply.do"
+		,"" 
+		,"dsComRep=dsComRep" 
+		,"COMBOARD_NO=" + this.fvApp.avWorkFrame.objParam.COMBOARD_NO
+		,"fnCallback");
+}
+
+/**
+* @description 댓글 삭제시 작성자만 삭제할 수 있다.
+*/
+this.divContactWrite_btnDeleteRep_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	if(this.dsComRep.getColumn(this.dsComRep.rowposition,"USERID") == this.fvApp.gdsMember.getColumn(0,"USERID"))
+	{
+		this.dsComRep.deleteRow(this.dsComRep.rowposition);
+		this.ufnTransaction("comDeleteReply"
+			,"nexa/comDeleteReply.do"
+			,"dsComRep=dsComRep:u" 
+			,"" 
+			,"" 
+			,"fnCallback");
+	}else if(this.fvApp.gdsMember.getColumn(0,"USERID") == "Admin")
+	{	
+		//댓글삭제
+		this.dsComRep.deleteRow(this.dsComRep.rowposition);
+		this.ufnTransaction("comDeleteReply"
+			,"nexa/comDeleteReply.do"
+			,"dsComRep=dsComRep:u" 
+			,"" 
+			,"" 
+			,"fnCallback");
+	}else
+	{
+		this.ufnAlert("msg.comrep.deletevali")
+	}
+};
+
+/**
+* @description 글 수정
+*/
+this.divContactWrite_btnUpdate_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{		
+	this.fvDocWeb.getProperty("editorGetBtn").callMethod("click");
+	var sEditorData = this.fvDocWeb.getProperty("ir1").getProperty("value");
+	this.dsComBoard.setColumn(0, "COMBOARD_CONTENT", sEditorData);
+	
+	this.dsFile.setColumn(0, "COMBOARD_NO",this.dsComBoard.getColumn(0,"COMBOARD_NO"));
+	this.ufnTransaction("ComBoardWriteUpdate"
+		,"nexa/ComBoardWrite.do"  
+		,"dsComBoard=dsComBoard:u dsFile=dsFile:u" //저장
+		,"" 
+		,""
+		,"fnCallback");
+};
+
+/**************************************************************************
+* CALLBACK 콜백 처리부분(Transaction, Popup)
+**************************************************************************/
+
+/**
+* @description 파일 삭제 콜백
+*/
+this.fnCallback = function (svcId, errCd, errMsg) {
+	if(svcId == "svcFileDelete") {
+		var nRow = this.dsFile.findRow("FILE_ID", this.fvDeleteFileName);
+		this.dsFile.deleteRow(nRow);
+	}else if(svcId == "boardDetailView") {
+		this.dsSearch.clearData();
+		this.dsSearch.addRow();
+		this.dsSearch.setColumn(this.dsSearch.rowposition, "COMBOARD_NO", this.fvApp.avWorkFrame.objParam.COMBOARD_NO);
+		
+		this.ufnTransaction("boardDetailFileList"
+			,"nexa/boardDetailFileList.do"
+			,"dsSearch=dsSearch"  
+			,"	dsFile=dsFile"
+			,"COMBOARD_NO=" + this.fvApp.avWorkFrame.objParam.COMBOARD_NO //조회수 증가 파라미터보내주기
+			,"fnCallback")
+		
+	}else if(svcId == "boardDetailFileList") {		
+		if(this.dsFile.rowcount > 0) {  
+			this.divContactWrite.form.imgRoom.set_image(this.ufnGetServerUrl() + "upload_file/nexa_edu/" + this.dsFile.getColumn(0,"FILE_ID"))
+		}
+	} else if(svcId == "ComBoardWrite") {
+		
+		var sMsgId = "msg.save.success";
+		var arrArg = "";
+		var sPopId = "popMsgAbstractCompleteWrite";
+		var sCallback = "fnMsgCallbackw";		
+		
+		this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);	
+		
+	}else if(svcId== "GetBoardKey"){
+		this.dsComBoard.setColumn(this.dsComBoard.rowposition,"COMBOARD_NO", this.dsBoardKey.getColumn(0,"BOARD_KEY"));
+		for(var i=0;i<this.dsFile.rowcount; i++)
+		{
+			this.dsFile.setColumn(i,"COMBOARD_NO",this.dsBoardKey.getColumn(0,"BOARD_KEY"));
+		}
+		//글쓰기
+		this.fvDocWeb.getProperty("editorGetBtn").callMethod("click");
+		var sEditorData = this.fvDocWeb.getProperty("ir1").getProperty("value");
+		this.dsComBoard.setColumn(0, "COMBOARD_CONTENT", sEditorData);
+		this.ufnTransaction("ComBoardWrite"
+			,"nexa/ComBoardWrite.do"  
+			,"dsComBoard=dsComBoard:u dsFile=dsFile:u" //저장
+			,"" 
+			,""
+			,"fnCallback");
+	}else if(svcId == "comReply") {
+		this.fnSelectComment();
+		this.divContactWrite.form.txtComRep.set_value("");
+	}else if(svcId == "selectComReply") {
+		
+	}else if(svcId == "comDeleteReply") {
+		
+		this.ufnAlert("msg.delete.success");
+		
+	}else if(svcId == "ComBoardWriteUpdate") {
+		
+		var sMsgId = "msg.update.success";
+		var arrArg = "";
+		var sPopId = "popMsgAbstractCompleteUpdate";
+		var sCallback = "fnMsgCallbacku";		
+			
+		this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);	
+		
+	}else{
+		this.alert("등록 불가!");
+		this.go("form::Kopo1020fm.xfdl")
+		
+	}
+}
+
+/**
+* @description 글쓰기/수정메시지 알림 콜백
+*/
+this.fnMsgCallbacku = function(strId, strVal)
+{
+	if(strId == "popMsgAbstractCompleteUpdate"){
+		if(strVal) {
+			this.go("form::Kopo1020fm.xfdl")
+		}
+	}
+};
+
+/**
+* @description 웹 에디터 콜백
+*/
+this.fnEditorCallback = function(sType)
+{
+	if( (sType == "onload_win") || (sType == "onload_nexacro")  || (sType == "onload_title"))
+	{
+		
+		if(this.fvApp.avWorkFrame.objParam.Flag == "ComModify") 
+		{
+			var sContents = this.dsComBoard.getColumn(this.dsComBoard.rowposition,"COMBOARD_CONTENT");
+			this.fvDocWeb.getProperty("ir1").setProperty("value",sContents);
+			this.fvDocWeb.getProperty("editorSetBtn").callMethod("click");	  
+		}
+	}
+};
+
+/**
+* @description 삭제버튼 클릭시 트랜잭션
+*/
+this.fnMsgCallback = function(strId, strVal)
+{
+	if(strId == "popMsgAbstractComplete"){
+		if(strVal) {
+			this.dsFile.deleteRow(this.dsFile.rowposition);
+			this.dsComBoard.deleteRow(this.dsComBoard.rowposition);
+			this.dsComRep.deleteRow(this.dsComRep.rowposition);
+			this.ufnTransaction("ComBoardWriteDelete"
+				,"nexa/ComBoardWriteDelete.do"
+				,"dsComBoard=dsComBoard:u dsFile=dsFile:u dsComRep=dsComRep:u" //저장
+				,"" 
+				,"" 
+				,"fnCallback");
+			this.ufnAlert("msg.delete.success");
+			this.go("form::Kopo1020fm.xfdl");
+		}
+		
+		
+	}
+};
+
+/*************************************************************************
+* 사용자 FUNCTION 영역
+**************************************************************************/
+
+/**
+* @description 글쓰기/수정메시지 알림 콜백
+*/
+this.fnMsgCallbackw = function(strId, strVal)
+{
+	if(strId == "popMsgAbstractCompleteWrite"){
+		if(strVal) {
+			this.go("form::Kopo1020fm.xfdl");
+		}
+	}
+};
+
+/**
+* @description 웹 에디터 사이즈 함수
+*/
+this.fnResize = function(nWidth, nHeight)
+{
+	var sValue = nWidth+","+nHeight;
+	
+	this.fvDocWeb.getProperty("resize").setProperty("value",sValue);
+	this.fvDocWeb.getProperty("btnResize").callMethod("click");
+};
+
+/**
+* @description 첨부파일 닫을때 함수
+*/
+this.FileDialog_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	var objFileList = e.virtualfiles;
+	
+	this.dsFile.set_enableevent(false);
+	for(var i=0; i<objFileList.length; i++)
+	{
+		var bExist = this.FileUpTransfer.existFile(objFileList[i]);
+		if(!bExist){
+			var sFileName = objFileList[i].filename;
+			this.FileUpTransfer.addFile(sFileName,objFileList[i]);
+			
+			var nRow = this.dsFile.addRow();
+			this.dsFile.setColumn(nRow, "FILE_ID", sFileName);
+			this.dsFile.setColumn(nRow, "FILE_NAME", sFileName);
+			
+		}
+	}
+	this.dsFile.set_enableevent(true);
+	
+	var sUrl = "SvcUrl::nexa/uploadFile.do";
+	this.FileUpTransfer.setPostData("userPath", "nexa_edu"); 
+	this.FileUpTransfer.upload(sUrl);
+};
+
+/**
+* @description 첨부파일 성공했을때 
+*/
+this.FileUpTransfer_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
+{
+	var objDs = e.datasets[0];
+	for(var i=0; i<objDs.rowcount; i++)
+	{
+		var nRow = this.dsFile.findRow("FILE_NAME", objDs.getColumn(i, "FILE_NAME"));
+		this.dsFile.setColumn(nRow, "FILE_ID", objDs.getColumn(i, "FILE_ID"));
+		this.dsFile.setColumn(nRow, "FILE_NAME", objDs.getColumn(i, "FILE_NAME"));
+		this.dsFile.setColumn(nRow, "FILE_SIZE", objDs.getColumn(i, "FILE_SIZE"));
+		this.dsFile.setColumn(this.dsFile.rowposition, "FILE_ID", objDs.getColumn(i, "FILE_ID"));
+		var sUrl = this.ufnGetServerUrl() + "upload_file/nexa_edu/" +  objDs.getColumn(i, "FILE_ID");
+		this.divContactWrite.form.imgRoom.set_image(sUrl);
+	}
+};
+
+/**
+* @description 댓글함수
+*/
+this.fnMaxOrder = function (parent)
+{
+	var rtn = 1;
+	if(!this.ufnIsNull(this.dsComRep.getCaseCount("REP_PARENT == '" + parent + "'"))) {
+		rtn = nexacro.toNumber(this.dsComRep.getCaseCount("REP_PARENT == '" + parent + "'")) + 1;
+	}
+	return rtn;
+};
+
+/**
+* @description 대댓글 기호 표시
+*/
+this.fnDepth = function(argDepth,argComment) 
+{
+	var rtnString = "";
+	if (nexacro.toNumber(argDepth) > 1) // argDepth
+	{
+		if(this.ufnIsNull(argComment))
+		{
+			return argComment;
+		} else {
+			return this.fnLpad(rtnString, argDepth," ") + " L " + argComment ;
+		}
+	}else {
+		return argComment;
+	}
+};
+
+/**
+* @description 대댓글 기호 표시
+*/
+this.fnLpad = function (str, padLen, padStr)
+{
+	if(padStr.length > padLen) {
+		return str;
+	}
+	str += "";
+	padStr += "";
+	while(str.length < padLen)
+	str = padStr + str;
+	str = str.length >= padLen ? str.substring(0, padLen) : str;
+	return str;
+};
+
+/**************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+**************************************************************************/
+
+/**
+* @description 온로드가 성공할때
+*/
+this.divContactWrite_webEditor_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+	this.fvDocWeb = this.divContactWrite.form.webEditor.getProperty("document").getProperty("all");
+};
+
+/**
+* @description 넥사크로 쪽으로 정보 전달
+*/
+this.webEditor_onusernotify = function(obj:nexacro.WebBrowser,e:nexacro.WebUserNotifyEventInfo)
+{
+	trace(e.userdata);
+	
+	try
+	{
+		// parent의 최상의 Form에 이벤트 발생시킴
+		var oForm = this;
+		if (oForm && oForm.fnEditorCallback)
+		{
+			if( (e.userdata == "onload_win") || (e.userdata == "onload_nexacro")  || (e.userdata == "onload_title"))
+			{
+				var initHeight = this.divContactWrite.form.webEditor.getOffsetHeight();
+				this.fnResize(obj.getOffsetWidth(), initHeight-this.fvRtnHeight);
+			}
+			oForm.fnEditorCallback(e.userdata);
+		}
+	}
+	catch(e){
+		trace("SampleNaverEditor.xfdl :: webEditor_onusernotify() => " + e.message);
+	}
+};
+
+/**
+* @description 그리드에 파일 드래그앤 드랍으로 넣는 기능
+*/
+this.divContactWrite_grdFileList_ondrop = function(obj:nexacro.Grid,e:nexacro.GridDragEventInfo)
+{
+	var objFileList = e.filelist;
+	
+	for(var i=0; i<objFileList.length; i++)
+	{
+		var bExist = this.FileUpTransfer.existFile(objFileList[i]);
+		if(!bExist){
+			var sFileName = objFileList[i].filename;
+			this.FileUpTransfer.addFile(sFileName,objFileList[i]);
+			
+			var nRow = this.dsFile.addRow();
+			this.dsFile.setColumn(nRow, "FILE_ID", sFileName);
+			this.dsFile.setColumn(nRow, "FILE_NAME", sFileName);
+			
+		}
+	}
+};
+
+/**
+* @description 선택 다운로드
+*/
+this.divContactWrite_btnClickDown_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var arrRow = this.dsFile.extractRows("gridcmmcheck == '1'"); //[1,3,5]
+	if(arrRow.length == 0) {
+		alert("선택하세요");
+	}
+	else if(arrRow.length ==1) {
+		//단건다운		
+		var sFileId = this.dsFile.getColumn(e.row, "FILE_ID");
+		
+		var sUrl = "SvcUrl::nexa/downloadFile.do";
+		this.FileDownTransfer.setPostData("downFileId", sFileId); //"a.text,b.text,ctxt"
+		this.FileDownTransfer.set_downloadfilename(sFileId); //NRE 에서만 작동하는데 다운로드 누르면 파일명 확장자까지 입력되어 있는 것
+		this.FileDownTransfer.download(sUrl);
+	}
+	else {
+		this.dsTemp.clearData(); //클리어데이터가 데이터만 지워주는 것
+		for(var i=0; i<arrRow.length; i++){
+			var nRow = this.dsTemp.addRow();
+			this.dsTemp.copyRow(nRow, this.dsFile, arrRow[i]);
+		}		
+		var sUrl = "SvcUrl::nexa/downloadFile.do";
+		this.FileDownTransfer.setPostData("downFileId", ""); //"a.text,b.text,ctxt"
+		this.FileDownTransfer.setPostData("downFileDs",encodeURIComponent(encodeURIComponent(this.dsTemp.saveXML())));
+		this.FileDownTransfer.set_downloadfilename("첨부파일.zip"); //NRE 에서만 작동하는데 다운로드 누르면 파일명 확장자까지 입력되어 있는 것
+		this.FileDownTransfer.download(sUrl);	
+	}
+};
+
+/**
+* @description 파일 선택 버튼 눌렀을때 바로 열리는 경로
+*/
+this.divContactWrite_btnFileClick_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	this.FileDialog.open("File Select", 1, "%MYDOCUMENT%");
+}; 
+
+/**
+* @description 뒤로가기 버튼 이벤트
+*/
+this.divContactWrite_btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("form::Kopo1020fm.xfdl")
+};
+
+/**
+* @description 댓글쓰기 버튼 이벤트
+*/
+this.btnWriteRep_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var nRow = this.dsComRep.insertRow();
+	this.dsComRep.setColumn(nRow, "REP_NO","");
+	this.dsComRep.setColumn(nRow, "USERID", this.fvApp.gdsMember.getColumn(0,"USERID"));
+	this.dsComRep.setColumn(nRow, "COMBOARD_NO",this.fvApp.avWorkFrame.objParam.COMBOARD_NO);
+	this.dsComRep.setColumn(nRow, "REP_CONTENT",this.divContactWrite.form.txtComRep.value);
+	this.dsComRep.setColumn(nRow, "REP_DEPTH",1);
+	this.dsComRep.setColumn(nRow, "REP_PARENT","");
+	this.dsComRep.setColumn(nRow, "REP_ORDER",this.fnMaxOrder(1));
+	this.fnInsertComment();
+	
+	
+};
+
+/**
+* @description 대댓글 쓰기 버튼
+*/
+this.divContactWrite_grdComRep_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.col== 3) {
+		if(this.divContactWrite.form.txtComRep.value == ""){
+			this.ufnAlert("msg.combaord.replynull")
+			return;
+		}else{
+			var nRow = this.dsComRep.insertRow(e.row + 1);
+			var depth = this.dsComRep.getColumn(e.row, "REP_DEPTH");
+			var parent = this.dsComRep.getColumn(e.row, "REP_NO");
+			this.dsComRep.setColumn(nRow, "REP_NO","");
+			this.dsComRep.setColumn(nRow, "USERID", this.fvApp.gdsMember.getColumn(0,"USERID"));
+			this.dsComRep.setColumn(nRow, "COMBOARD_NO",this.fvApp.avWorkFrame.objParam.COMBOARD_NO);
+			this.dsComRep.setColumn(nRow, "REP_CONTENT",this.divContactWrite.form.txtComRep.value);
+			this.dsComRep.setColumn(nRow, "REP_DEPTH", (nexacro.toNumber(this.dsComRep.getColumn(e.row, "REP_DEPTH"))+1));
+			this.dsComRep.setColumn(nRow, "REP_PARENT",this.dsComRep.getColumn(e.row,"REP_NO"));
+			this.dsComRep.setColumn(nRow, "REP_ORDER",this.fnMaxOrder(parent));
+			this.fnInsertComment();
+		}
+	}
+};
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="divContactWrite.form.edtConNo" propid="value" datasetid="dsComBoard" columnid="COMBOARD_NO"/>
+      <BindItem id="item1" compid="divContactWrite.form.edtId" propid="value" datasetid="dsComBoard" columnid="NAME"/>
+      <BindItem id="item3" compid="divContactWrite.form.edtTitle" propid="value" datasetid="dsComBoard" columnid="COMBOARD_TITLE"/>
+      <BindItem id="item4" compid="divContactWrite.form.mskConBoardWriteDate" propid="value" datasetid="dsComBoard" columnid="COMBOARD_WRITEDATE"/>
+      <BindItem id="item5" compid="divContactWrite.form.mskConBoardWriteDate" propid="accessibilityaction" datasetid="dsComBoard" columnid="COMBOARD_WRITEDATE"/>
+    </Bind>
+  </Form>
+</FDL>

@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frnGrid" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Grid id="Grid00" taborder="0" left="38" top="50" width="452" height="276" binddataset="Dataset00" autofittype="col" fillareatype="controlrow">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="161"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="163"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="FullName"/>
+                <Cell col="1" rowspan="2" text="제품일정">
+                  <Cell text="제품일정"/>
+                  <Cell row="1" text="교육일정"/>
+                </Cell>
+                <Cell col="2" colspan="2" text="Column2"/>
+                <Cell col="4" rowspan="2">
+                  <Cell text="Column4"/>
+                  <Cell row="1" displaytype="checkboxcontrol" edittype="checkbox"/>
+                </Cell>
+                <Cell row="1" col="2"/>
+                <Cell row="1" col="3" displaytype="checkboxcontrol" edittype="checkbox"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:Column0"/>
+                <Cell col="1" text="bind:Column1"/>
+                <Cell col="2" text="bind:Column2"/>
+                <Cell col="3" text="bind:Column3"/>
+                <Cell col="4" text="bind:Column4" displaytype="checkboxcontrol" edittype="checkbox"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="summary"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid01" taborder="1" left="43" top="333" width="678" height="167" binddataset="Dataset00" cssclass="grd_WF_HP">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Column0"/>
+                <Cell col="1" text="Column1"/>
+                <Cell col="2" text="Column2"/>
+                <Cell col="3" text="Column3"/>
+                <Cell col="4" text="Column4"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:Column0"/>
+                <Cell col="1" text="bind:Column1"/>
+                <Cell col="2" text="bind:Column2"/>
+                <Cell col="3" text="bind:Column3"/>
+                <Cell col="4" text="bind:Column4"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid01_00" taborder="2" left="43" top="507" width="678" height="167" binddataset="Dataset00">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Column0"/>
+                <Cell col="1" text="Column1"/>
+                <Cell col="2" text="Column2"/>
+                <Cell col="3" text="Column3"/>
+                <Cell col="4" text="Column4"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:Column0" cssclass="cell_WF_BY"/>
+                <Cell col="1" text="bind:Column1"/>
+                <Cell col="2" text="bind:Column2"/>
+                <Cell col="3" text="bind:Column3"/>
+                <Cell col="4" text="bind:Column4"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button00" taborder="3" text="Button00" left="560" top="84" width="115" height="34"/>
+        <Button id="Button01" taborder="4" text="Button01" left="560" top="126" width="115" height="34"/>
+        <Grid id="Grid02" taborder="5" left="588" top="206" width="98" height="97" cssclass="grd_WF_HP"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="STRING" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">Education</Col>
+            <Col id="Column1">Nexacro Platform</Col>
+            <Col id="Column2">173,000</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">Education</Col>
+            <Col id="Column1">Nexacro Platform</Col>
+            <Col id="Column2">173,000</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">Education</Col>
+            <Col id="Column1">Nexacro Platform</Col>
+            <Col id="Column2">173,000</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">Education</Col>
+            <Col id="Column1">Nexacro Platform</Col>
+            <Col id="Column2">173,000</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">Education</Col>
+            <Col id="Column1">Nexacro Platform</Col>
+            <Col id="Column2">173,000</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">Education</Col>
+            <Col id="Column1">Nexacro Platform</Col>
+            <Col id="Column2">173,000</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

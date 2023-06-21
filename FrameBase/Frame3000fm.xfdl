@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="FrameTop" width="1280" height="150" titletext="탑" onload="FrameTop_onload" background="">
+    <Layouts>
+      <Layout height="150" width="1280" stepcount="0">
+        <Div id="divTop" taborder="0" text="" left="100" top="0" borderRadius="0px 0px 20px 20px" right="100" bottom="0">
+          <Layouts>
+            <Layout>
+              <ImageViewer id="imgLogoPhoto" taborder="1" text="" image="url('imagerc::bannerLast.jpg')" stretch="fit" left="0" cursor="pointer" top="0" onclick="divTop_imgLogoPhoto_onclick" bottom="0" border="0px none" right="0"/>
+              <Static id="sta01" taborder="6" left="0" top="117" background="#ff7a90" right="0" bottom="0"/>
+              <Static id="sta00" taborder="2" left="0" top="9" width="50.00%" height="57" text=""/>
+              <Menu id="mnuMenu" taborder="0" innerdataset="gdsMenu" captioncolumn="MENU_NAME" idcolumn="MENU_ID" levelcolumn="MENU_LEVEL" userdatacolumn="FORM_URL" font="bold 20px/normal &quot;한컴 고딕&quot;" color="white" wordSpacing="0px" cursor="pointer" background="#ff7a90" onmenuclick="divTop_mnuMenu_onmenuclick" left="sta00:-357" top="117" width="800" bottom="0"/>
+              <Button id="btnAdminReserve" taborder="3" text="예약관리" width="80" right="185" borderRadius="0px" font="bold 21px/normal &quot;한컴 고딕&quot;" color="white" bottom="104" top="0" background="none" border="0px none" onclick="divTop_btnAdminReserve_onclick" onmouseenter="divTop_btnAdminReserve_onmouseenter" onmouseleave="divTop_btnAdminReserve_onmouseleave"/>
+              <Button id="btnAdminMember" taborder="4" text="회원관리" width="80" right="100" borderRadius="0px" font="bold 21px/normal &quot;한컴 고딕&quot;" color="white" bottom="104" top="0" background="none" border="0px none" onclick="divTop_btnAdminMember_onclick" onmouseenter="divTop_btnAdminMember_onmouseenter" onmouseleave="divTop_btnAdminMember_onmouseleave"/>
+              <Button id="btnLogOut" taborder="5" text="로그아웃" top="0" width="80" right="15" borderRadius="0px" font="bold 21px/normal &quot;한컴 고딕&quot;" color="white" bottom="104" border="0px none" background="none" onclick="divTop_btnLogOut_onclick" onmouseenter="divTop_btnLogOut_onmouseenter" onmouseleave="divTop_btnLogOut_onmouseleave"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.1"><![CDATA[/**
+*	개발 표준화 작업
+*	@MenuPath C:\Users\CNCNetworks\Documents\TOBESOFT\Nexacro N\projects\Seok2Drum\FrameBase
+*	@FileName Seok2_Top.xfdl
+*	@Creator 최정석
+*	@CreateDate 2023/05/18
+*	@Desction 해당 폼 정보 설명
+******************소스 수정 이력**********************************************
+*	date		Modifier	Description
+********************************************************************************
+*	2023/05/18		최정석		최초 생성
+*	
+*
+*/
+/**************************************************************************
+* FORM 변수 선언 영역 (fv)
+**************************************************************************/
+
+this.fvApp = nexacro.getApplication();
+
+/**************************************************************************
+* FORM EVENT 영역(onload)
+**************************************************************************/
+/**
+* @description 온로드 될때 메인페이지 열어주기
+*/
+this.FrameTop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{	
+	this.ufnFormOnLoad(this);
+	this.fvApp.avWorkFrame.set_formurl("form::Kopo1010fm.xfdl")
+};
+
+/*************************************************************************
+* 사용자 FUNCTION 영역
+**************************************************************************/
+/**
+* @description fnOpenForm 함수
+*/
+this.fnOpenForm = function(pRow) {
+	
+	trace("fnOpenForm==" + pRow);	
+	var sMenuId = this.fvApp.gdsMenu.getColumn(pRow,"MENU_ID");//gdsMenu
+	var sMenuName = this.fvApp.gdsMenu.getColumn(pRow,"MENU_NAME");
+	var sFormUrl = this.fvApp.gdsMenu.getColumn(pRow,"FORM_URL");
+	trace("sFormUrl====" + sFormUrl);
+	
+	this.fvApp.avWorkFrame.set_formurl(sFormUrl);
+}
+
+
+
+/**
+* @description 로그아웃 버튼 클릭시 컨펀 팝업에 확인 또는 취소 버튼 작동 하게 해주는 함수
+*/
+this.fnMsgCallback = function(strId, strVal)
+{
+	if(strId == "popMsgAbstractComplete"){
+		if(strVal) {
+			this.fvApp.avVFrameSet.set_separatesize("0,0,0,*,0");
+			this.reload();
+		}
+	}
+};
+/***************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+****************************************************************************/
+/**
+* @description 탑 메뉴 버튼 클릭시 URL 호출
+*/
+this.divTop_mnuMenu_onmenuclick = function(obj:nexacro.Menu,e:nexacro.MenuClickEventInfo)
+{	
+	var nIdx = this.fvApp.gdsMenu.findRow("MENU_ID",e.id);
+	trace(e.id + "===nIdx====" + nIdx);
+	if(nIdx >= 0){
+		this.fnOpenForm(nIdx);
+	}else{
+		alert("xxxxxx");
+	}
+};
+
+/**
+* @description메인 이미지 클릭시 워크 프레임에 메인 화면 띄워주기
+*/
+this.divTop_imgLogoPhoto_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
+{
+	this.fvApp.avWorkFrame.set_formurl("form::Kopo1010fm.xfdl");
+};
+
+/**
+* @description 로그아웃 버튼 클릭시 물어보기
+*/
+this.divTop_btnLogOut_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	var sMsgId = "confirm.logout";
+	var arrArg = "";
+	var sPopId = "popMsgAbstractComplete";
+	var sCallback = "fnMsgCallback";
+	
+	this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);
+};
+
+/**
+* @description 회원관리 버튼 클릭시 폼 링크
+*/
+this.divTop_btnAdminMember_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fvApp.avWorkFrame.set_formurl("admin::Kopo1114fm.xfdl")
+};
+
+/**
+* @description 예약관리 버튼 클릭시 폼 링크
+*/
+this.divTop_btnAdminReserve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fvApp.avWorkFrame.set_formurl("admin::Kopo1115fm.xfdl")
+};
+
+/**
+* @description 로그아웃 버튼에 마우스 올리면 색 변경
+*/
+this.divTop_btnLogOut_onmouseenter = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
+{
+	this.divTop.form.btnLogOut.set_color("#ff7a90");
+};
+
+/**
+* @description 로그아웃 버튼에 마우스 빼면 색 변경
+*/
+this.divTop_btnLogOut_onmouseleave = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
+{
+	this.divTop.form.btnLogOut.set_color("white");
+};
+
+/**
+* @description 회원관리 버튼에 마우스 올리면 색 변경
+*/
+this.divTop_btnAdminMember_onmouseenter = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
+{
+	this.divTop.form.btnAdminMember.set_color("#ff7a90");
+};
+
+/**
+* @description 회원관리 버튼에 마우스 빼면 색 변경
+*/
+this.divTop_btnAdminMember_onmouseleave = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
+{
+	this.divTop.form.btnAdminMember.set_color("white");
+};
+
+/**
+* @description 예약관리 버튼에 마우스 빼면 색 변경
+*/
+this.divTop_btnAdminReserve_onmouseenter = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
+{
+	this.divTop.form.btnAdminReserve.set_color("#ff7a90");
+};
+
+/**
+* @description 예약관리 버튼에 마우스 빼면 색 변경
+*/
+this.divTop_btnAdminReserve_onmouseleave = function(obj:nexacro.Button,e:nexacro.MouseEventInfo)
+{
+	this.divTop.form.btnAdminReserve.set_color("white");
+};
+
+this.btn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	trace(this.fvApp.gdsMenu.saveXML());
+}	
+]]></Script>
+    <Bind/>
+  </Form>
+</FDL>

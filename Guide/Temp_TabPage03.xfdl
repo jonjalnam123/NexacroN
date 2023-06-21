@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="TPLDSN005M00" width="1015" height="230" titletext="경력사항" onload="TPLDSN005M00_onload">
+    <Layouts>
+      <Layout height="230" width="1015">
+        <Grid id="grd00" taborder="0" left="5" top="35" height="190" binddataset="dsListTab2" autofittype="col" right="5">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="167"/>
+                <Column size="139"/>
+                <Column size="182"/>
+              </Columns>
+              <Rows>
+                <Row size="28" band="head"/>
+                <Row size="28" band="head"/>
+                <Row size="28"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2" text="재직기간"/>
+                <Cell col="2" rowspan="2" text="재직회사"/>
+                <Cell col="3" rowspan="2" text="직위"/>
+                <Cell col="4" rowspan="2" text="담당업무"/>
+                <Cell row="1" text="입사일"/>
+                <Cell row="1" col="1" text="퇴사일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:FROM_DT"/>
+                <Cell col="1" text="bind:TO_DT"/>
+                <Cell col="2" text="bind:COMPANY_NAME"/>
+                <Cell col="3" text="bind:POSITION"/>
+                <Cell col="4" text="bind:REMARK"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn01" taborder="1" top="5" width="24" height="24" cssclass="btn_WF_Add" right="35"/>
+        <Button id="btn02" taborder="2" top="5" width="24" height="24" cssclass="btn_WF_Del" right="6"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsListTab2">
+        <ColumnInfo>
+          <Column id="FROM_DT" type="STRING" size="256"/>
+          <Column id="TO_DT" type="STRING" size="256"/>
+          <Column id="COMPANY_NAME" type="STRING" size="256"/>
+          <Column id="POSITION" type="STRING" size="256"/>
+          <Column id="REMARK" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="FROM_DT">19950101</Col>
+            <Col id="TO_DT">20050431</Col>
+            <Col id="COMPANY_NAME">@@정보통신</Col>
+            <Col id="POSITION">과장</Col>
+            <Col id="REMARK">개발</Col>
+          </Row>
+          <Row>
+            <Col id="FROM_DT">20050501</Col>
+            <Col id="TO_DT"/>
+            <Col id="COMPANY_NAME">투비소프트</Col>
+            <Col id="POSITION">수석</Col>
+            <Col id="REMARK">교육</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item4" compid="divDetail.form.tab00.Tabpage1.form.cal00_00" propid="value" datasetid="dsList" columnid="Column3"/>
+    </Bind>
+  </Form>
+</FDL>

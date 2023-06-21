@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="FormContact" width="1280" height="470" titletext="문의사항 리스트" onload="FormContact_onload">
+    <Layouts>
+      <Layout height="470" width="1280">
+        <Div id="divContactList" taborder="1" text="" left="100" top="0" color="white" font="12px/normal &quot;휴먼매직체&quot;" right="100" bottom="0">
+          <Layouts>
+            <Layout>
+              <Grid id="grdContactList" taborder="0" left="0" top="70" binddataset="dsContactBoard" bottom="70" right="0" autofittype="col" oncelldblclick="divContactList_grdContactList_oncelldblclick" border="1px solid pink" borderRadius="20px" griduserproperty="!rowfix,!colfix,sort,!filter,!export,!import">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="70"/>
+                      <Column size="120"/>
+                      <Column size="700"/>
+                      <Column size="70"/>
+                      <Column size="120"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="40" band="head"/>
+                      <Row size="32"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="번호" background="pink" color="white" font="16px/normal &quot;휴먼둥근헤드라인&quot;"/>
+                      <Cell col="1" text="작성자" background="pink" color="white" font="16px/normal &quot;휴먼둥근헤드라인&quot;"/>
+                      <Cell col="2" text="제목" background="pink" color="white" font="16px/normal &quot;휴먼둥근헤드라인&quot;"/>
+                      <Cell col="3" text="조회수" background="pink" color="white" font="16px/normal &quot;휴먼둥근헤드라인&quot;"/>
+                      <Cell col="4" text="작성일" background="pink" color="white" font="16px/normal &quot;휴먼둥근헤드라인&quot;"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:CONBOARD_NO" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
+                      <Cell col="1" text="bind:USERID" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
+                      <Cell col="2" textAlign="left" font="16px/normal &quot;한컴 고딕&quot;" text="expr:REP_CNT == 0 ? CONBOARD_TITLE : CONBOARD_TITLE + &quot; [댓글 :&quot; + REP_CNT + &quot;] 개&quot;"/>
+                      <Cell col="3" text="bind:CONBOARD_HIT" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
+                      <Cell col="4" text="bind:CONBOARD_WRITEDATE" displaytype="date" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="Static00" taborder="1" text="문의사항" left="0" top="20" width="110" height="30" font="20px/normal &quot;휴먼매직체&quot;" textAlign="center" background="pink" color="white"/>
+              <Div id="divPaging" taborder="2" text="" left="0" top="grdContactList:18" height="50" url="CompGuide::CmmPaging.xfdl" right="0"/>
+              <Button id="btnWrite" taborder="3" text="글쓰기" right="0" height="30" width="80" top="20" color="white" font="12px/normal &quot;휴먼매직체&quot;" borderRadius="0px" onclick="divContactList_btnWrite_onclick"/>
+              <Button id="btnSearch" taborder="4" text="검색" height="30" top="20" color="white" font="12px/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="80" right="85" onclick="divContactList_btnSearch_onclick"/>
+              <Edit id="edtSearch" taborder="5" top="20" height="30" text="제목으로 검색" width="200" right="165" displaynulltext="제목으로 검색" onchanged="divContactList_edtSearch_onchanged" onkeydown="divContactList_edtSearch_onkeydown"/>
+              <Combo id="cboCnt" taborder="6" text="2" top="20" height="30" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2" width="110" right="369">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">10</Col>
+                      <Col id="datacolumn">10</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">20</Col>
+                      <Col id="datacolumn">20</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">50</Col>
+                      <Col id="datacolumn">50</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">100</Col>
+                      <Col id="datacolumn">100</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsContactBoard">
+        <ColumnInfo>
+          <Column id="CONBOARD_NO" type="STRING" size="256"/>
+          <Column id="USERID" type="STRING" size="256"/>
+          <Column id="CONBOARD_TITLE" type="STRING" size="256"/>
+          <Column id="CONBOARD_CONTENT" type="STRING" size="256"/>
+          <Column id="CONBOARD_HIT" type="STRING" size="256"/>
+          <Column id="CONBOARD_WIRTEDATE" type="STRING" size="256"/>
+          <Column id="REP_CNT" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPagingInfo">
+        <ColumnInfo>
+          <Column id="totalCount" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSearch">
+        <ColumnInfo>
+          <Column id="records" type="INT" size="256"/>
+          <Column id="page" type="INT" size="256"/>
+          <Column id="recordsOffset" type="INT" size="256"/>
+          <Column id="pageCount" type="INT" size="256"/>
+          <Column id="CONBOARD_TITLE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="ID" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="USE_YN" type="STRING" size="256"/>
+          <Column id="REG_USER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTotal">
+        <ColumnInfo>
+          <Column id="TOTAL_CNT" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*	개발 표준화 작업
+*	@MenuPath C:\Users\CNCNetworks\Documents\TOBESOFT\Nexacro N\projects\Seok2Drum\form
+*	@FileName Kopo1012fm.xfdl
+*	@Creator 최정석
+*	@CreateDate 2023/05/19
+*	@Desction 해당 폼 정보 설명
+******************소스 수정 이력**********************************************
+*	date		Modifier	Description
+********************************************************************************
+*	2023/05/19		최정석		최초 생성
+*	
+*
+*/
+
+/**************************************************************************
+* include 영역
+**************************************************************************/
+
+/**************************************************************************
+* FORM 변수 선언 영역 (fv)
+**************************************************************************/
+
+this.fvApp = nexacro.getApplication();
+this.fvRecords=0; 			//목록갯수
+this.fvPage=0;	 			//페이지번호
+this.fvRecordsOffset=0;		//시작rownum
+this.fvTotalCount=0;		//전체데이터갯수
+this.fvPageCount=0; 		//실제표출페이지갯수
+
+/**************************************************************************
+* FORM EVENT 영역(onload, onbeforeclose)
+**************************************************************************/
+
+/**
+* @description 온로드 이벤트
+*/
+this.FormContact_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.ufnFormOnLoad(this);
+	this.fnPageInit();
+};
+
+/**************************************************************************
+* CRUD 및 TRANSACTION 서비스 호출 처리
+**************************************************************************/
+
+/**
+* @description 조회 트랜잭션
+*/
+this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+	// 조회조건 설정
+	// 데이터를 넘길 경우 데이터셋에 추가해서 넘기는 방식과
+	// 아규먼트를 추가해서 넘기는 방식 모두 사용가능
+	this.dsSearch.setColumn(0, "records", this.fvRecords);
+	this.dsSearch.setColumn(0, "recordsOffset", this.fvRecordsOffset); 
+
+	var strSvcId    = "contactBoardList";
+	var strSvcUrl   = "nexa/contactBoardList.do";
+	var inData      = "dsSearch=dsSearch";
+	var outData     = "dsContactBoard=dsContactBoard dsPagingInfo=dsPagingInfo";
+	var strArg      = "";
+	var callBackFnc = "fnCallback";
+	var isAsync   	= true;
+	
+	this.ufnTransaction(strSvcId , 		// transaction을 구분하기 위한 svc id값
+		strSvcUrl , 	// trabsaction을 요청할 주소
+		inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+		outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+		strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+		callBackFnc, 	// transaction의 결과를 받을 Function 이름
+		isAsync); 		// 비동기통신 여부 [생략가능]
+	
+};
+
+/**************************************************************************
+* CALLBACK 콜백 처리부분(Transaction, Popup)
+**************************************************************************/
+
+/**
+* @description TRANSACTION콜백 트랜젝션 후, 반드시페이지 메이킹 함수 호출
+*/
+this.fnCallback = function(svcID,errorCode,errorMsg)
+{
+	switch(svcID)
+	{
+	case "contactBoardList":
+		this.fnPagingSetting(); //make paging
+		break;
+	}
+};
+
+/**
+* @description 페이징콜백 페이징화면에서 눌린페이지 넘겨줌
+*/
+this.fnPagingCallback = function(nPage, nRecordsOffset)
+{
+	this.fvPage = nPage; 				
+	this.fvRecordsOffset = nRecordsOffset;
+	
+	this.fnSearch(); //조회함수호출
+};
+
+/**************************************************************************
+* 사용자 FUNCTION 영역
+**************************************************************************/
+
+/**
+* @description 최초조회시, 전역변수 초기화
+*/
+this.fnPageInit = function ()
+{
+ 	//pagin info init setting
+	this.fvRecords=this.divContactList.form.cboCnt.value; //목록갯수
+	this.fvPage=0;	 								 //페이지번호
+	this.fvRecordsOffset=0;							 //시작rownum
+	this.fvPageCount = 10;							 //실제표출페이지갯수
+	
+	this.fnSearch();
+};
+
+/**
+* @description 페이징만들기
+*/
+this.fnPagingSetting = function ()
+{	
+	this.fvTotalCount = nexacro.toNumber(this.dsPagingInfo.getColumn("totalCount")); //전체로우갯수
+	this.divContactList.form.divPaging.form.fnCreatePage("fnPagingCallback",
+		this.fvTotalCount,
+		this.fvRecords,
+		this.fvPage,
+		this.fvPageCount);	
+};
+
+/**
+* @description 리스트에 보여지는 정보들 파라미터로 상세페이지로 보내주기
+*/
+this.fnRead = function (nRow)
+{	
+	var sBoardNo = this.dsContactBoard.getColumn(nRow,"CONBOARD_NO");
+	var sUserId = this.dsContactBoard.getColumn(nRow,"USERID");
+	var sBoardTitle = this.dsContactBoard.getColumn(nRow,"CONBOARD_TITLE");
+	var sBoardContent = this.dsContactBoard.getColumn(nRow,"CONBOARD_CONTENT");
+	var sBoardHit = this.dsContactBoard.getColumn(nRow,"CONBOARD_HIT");
+	var sBoardDate = this.dsContactBoard.getColumn(nRow,"CONBOARD_WRITEDATE");
+	
+	var Param = { "CONBOARD_NO" : sBoardNo
+		, "USERID" : sUserId
+		, "Flag" : "ConModify"};
+	this.fvApp.avWorkFrame.objParam = Param;
+	this.go("form::Kopo1013fm.xfdl");
+};
+
+
+
+/**************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+**************************************************************************/
+
+/**
+* @description 검색 기능
+*/
+this.divContactList_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fnPageInit();
+};
+
+/**
+* @description 글쓰기 누르면 플래그로 값 전달
+*/
+this.divContactList_btnWrite_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	var sBoardDate = this.dsContactBoard.getColumn(0,"CONBOARD_WRITEDATE");	
+	var objArg = {
+		"CONBOARD_WRITEDATE" : sBoardDate,
+		Flag    : "ConWrite",  			// 메뉴 dataset
+		CONBOARD_NO  : ""     	// 선택된     
+	};
+	this.fvApp.avWorkFrame.objParam = objArg;
+	this.go("form::Kopo1013fm.xfdl")
+};
+
+/**
+* @description 그리드에 셀 더블 클릭하면 상세 페이지로 넘어가기
+*/
+this.divContactList_grdContactList_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{	
+	this.fnRead(e.row);
+};
+
+/**
+* @description 제목 검색 엔터로
+*/
+this.divContactList_edtSearch_onkeydown = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
+{
+	
+	if(e.keycode==13) {
+		obj.updateToDataset(); //넥사크로는 엔터키를 누르면 트랜잭션을 먼저 타는데 순서 바꿔주는 것
+		this.divContactList.form.btnSearch.click();
+	}
+};
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="divContactList.form.edtSearch" propid="value" datasetid="dsSearch" columnid="CONBOARD_TITLE"/>
+      <BindItem id="item1" compid="divContactList.form.div00.form.edtSearch" propid="value" datasetid="dsSearch" columnid="CONBOARD_TITLE"/>
+    </Bind>
+  </Form>
+</FDL>

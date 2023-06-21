@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="FormFindId" width="1280" height="720" titletext="아이디 찾기" onload="FormFindId_onload">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Static id="staCenter" taborder="0" text="" left="0" top="0" width="50.00%" height="50.00%"/>
+        <Div id="divIdFind" taborder="1" text="" left="staCenter:-200" top="staCenter:-100" width="400" height="300">
+          <Layouts>
+            <Layout>
+              <Button id="btnOk" taborder="2" text="확인" left="80" top="225" width="120" height="50" background="pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" color="white" onclick="divIdFind_btnOk_onclick"/>
+              <Button id="btnCancel" taborder="3" text="취소" left="205" top="225" width="120" height="50" background="pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" color="white" onclick="divLogin_btnJoin_onclick"/>
+              <Static id="staEmail" taborder="4" text="이메일" left="39" top="89" width="80" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;휴먼매직체&quot;"/>
+              <Edit id="edtEmail" taborder="1" left="118" top="89" width="240" height="50" border="1px solid pink" onchanged="divIdFind_edtEmail_onchanged" onkeydown="divIdFind_edtEmail_onkeydown" displaynulltext="ex) mark1234@naver.com"/>
+              <Edit id="edtName" taborder="0" left="118" top="40" width="240" height="50" border="1px solid pink"/>
+              <Static id="staName" taborder="5" text="이름" left="39" top="40" width="80" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;휴먼매직체&quot;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <ImageViewer id="imgMainLogo" taborder="2" text="" left="staCenter:-130" top="staCenter:-254" image="url('imagerc::drum.png')" stretch="fixaspectratio" border="1px solid #ffffff" width="260" height="150"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*	개발 표준화 작업
+*	@MenuPath C:\Users\CNCNetworks\Documents\TOBESOFT\Nexacro N\projects\Seok2Drum\cmm
+*	@FileName cmmJoin1002fm.xfdl
+*	@Creator 최정석
+*	@CreateDate 2023/05/18
+*	@Desction 해당 폼 정보 설명
+******************소스 수정 이력**********************************************
+*	date		Modifier	Description
+********************************************************************************
+*	2023/05/18		최정석		최초 생성
+*	
+*
+*/
+
+/**************************************************************************
+* FORM 변수 선언 영역 (fv)
+**************************************************************************/
+
+this.fvApp = nexacro.getApplication();
+
+/**************************************************************************
+* FORM EVENT 영역(onload)
+**************************************************************************/
+
+/**
+* @description 화면 화면이 load될 때 처리할 로직(필수)
+*/
+this.FormFindId_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.ufnFormOnLoad(this);
+	this.dsFindId.clearData();
+};
+
+/***********************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+
+/**
+* @description 로그인페이지로 가기
+*/
+this.divLogin_btnJoin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("cmm::comm1001fm.xfdl");
+};
+
+/**
+* @description 아이디 찾기 버튼 클릭시 이벤트
+*/
+this.divIdFind_btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{		
+	if(this.ufnIsNull(this.divIdFind.form.edtName.value)) {
+		this.ufnAlert("msg.join.namenull");
+		this.divIdFind.form.edtName.setFocus();
+		return;
+	}else if(this.ufnIsNull(this.divIdFind.form.edtEmail.value)) {
+		this.ufnAlert("msg.join.emailnull");
+		this.divIdFind.form.edtEmail.setFocus();
+		return;
+	}
+	
+	var sName 	= this.divIdFind.form.edtName.value;
+	var sEmail 	= this.divIdFind.form.edtEmail.value;
+	this.ufnTransaction("IdFind"
+		,"nexa/IdFind.do"
+		,"" 
+		,"dsFindId=dsFindId" //받아오는 부분
+		,"pNAME=" + nexacro.wrapQuote(sName) + " pEMAIL=" + nexacro.wrapQuote(sEmail) //파라미터로 보내는 부분
+		,"fnCallback");
+};
+
+/**
+* @description 비밀번호 입력후 엔터키로 확인버튼
+*/
+this.divIdFind_edtEmail_onkeydown = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
+{
+	if(e.keycode==13) {
+		this.divIdFind.form.btnOk.click();
+	}
+};
+
+/**************************************************************************
+* CALLBACK 콜백 처리부분(Transaction, Popup)
+**************************************************************************/
+
+/**
+* @description 아이디 찾기 결과 및 결과 없을시 리턴
+*/
+this.fnCallback = function (svcId, errCd, errMsg)
+{	
+	if(svcId == "IdFind") {
+		if (this.dsFindId.rowcount > 0) {
+			var sMsgId = "msg.idfind.result";
+			var arrArg =  [this.dsFindId.getColumn(0,"USERID")];
+			var sPopId = "popMsgAbstractComplete";
+			var sCallback = "fnMsgCallback";
+			
+			this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);
+			
+			//this.ufnAlert("msg.idfind.result", [this.dsFindId.getColumn(0,"USERID")]);
+			
+		}else{
+			this.ufnAlert("msg.idfind.undefined")
+			return;
+		} 
+	}
+};
+
+/**
+* @description 메시지 알림 콜백
+*/
+this.fnMsgCallback = function(strId, strVal)
+{
+	if(strId == "popMsgAbstractComplete"){
+		if(strVal) {
+			this.go("cmm::comm1001fm.xfdl")
+		}
+	}
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsFindId">
+        <ColumnInfo>
+          <Column id="USERID" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

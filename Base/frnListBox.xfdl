@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frnListBox" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <ListBox id="ListBox00" taborder="0" left="30" top="20" width="277" height="208" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="ListBox00_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">컨설팅팀</Col>
+                <Col id="codecolumn">1</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">인사팀</Col>
+                <Col id="codecolumn">2</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">교육팀</Col>
+                <Col id="codecolumn">3</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">영업팀</Col>
+                <Col id="codecolumn">4</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">인사팀</Col>
+                <Col id="codecolumn">5</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </ListBox>
+        <TextArea id="TextArea00" taborder="1" left="400" top="390" width="371" height="255" value="투피소프트투피소프트투피소프트투피소프트투피소프트투피소프트투피소프트투피소프트투피소프트투피소프트투피소프트"/>
+        <ListBox id="ListBox01" taborder="2" left="105" top="389" width="239" height="180"/>
+        <ListBox id="ListBox00_00" taborder="3" left="317" top="20" width="277" height="208" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" initvalueid="iv_ListBox0">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">컨설팅팀</Col>
+                <Col id="codecolumn">1</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">인사팀</Col>
+                <Col id="codecolumn">2</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">교육팀</Col>
+                <Col id="codecolumn">3</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">영업팀</Col>
+                <Col id="codecolumn">4</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">인사팀</Col>
+                <Col id="codecolumn">5</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </ListBox>
+        <ListBox id="ListBox00_00_00" taborder="4" left="603" top="20" width="277" height="208" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" itemheight="50">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">컨설팅팀</Col>
+                <Col id="codecolumn">1</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">인사팀</Col>
+                <Col id="codecolumn">2</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">교육팀</Col>
+                <Col id="codecolumn">3</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">영업팀</Col>
+                <Col id="codecolumn">4</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">인사팀</Col>
+                <Col id="codecolumn">5</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </ListBox>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="DEPT_ID" type="STRING" size="256"/>
+          <Column id="code" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">asd</Col>
+            <Col id="DEPT_ID">1</Col>
+          </Row>
+          <Row>
+            <Col id="code">asdqwe</Col>
+            <Col id="DEPT_ID">2</Col>
+          </Row>
+          <Row>
+            <Col id="code">qwe</Col>
+            <Col id="DEPT_ID">3</Col>
+          </Row>
+          <Row>
+            <Col id="code">cvx</Col>
+            <Col id="DEPT_ID">4</Col>
+          </Row>
+          <Row>
+            <Col id="code">fg</Col>
+            <Col id="DEPT_ID">5</Col>
+          </Row>
+          <Row>
+            <Col id="code">vbn</Col>
+            <Col id="DEPT_ID">6</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ListBox00" propid="value" datasetid="Dataset00" columnid="DEPT_ID"/>
+      <BindItem id="item1" compid="ListBox00_00" propid="value" datasetid="Dataset00" columnid="DEPT_ID"/>
+      <BindItem id="item2" compid="ListBox00_00_00" propid="value" datasetid="Dataset00" columnid="DEPT_ID"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[
+this.ListBox00_onitemchanged = function(obj:nexacro.ListBox,e:nexacro.ItemChangeEventInfo)
+{
+	
+};
+]]></Script>
+  </Form>
+</FDL>

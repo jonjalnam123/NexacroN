@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Sub1" width="1022" height="610" onload="Sub1_onload" titletext="nexaco platform" onbindingvaluechanged="Sub1_onbindingvaluechanged">
+    <Layouts>
+      <Layout height="610" mobileorientation="landscape" width="1022">
+        <WebBrowser id="WebBrowser00" taborder="2" left="310" top="44" onloadcompleted="WebBrowser00_onloadcompleted" minwidth="500" maxwidth="" minheight="283" maxheight="" width="699" height="396"/>
+        <Static id="staTitle" taborder="0" left="310" top="WebBrowser00:8" width="702" height="30" cssclass="sta_WF_contstitleTxt" fittocontents="height"/>
+        <Static id="staDesc" taborder="1" left="310" top="staTitle:10" width="702" height="119" cssclass="sta_WF_desc" wordWrap="char" verticalAlign="top" fittocontents="height"/>
+        <Grid id="grdMenuList" taborder="3" left="0" top="44" width="300" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" scrollbarsize="10" autofittype="col" treeusecheckbox="false" treeuseline="false" mouseovertype="cell" treeuseimage="false" useselcolor="true" scrollbartrackbarsize="200" oncellclick="grdMenuList_oncellclick" binddataset="dsSub" autosizingtype="row" bottom="3" extendsizetype="row">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="258"/>
+              </Columns>
+              <Rows>
+                <Row size="40" band="head"/>
+                <Row size="50"/>
+              </Rows>
+              <Band id="head">
+                <Cell/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:title.substr(title.indexOf(&quot;]&quot;)+1)" wordWrap="char"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsSub" progressload="false" onrowposchanged="dsSub_onrowposchanged">
+        <ColumnInfo>
+          <Column id="mainiD" type="string" size="10"/>
+          <Column id="id" type="string" size="10"/>
+          <Column id="title" type="string" size="50"/>
+          <Column id="url" type="string" size="10"/>
+          <Column id="publishedAt" type="string" size="10"/>
+          <Column id="viewCount" type="int" size="10"/>
+          <Column id="likeCount" type="int" size="10"/>
+          <Column id="description" type="string" size="10"/>
+          <Column id="sort_key" type="string" size="10"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="url">J96xvH723_g</Col>
+            <Col id="title">석이드럼</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.dsSub_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo)
+{
+	var sURL = this.dsSub.getColumn(this.dsSub.rowposition, "url");
+               
+	//운영반영시 밑에 HTML로 바꿔야함. 이게 하단 '전체보기' 기능 사용 가능한 부분
+	//this.WebBrowser00.set_url("http://demo.nexacro.com/EduPlay/test/_web_/File/webbrowser.html?sURL="+sURL);	
+    //테스트시 --> 근데 아래와 해도 전체보기 가능하지? 2020.03.17test
+	this.WebBrowser00.set_url("https://www.youtube.com/embed/"+sURL);	
+    this.resetScroll();
+	
+};
+
+//WebBrowser '전체보기' 기능 사용하기 위해 html에 iframe 형식으로 오픈
+this.WebBrowser00_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+	this.WebBrowser00.setProperty("allowfullscreen", ""); // webbrowser에 allowfullscreen 세팅
+	this.WebBrowser00.callMethod("set_allowfullscreen"); // 링크된 html 의 함수 호출
+};
+
+
+
+]]></Script>
+  </Form>
+</FDL>

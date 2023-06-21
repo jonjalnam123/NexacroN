@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="TPLDSN005M00" width="1015" height="230" titletext="학력정보" onload="TPLDSN005M00_onload">
+    <Layouts>
+      <Layout height="230" width="1015">
+        <Grid id="grd00" taborder="0" left="5" top="35" binddataset="dsListTab1" autofittype="col" height="189" right="5">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="134"/>
+                <Column size="167"/>
+                <Column size="139"/>
+                <Column size="76"/>
+                <Column size="182"/>
+              </Columns>
+              <Rows>
+                <Row size="28" band="head"/>
+                <Row size="28"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="졸업년월"/>
+                <Cell col="1" text="학교명"/>
+                <Cell col="2" text="전공"/>
+                <Cell col="3" text="졸업여부"/>
+                <Cell col="4" text="주소"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:GRADUATION_YEAR"/>
+                <Cell col="1" text="bind:SCHOOL_NAME"/>
+                <Cell col="2" text="bind:MAJOR"/>
+                <Cell col="3" text="bind:GRADUATION" textAlign="center"/>
+                <Cell col="4" text="bind:ADDRESS"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn01" taborder="1" top="5" width="24" height="24" cssclass="btn_WF_Add" right="35"/>
+        <Button id="btn02" taborder="2" top="5" width="24" height="24" cssclass="btn_WF_Del" right="6"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsListTab1">
+        <ColumnInfo>
+          <Column id="GRADUATION_YEAR" type="STRING" size="256"/>
+          <Column id="SCHOOL_NAME" type="STRING" size="256"/>
+          <Column id="MAJOR" type="STRING" size="256"/>
+          <Column id="GRADUATION" type="STRING" size="256"/>
+          <Column id="ADDRESS" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="GRADUATION_YEAR">19930203</Col>
+            <Col id="SCHOOL_NAME">ㅇㅇ대학교</Col>
+            <Col id="MAJOR">컴퓨터과학과</Col>
+            <Col id="GRADUATION">졸업</Col>
+            <Col id="ADDRESS">서울시 </Col>
+          </Row>
+          <Row>
+            <Col id="GRADUATION_YEAR">20020205</Col>
+            <Col id="SCHOOL_NAME">ㅇㅇ고등학교</Col>
+            <Col id="MAJOR">상과</Col>
+            <Col id="GRADUATION">졸업</Col>
+            <Col id="ADDRESS">서울특별시</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item4" compid="divDetail.form.tab00.Tabpage1.form.cal00_00" propid="value" datasetid="dsList" columnid="Column3"/>
+    </Bind>
+  </Form>
+</FDL>

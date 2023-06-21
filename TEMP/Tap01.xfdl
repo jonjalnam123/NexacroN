@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Tap01" width="1015" height="230" titletext="New Form">
+    <Layouts>
+      <Layout height="230" mobileorientation="landscape" width="1015">
+        <Grid id="Grid00" taborder="0" left="0" top="21" height="179" binddataset="Dataset00" right="-1" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="COL_CHK"/>
+                <Cell col="1" text="CORP_CODE"/>
+                <Cell col="2" text="CORP_NAME"/>
+                <Cell col="3" text="CORP_CEO"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:COL_CHK"/>
+                <Cell col="1" text="bind:CORP_CODE"/>
+                <Cell col="2" text="bind:CORP_NAME"/>
+                <Cell col="3" text="bind:CORP_CEO"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="COL_CHK" type="STRING" size="256"/>
+          <Column id="CORP_CODE" type="STRING" size="32"/>
+          <Column id="CORP_NAME" type="STRING" size="32"/>
+          <Column id="CORP_CEO" type="STRING" size="256"/>
+          <Column id="CORP_EMP_NUM" type="STRING" size="256"/>
+          <Column id="CORP_DEPT_CD" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">265</Col>
+            <Col id="CORP_DEPT_CD">KR10</Col>
+            <Col id="COL_CHK">1</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">265</Col>
+            <Col id="CORP_DEPT_CD">KR30</Col>
+            <Col id="COL_CHK">1</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">265</Col>
+            <Col id="CORP_DEPT_CD">KR20</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">JP</Col>
+            <Col id="CORP_NAME">Japen Corp.</Col>
+            <Col id="CORP_CEO">ひでみ</Col>
+            <Col id="CORP_EMP_NUM">25</Col>
+            <Col id="CORP_DEPT_CD">JP10</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">JP</Col>
+            <Col id="CORP_NAME">Japen Corp.</Col>
+            <Col id="CORP_CEO">ひでみ</Col>
+            <Col id="CORP_EMP_NUM">25</Col>
+            <Col id="CORP_DEPT_CD">JP20</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">JP</Col>
+            <Col id="CORP_NAME">Japen Corp.</Col>
+            <Col id="CORP_CEO">ひでみ</Col>
+            <Col id="CORP_EMP_NUM">25</Col>
+            <Col id="CORP_DEPT_CD">JP30</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">CN</Col>
+            <Col id="CORP_NAME">China Corp.</Col>
+            <Col id="CORP_CEO">英美</Col>
+            <Col id="CORP_EMP_NUM">600</Col>
+            <Col id="CORP_DEPT_CD">CN10</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">CN</Col>
+            <Col id="CORP_NAME">China Corp.</Col>
+            <Col id="CORP_CEO">英美</Col>
+            <Col id="CORP_EMP_NUM">600</Col>
+            <Col id="CORP_DEPT_CD">CN20</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">CN</Col>
+            <Col id="CORP_NAME">China Corp.</Col>
+            <Col id="CORP_CEO">英美</Col>
+            <Col id="CORP_EMP_NUM">600</Col>
+            <Col id="CORP_DEPT_CD">CN30</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">200</Col>
+            <Col id="CORP_DEPT_CD">KR40</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">200</Col>
+            <Col id="CORP_DEPT_CD">KR50</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">양인범</Col>
+            <Col id="CORP_EMP_NUM">200</Col>
+            <Col id="CORP_DEPT_CD">KR10</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">양인범</Col>
+            <Col id="CORP_EMP_NUM">300</Col>
+            <Col id="CORP_DEPT_CD">KR10</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">양인범</Col>
+            <Col id="CORP_EMP_NUM">300</Col>
+            <Col id="CORP_DEPT_CD">KR30</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

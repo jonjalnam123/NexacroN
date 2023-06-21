@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frnImage" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Button id="Button00" taborder="0" text="Button00" left="63" top="30" width="135" height="68" background="url('theme://images/btn_WF_Edge.png') repeat bottom"/>
+        <Button id="Button00_00" taborder="1" text="Button00" left="590" top="21" width="150" height="118" edge="url('theme://images/btn_WF_Edge.png') 0px 0px" border="0px none"/>
+        <Button id="Button00_01" taborder="2" text="Button00" left="215" top="16" width="178" height="93" icon="url('theme://images/btn_MDI_Home.png')" iconPosition="left" textPadding="0px 20px"/>
+        <Button id="Button01" taborder="3" text="Button01" left="64" top="124" width="165" height="88" background="url('theme://images/btn_WF_Edge.png') repeat-x left top"/>
+        <Button id="Button02" taborder="4" text="" left="259" top="119" width="261" height="98" background="url('theme://images/sta_TF_NexacroN.png') no-repeat center center white"/>
+        <Button id="Button03" taborder="5" text="Button03" left="60" top="240" width="300" height="200" background="url('theme://images/sta_WF_NexacroIcon.png') no-repeat center center"/>
+        <Button id="Button03_00" taborder="6" text="Button03" left="390" top="240" width="300" height="200" background="url('theme://images/sta_WF_NexacroIcon.png') no-repeat center center /cover"/>
+        <Button id="Button03_00_00" taborder="7" text="Button03" left="50" top="460" width="300" height="200" background="url('theme://images/sta_WF_NexacroIcon.png') no-repeat center center /contain"/>
+        <Button id="Button03_00_01" taborder="8" text="Button03" left="390" top="460" width="300" height="200" background="url('theme://images/sta_WF_NexacroIcon.png') no-repeat center center /100% 100%"/>
+        <Button id="Button00_01_00" taborder="9" text="Button00" left="435" top="30" width="135" height="68" icon="url('theme://images/btn_MDI_Home.png')" iconPosition="right"/>
+        <Button id="Button00_00_00" taborder="10" text="Button00" left="750" top="22" width="150" height="118" edge="url('theme://images/btn_WF_Edge.png') 10px 10px" border="0px none"/>
+        <Button id="Button00_00_00_00" taborder="11" text="Button00" left="750" top="153" width="150" height="118" edge="url('theme://images/btn_WF_Edge.png') 3px 3px" border="0px none"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

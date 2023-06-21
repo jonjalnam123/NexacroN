@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ENV version="2.1">
+  <Environment themeid="theme::NEDU" datatyperule="2.0" initvaluefileid="initvalue::list.xiv" loadingimage="url('imagerc::MoveLogo.gif')" icon="url('imagerc::drumicon.ico')">
+    <ScreenDefinition>
+      <Screen id="Desktop_screen" type="desktop"/>
+    </ScreenDefinition>
+    <Variables>
+      <Variable id="evMessagePopup" initval="true"/>
+      <Variable id="evLanguage" initval="KO"/>
+      <Variable id="evLanguageChange" initval="KO"/>
+    </Variables>
+    <Cookies/>
+    <httpheader/>
+  </Environment>
+</ENV>

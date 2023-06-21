@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Template_Tab" width="1038" height="650" titletext="Tab" onload="TPLDSN005M00_onload">
+    <Layouts>
+      <Layout height="650" width="1038">
+        <Static id="Static05" taborder="0" text="기본정보" left="10" top="81" width="97" height="35" cssclass="sta_WF_TitleSub" visible="true"/>
+        <Tab id="tab00" taborder="1" tabindex="0" left="10" top="374" onchanged="divDetail_tab00_onchanged" visible="true" right="10" height="266" showextrabutton="true">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="인적사항" url="Temp::Temp_TabPage01.xfdl"/>
+            <Tabpage id="Tabpage2" text="학력정보" url="Temp::Temp_TabPage02.xfdl"/>
+            <Tabpage id="Tabpage3" text="경력사항" url="Temp::Temp_TabPage03.xfdl"/>
+            <Tabpage id="Tabpage4" text="발령사항" url="Temp::Temp_TabPage04.xfdl"/>
+            <Tabpage id="Tabpage5" text="인사서류 첨부" url="Temp::Temp_TabPage05.xfdl"/>
+          </Tabpages>
+        </Tab>
+        <Static id="sta00" taborder="2" text="화면 유형 -Tab" left="10" top="0" width="196" height="35" cssclass="sta_WF_TitleMain"/>
+        <Button id="btn_retrieve" taborder="3" text="조회" onclick="btn_retrieve_onclick" cssclass="btn_WF_FrmMain" top="5" height="24" width="63" right="142"/>
+        <Button id="btn_add" taborder="4" text="추가" top="5" width="63" height="24" onclick="btn_add_onclick" right="76" cssclass="btn_WF_FrmMain"/>
+        <Button id="btn_save" taborder="5" text="저장" top="5" width="63" height="24" onclick="btn_save_onclick" right="10" cssclass="btn_WF_FrmMain"/>
+        <Static id="Static05_00" taborder="6" text="상세 정보" left="10" top="339" width="97" height="35" cssclass="sta_WF_TitleSub" visible="true"/>
+        <Div id="div00_01" taborder="7" text="div00" left="10" top="35" height="46" cssclass="div_WF_Search" right="10">
+          <Layouts>
+            <Layout>
+              <Button id="btn00" taborder="0" left="548" top="8" width="28" height="28" onclick="div00_btn00_onclick" cssclass="btn_WF_Find"/>
+              <Edit id="edt00" taborder="1" left="376" top="8" width="172" height="28"/>
+              <Static id="sta01" taborder="2" text="검색 조건" left="293" top="8" width="83" height="28" cssclass="sta_WF_SearchLabel"/>
+              <Combo id="cbo01" taborder="3" text="이름" left="83" top="8" width="110" height="28" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="이름">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">이름</Col>
+                      <Col id="datacolumn">이름</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">휴대전화번호</Col>
+                      <Col id="datacolumn">휴대전화번호</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">이메일</Col>
+                      <Col id="datacolumn">이메일</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">부서</Col>
+                      <Col id="datacolumn">부서</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+              <Static id="sta00" taborder="4" text="검색 구분" left="0" top="8" width="83" height="28" cssclass="sta_WF_SearchLabel"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div00" taborder="8" text="divMain" top="116" height="223" visible="true" left="10" right="10">
+          <Layouts>
+            <Layout>
+              <Static id="sta09" taborder="12" left="280" top="148" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Static id="sta10" taborder="13" left="280" top="185" height="38" cssclass="sta_WF_DetailArea" visible="true" width="738"/>
+              <Static id="sta00" taborder="21" left="0" top="0" width="157" height="223" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Static id="sta01" taborder="2" left="280" top="0" height="38" cssclass="sta_WF_DetailArea" visible="true" width="164"/>
+              <Static id="sta02" taborder="3" text="법인/회사" left="156" top="37" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta03" taborder="4" text="입사일자" left="156" top="74" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta04" taborder="5" text="전화번호(휴대폰)" left="156" top="148" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta05" taborder="8" text="회사 이메일" left="156" top="185" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta07" taborder="9" left="280" top="37" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Static id="sta08" taborder="11" left="280" top="111" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Static id="sta11" taborder="10" left="280" top="74" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Static id="sta12" taborder="14" text="사원번호" left="156" top="0" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta13" taborder="15" text="성명" left="443" top="0" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta14" taborder="16" text="성명(영문)" left="730" top="0" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta15" taborder="17" text="부서명" left="443" top="37" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta16" taborder="18" text="직급" left="730" top="37" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta17" taborder="19" text="퇴사여부" left="443" top="74" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta18" taborder="20" text="퇴사일자" left="730" top="74" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta19" taborder="6" text="전화번호(집)" left="443" top="148" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta20" taborder="7" text="전화번호(사무실)" left="730" top="148" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <ImageViewer id="img00" taborder="0" left="6" top="6" width="145" height="178" visible="true" image="url('imagerc::img_emp13.png')"/>
+              <Button id="btn00" taborder="1" text="사진등록" left="36" top="191" width="84" height="24" visible="true" cssclass="btn_WF_FrmSub"/>
+              <MaskEdit id="msk00" taborder="22" left="285" top="5" width="146" height="28"/>
+              <Edit id="edt02" taborder="25" left="285" top="42" width="146" height="28"/>
+              <Calendar id="cal00" taborder="28" left="285" top="79" width="146" height="28"/>
+              <Edit id="edt04" taborder="31" left="285" top="153" width="146" height="28"/>
+              <Edit id="edt06" taborder="34" left="285" top="190" width="280" height="28"/>
+              <Static id="sta04_00" taborder="35" text="급여 이체 은행" left="156" top="111" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta19_00" taborder="36" text="계좌번호" left="443" top="111" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Static id="sta20_00" taborder="37" text="예금주" left="730" top="111" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+              <Combo id="cbo01" taborder="38" text="cbo01" left="285" top="116" width="146" height="28"/>
+              <Static id="sta01_00" taborder="41" left="567" top="0" height="38" cssclass="sta_WF_DetailArea" visible="true" width="164"/>
+              <Edit id="edt00" taborder="23" left="572" top="5" width="146" height="28"/>
+              <Static id="sta01_00_00" taborder="42" left="854" top="0" height="38" cssclass="sta_WF_DetailArea" visible="true" width="164"/>
+              <Edit id="edt01" taborder="24" left="859" top="5" width="148" height="28" value="chun Ji Young" text="chun Ji Young"/>
+              <Static id="sta01_00_01" taborder="43" left="567" top="37" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Static id="sta01_00_00_00" taborder="44" left="854" top="37" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Combo id="cbo00" taborder="27" text="cbo00" left="859" top="42" width="148" height="28"/>
+              <Edit id="edt03" taborder="26" left="572" top="42" width="146" height="28"/>
+              <Static id="sta01_00_00_00_00" taborder="45" left="854" top="74" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Static id="sta01_00_01_00" taborder="46" left="567" top="74" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Calendar id="cal01" taborder="30" left="859" top="79" width="148" height="28"/>
+              <Radio id="rdo00" taborder="29" left="572" top="79" width="126" height="28" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">1</Col>
+                      <Col id="datacolumn">재직</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">2</Col>
+                      <Col id="datacolumn">퇴직</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <Static id="sta01_00_01_00_00" taborder="47" left="567" top="111" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Static id="sta01_00_00_00_00_00" taborder="48" left="854" top="111" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Edit id="edt09" taborder="40" left="859" top="116" width="148" height="28"/>
+              <Edit id="edt08" taborder="39" left="572" top="116" width="146" height="28"/>
+              <Static id="sta01_00_01_00_00_00" taborder="49" left="567" top="148" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <Static id="sta01_00_00_00_00_00_00" taborder="50" left="854" top="148" width="164" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+              <MaskEdit id="msk01" taborder="33" left="859" top="153" width="148" height="28"/>
+              <Edit id="edt05" taborder="32" left="572" top="153" width="146" height="28"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsInfo">
+        <ColumnInfo>
+          <Column id="COMPANY" type="STRING" size="256"/>
+          <Column id="DEPT_CD" type="STRING" size="256"/>
+          <Column id="DEPT_NAME" type="STRING" size="256"/>
+          <Column id="EMP_NO" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+          <Column id="ZIP_CODE" type="STRING" size="256"/>
+          <Column id="TEL_NO" type="STRING" size="256"/>
+          <Column id="PHONE_NO" type="STRING" size="256"/>
+          <Column id="COMPANY_TEL_NO" type="STRING" size="256"/>
+          <Column id="HIRE_DATE" type="STRING" size="256"/>
+          <Column id="BRITHDAY" type="STRING" size="256"/>
+          <Column id="BRITHDAY_GUBUN" type="STRING" size="256"/>
+          <Column id="ADDRESS" type="STRING" size="256"/>
+          <Column id="ADDRESS_DETAIL" type="STRING" size="256"/>
+          <Column id="EMAIL" type="STRING" size="256"/>
+          <Column id="POSITION" type="STRING" size="256"/>
+          <Column id="RESIGNATION_DT" type="STRING" size="256"/>
+          <Column id="MARRIED" type="STRING" size="256"/>
+          <Column id="REGISTRATION_NO" type="STRING" size="256"/>
+          <Column id="ANNIVERSARY_DT" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="COMPANY">투비소프트</Col>
+            <Col id="DEPT_CD">1000</Col>
+            <Col id="DEPT_NAME">개발융합팀</Col>
+            <Col id="EMP_NO">A10000</Col>
+            <Col id="NAME">투비</Col>
+            <Col id="MARRIED">Y</Col>
+            <Col id="REGISTRATION_NO">20221234561234567</Col>
+            <Col id="ANNIVERSARY_DT">20001212</Col>
+            <Col id="POSITION">수석</Col>
+            <Col id="EMAIL">tobe@tobesoft.com</Col>
+            <Col id="ADDRESS_DETAIL">인탑스빌딩</Col>
+            <Col id="ADDRESS">서울시 강남구 봉은사로 617</Col>
+            <Col id="BRITHDAY_GUBUN">1</Col>
+            <Col id="BRITHDAY">20000701</Col>
+            <Col id="HIRE_DATE">20000101</Col>
+            <Col id="COMPANY_TEL_NO">02-1234-5678</Col>
+            <Col id="PHONE_NO">010-1234-5678</Col>
+            <Col id="TEL_NO">02-1234-5678</Col>
+            <Col id="ZIP_CODE">123456</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="div00.form.Edit00_00_00" propid="value" datasetid="dsInfo" columnid="NAME"/>
+      <BindItem id="item1" compid="div00.form.Edit00_00_00_00" propid="value" datasetid="dsInfo" columnid="RESIGNATION_DT"/>
+      <BindItem id="item2" compid="div00.form.Edit00_01_01" propid="value" datasetid="dsInfo" columnid="TEL_NO"/>
+      <BindItem id="item3" compid="div00.form.Edit00_01_01_01" propid="value" datasetid="dsInfo" columnid="PHONE_NO"/>
+      <BindItem id="item4" compid="div00.form.Edit00_00" propid="value" datasetid="dsInfo" columnid="EMP_NO"/>
+      <BindItem id="item5" compid="div00.form.Edit00_01" propid="value" datasetid="dsInfo" columnid="ZIP_CODE"/>
+    </Bind>
+  </Form>
+</FDL>

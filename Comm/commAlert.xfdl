@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="CommAlert" width="390" height="180" titletext="알림창" onload="form_onload" onkeydown="CommAlert_onkeydown" borderRadius="20px">
+    <Layouts>
+      <Layout height="180" width="390">
+        <Button id="btnOk" taborder="0" text="확인" width="90" height="30" bottom="20" onclick="btnOk_onclick" uWord="popup.ok" cssclass="btn_POP_Ok" right="20" color="white"/>
+        <Static id="staMsgContent" taborder="1" text="Static00" left="80" top="30" height="80" cssclass="sta_POP_Contents" width="290" wordWrap="char"/>
+        <ImageViewer id="img00" taborder="2" text="" left="0" top="30" width="80" height="80" image="url('imagerc::KakaoTalk_20230503_095106561.jpg')" imagealign="center middle" stretch="fit" border="1px solid white"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  Nexacro Professional Training Couse
+*  @MenuPath    Alert 화면 
+*  @FileName 	CmmAlert.xfdl 
+*  @Creator 	TOBESOFT Education
+*  @CreateDate 	2023/01/03
+*  @Desction    
+************** 소스 수정 이력 ***********************************************
+*  date          		Modifier                Description
+*******************************************************************************
+*  2023/01/03      		 TOBESOFT Education	 	  	최초 생성 
+*******************************************************************************
+*/
+
+
+
+/************************************************************************************************
+ * FORM 변수 선언 영역
+ ************************************************************************************************/
+
+/***********************************************************************************************
+* FORM EVENT 영역(onload)
+/***********************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.ufnFormOnLoad(this); //초기화[필수]
+	
+	var sContents = this.getOwnerFrame().paramContents;
+	this.fnMsgSetting(sContents);
+};
+
+/************************************************************************************************
+* TRANSACTION 서비스 호출 처리
+************************************************************************************************/
+
+/************************************************************************************************
+ * CALLBACK 콜백 처리부분
+ ************************************************************************************************/
+
+ /************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+/**
+* @description 메세지설정
+*/
+this.fnMsgSetting = function (sMsgContent)
+{
+	this.staMsgContent.set_text(sMsgContent);
+};
+ 
+ /************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+ ************************************************************************************************/
+/**
+* @description OK버튼이벤트
+*/
+this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close(true);
+};
+
+/**
+* @description 비밀번호 입력후 ESC로 확인버튼
+*/
+this.CommAlert_onkeydown = function(obj:nexacro.Form,e:nexacro.KeyEventInfo)
+{	
+	if(e.keycode==13) {
+		this.btnOk.click();
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

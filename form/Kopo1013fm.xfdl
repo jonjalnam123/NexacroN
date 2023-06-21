@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="FormContactWrite" width="1280" height="470" titletext="문의사항 글쓰기" onload="FormContactWrite_onload">
+    <Layouts>
+      <Layout height="470" width="1280">
+        <Div id="divContactWrite" taborder="1" text="" top="0" left="100" right="100" bottom="0">
+          <Layouts>
+            <Layout>
+              <WebBrowser id="webEditor" taborder="0" left="0" top="170" onusernotify="webEditor_onusernotify" onsize="webEditor_onsize" right="0" onloadcompleted="divContactWrite_webEditor_onloadcompleted" bottom="100" border="1px solid pink"/>
+              <Edit id="edtTitle" taborder="1" left="100" top="100" height="50" border="1px solid pink" right="0" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+              <Static id="staTitle" taborder="2" text="제목" left="0" top="100" width="100" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Static id="staId" taborder="3" text="작성자" left="350" top="51" width="100" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Edit id="edtConNo" taborder="4" left="100" top="51" width="250" height="50" border="1px solid pink" enable="true" readonly="true" background="white" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+              <Static id="staID01" taborder="5" text="번호" left="0" top="51" width="100" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Button id="btnCancel" taborder="6" text="뒤로" top="5" height="40" background="pink" color="white" font="bold 14pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="102" right="0" onclick="divContactWrite_btnCancel_onclick"/>
+              <Static id="staDate" taborder="7" text="작성일" left="720" top="51" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center" width="100"/>
+              <Edit id="edtId" taborder="8" left="450" top="51" width="270" height="50" border="1px solid pink" readonly="true" background="white" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+              <MaskEdit id="mskConBoardWriteDate" taborder="9" top="51" height="50" type="string" format="####-##-##" textAlign="center" readonly="true" border="1px solid pink" left="staDate:-1" right="0" background="white" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+              <Div id="divBtnG" taborder="10" text="" top="5" width="226" height="40" right="94" font="bold 14pt/normal &quot;휴먼매직체&quot;">
+                <Layouts>
+                  <Layout>
+                    <Button id="btnDelete" taborder="1" text="삭제" top="0" height="40" background="pink" color="white" font="bold 14pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="102" right="120" onclick="divContactWrite_divBtnG_btnDelete_onclick"/>
+                    <Button id="btnOk" taborder="0" text="완료/수정" top="0" height="40" background="pink" color="white" font="bold 14pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="102" right="13" onclick="divContactWrite_divBtnG_btnOk_onclick"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Grid id="grdReply" taborder="11" left="0" binddataset="dsReply" autofittype="col" bottom="6" autosizingtype="row" nodatatext="등록된 댓글이 없습니다." height="82" border="1px solid pink" right="510" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="412"/>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell text="bind:ADMREP_CONTENT" wordWrap="char" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+                      <Cell col="1" text="bind:ADMREP_DATE" displaytype="date" edittype="none" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="btnReplyWrite" taborder="12" text="댓글쓰기" height="36" background="pink" color="white" font="bold 14pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="97" bottom="52" right="100" onclick="divContactWrite_btnReplyWrite_onclick"/>
+              <TextArea id="txtReply" taborder="13" width="300" bottom="6" height="82" right="204" border="1px solid pink"/>
+              <Button id="btnReplyDelete" taborder="14" text="댓글삭제" height="36" background="pink" color="white" font="bold 14pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="97" right="0" bottom="52" onclick="divContactWrite_btnReplyDelete_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*	개발 표준화 작업
+*	@MenuPath C:\Users\CNCNetworks\Documents\TOBESOFT\Nexacro N\projects\Seok2Drum\form
+*	@FileName Kopo1013fm.xfdl
+*	@Creator 최정석
+*	@CreateDate 2023/05/19
+*	@Desction 해당 폼 정보 설명
+******************소스 수정 이력**********************************************
+*	date		Modifier	Description
+********************************************************************************
+*	2023/05/19		최정석		최초 생성
+*	
+*
+*/
+
+/************************************************************************************************
+* FORM 변수 선언 영역
+************************************************************************************************/
+
+this.fvDocWeb = "";
+this.fvRtnHeight=260; //버튼사이즈
+this.fvApp = nexacro.getApplication();
+
+/************************************************************************************************
+* FORM EVENT 영역(onload, onbeforeclose)
+************************************************************************************************/
+
+/**
+* @description 화면 onload 시 리스트에서 Flag 아이디 준 값으로 페이지 분할
+*/
+this.FormContactWrite_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{	
+	
+	if(this.fvApp.avWorkFrame.objParam.Flag == "ConWrite") {
+		
+		var sUrl = this.ufnGetServerUrl() + "smartEditor/SmartEditor2.html";
+		this.divContactWrite.form.webEditor.set_url(sUrl);
+		
+		this.divContactWrite.form.divBtnG.form.btnDelete.set_visible(false);
+		this.divContactWrite.form.grdReply.set_visible(false);
+		this.divContactWrite.form.txtReply.set_visible(false);
+		this.divContactWrite.form.btnReplyWrite.set_visible(false);
+		this.divContactWrite.form.btnReplyDelete.set_visible(false);
+		
+		this.dsContactBoard.addRow();
+		
+		//this.dsContactBoard.setColumn(this.dsContactBoard.rowposition, "CONBOARD_WRITEDATE", this.fvApp.avWorkFrame.objParam.CONBOARD_WRITEDATE)
+		
+		this.dsContactBoard.setColumn(this.dsContactBoard.rowposition, "CONBOARD_WRITEDATE", this.ufnGetDate())
+		this.dsContactBoard.setColumn(this.dsContactBoard.rowposition, "NAME", this.fvApp.gdsMember.getColumn(this.fvApp.gdsMember.rowposition,"NAME"));
+		this.dsContactBoard.setColumn(this.dsContactBoard.rowposition, "USERID", this.fvApp.gdsMember.getColumn(this.fvApp.gdsMember.rowposition,"USERID"));
+		
+		
+	}else if(this.fvApp.avWorkFrame.objParam.Flag == "ConModify") {
+		if(this.fvApp.gdsMember.getColumn(0,"USERID") == this.fvApp.avWorkFrame.objParam.USERID) {
+			this.divContactWrite.form.divBtnG.set_visible(true);
+			this.divContactWrite.form.txtReply.set_visible(false);
+			this.divContactWrite.form.btnReplyWrite.set_visible(false);
+			this.divContactWrite.form.btnReplyDelete.set_visible(false);
+			
+			var sUrl = this.ufnGetServerUrl() + "smartEditor/SmartEditor2.html";
+			this.divContactWrite.form.webEditor.set_url(sUrl);
+			
+		}else if(this.fvApp.gdsMember.getColumn(0,"USERID") == "Admin"){
+		
+			this.divContactWrite.form.divBtnG.set_visible(true);
+			
+			var sUrl = this.ufnGetServerUrl() + "smartEditor/SmartEditor2.html";
+			this.divContactWrite.form.webEditor.set_url(sUrl);
+			
+		}else if(this.fvApp.gdsMember.getColumn(0,"USERID") != this.fvApp.avWorkFrame.objParam.USERID) {
+		
+			this.divContactWrite.form.edtTitle.set_readonly(true);
+			this.divContactWrite.form.edtTitle.set_background("white");
+	
+			this.divContactWrite.form.divBtnG.set_visible(false);
+			this.divContactWrite.form.txtReply.set_visible(false);
+			this.divContactWrite.form.btnReplyWrite.set_visible(false);
+			this.divContactWrite.form.btnReplyDelete.set_visible(false);
+
+			var sUrl = this.ufnGetServerUrl() + "smartEditor/SmartEditor2_readonly.html";
+			this.divContactWrite.form.webEditor.set_url(sUrl);
+		}
+		
+		this.dsSearch.clearData();
+		this.dsSearch.addRow();
+		this.dsSearch.setColumn(this.dsSearch.rowposition, "CONBOARD_NO", this.fvApp.avWorkFrame.objParam.CONBOARD_NO);
+		this.ufnTransaction("conBoardDetailView"
+			,"nexa/conBoardDetailView.do"
+			,"dsSearch=dsSearch" 
+			,"dsContactBoard=dsContactBoard"
+			,"paramHit=" + this.fvApp.avWorkFrame.objParam.CONBOARD_NO
+			,"fnCallBack")
+	}
+	this.ufnFormOnLoad(this);
+};
+
+/************************************************************************************************
+* CALLBACK 콜백 처리부분(Transaction, Popup)
+************************************************************************************************/
+
+/**
+* @description 웹 에디터 콜백
+*/
+this.fnEditorCallback = function(sType)
+{
+	if( (sType == "onload_win") || (sType == "onload_nexacro")  || (sType == "onload_title"))
+	{
+		if(this.fvApp.avWorkFrame.objParam.Flag == "ConModify") 
+		{
+			var sContents = this.dsContactBoard.getColumn(this.dsContactBoard.rowposition,"CONBOARD_CONTENT");
+			this.fvDocWeb.getProperty("ir1").setProperty("value",sContents);
+			this.fvDocWeb.getProperty("editorSetBtn").callMethod("click");	
+		}
+	}
+};
+
+/**
+* @description 글쓰기 콜백
+*/
+this.fnCallbackWrite = function (svcId, errDd, errMsg)
+{	
+	var sMsgId = "msg.save.success";
+	var arrArg = "";
+	var sPopId = "popMsgAbstractCompleteWrite";
+	var sCallback = "fnMsgCallbackw";		
+			
+	this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);	
+};
+
+/**
+* @description 글쓰기/수정메시지 알림 콜백
+*/
+this.fnMsgCallbackw = function(strId, strVal)
+{
+	if(strId == "popMsgAbstractCompleteWrite"){
+		if(strVal) {
+			this.go("form::Kopo1012fm.xfdl");
+		}
+	}
+};
+
+/**
+* @description 화면 온로드 조회 후 조회수 증가 트랜잭션
+*/
+this.fnCallBack = function(svcId, errDd, errMsg) {
+	if(svcId == "selectReply" ) {
+		
+	}else if(svcId == "conBoardDetailView") { //온로드 되면서 조회 트랜잭션이 끝나고 한 이유 : 
+		this.fnReplySearch();
+	}else if(svcId == "saveReply"){
+		this.reload();
+	}
+}
+
+/**
+* @description 삭제버튼 클릭 트랜잭션 콜백
+*/
+this.fnMsgCallback = function(strId, strVal)
+{
+	if(strId == "popMsgAbstractComplete"){
+		if(strVal) {
+			this.dsReplyDelete();
+			this.dsContactBoard.deleteRow(this.dsContactBoard.rowposition);
+			this.ufnTransaction("ConBoardWrite"
+				,"nexa/ConBoardWrite.do"
+				,"dsContactBoard=dsContactBoard:u" //저장
+				,"" 
+				,""
+				,"fnCallBack");
+			this.ufnAlert("msg.delete.success")
+			this.go("form::Kopo1012fm.xfdl")
+		}
+	}
+};
+/************************************************************************************************
+* CRUD 및 TRANSACTION 서비스 호출 처리
+************************************************************************************************/
+
+/**
+* @description 삭제버튼 클릭 컨펌
+*/
+this.divContactWrite_divBtnG_btnDelete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sMsgId = "msg.before.delete";
+	var arrArg = "";
+	var sPopId = "popMsgAbstractComplete";
+	var sCallback = "fnMsgCallback";
+	
+	this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);
+};
+
+/**
+* @description 완료버튼 클릭 트랜잭션
+*/
+this.divContactWrite_divBtnG_btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	this.ufnClearValidation(this.dsContactBoard);
+	this.ufnSetValidation(this.dsContactBoard, "CONBOARD_TITLE", "제목", "required");
+	if (this.ufnValidation(this.dsContactBoard, "A") == false) return;
+	
+	this.fvDocWeb.getProperty("editorGetBtn").callMethod("click");
+ 	var sEditorData = this.fvDocWeb.getProperty("ir1").getProperty("value");
+	
+	this.dsContactBoard.setColumn(0, "CONBOARD_CONTENT", sEditorData);
+	
+	this.ufnTransaction("ConBoardWrite"
+		,"nexa/ConBoardWrite.do"
+		,"dsContactBoard=dsContactBoard:u" //저장
+		,"" 
+		,""
+		,"fnCallbackWrite");
+};
+/************************************************************************************************
+* 사용자 FUNCTION 영역
+************************************************************************************************/
+
+/**
+* @description 웹 에디터 사이즈
+*/
+this.fnResize = function(nWidth, nHeight)
+{
+	var sValue = nWidth+","+nHeight; 
+	
+	this.fvDocWeb.getProperty("resize").setProperty("value",sValue);
+	this.fvDocWeb.getProperty("btnResize").callMethod("click");
+};
+
+/**
+* @description 댓글조회 함수
+*/
+this.fnReplySearch = function()
+{	
+	var sNoticeSeq 	= this.fvApp.avWorkFrame.objParam.CONBOARD_NO;
+	
+	var strSvcId   	= "selectReply";
+	var strSvcUrl   = "nexa/selectReply.do";
+	var inData      = "";
+	var outData     = "dsReply=dsReply";
+	var strArg      = "paramNoticeSeq=" + nexacro.wrapQuote(sNoticeSeq);
+	var callBackFnc = "fnCallBack";
+	var isAsync     = true;
+	
+	this.ufnTransaction(strSvcId , 		// transaction을 구분하기 위한 svc id값
+		strSvcUrl , 	// trabsaction을 요청할 주소
+		inData , 		// 입력값으로 보낼 dataset id , a=b형태로 실제이름과 입력이름을 매칭
+		outData , 		// 처리결과값으로 받을 dataset id, a=b형태로 실제이름과 입력이름을 매칭
+		strArg, 		// 입력값으로 보낼 arguments, strFormData="20120607"
+		callBackFnc, 	// transaction의 결과를 받을 Function 이름
+		isAsync); 		// 비동기통신 여부 [생략가능]
+};
+
+/**
+* @description 웹 에디터 함수
+*/
+this.webEditor_onusernotify = function(obj:nexacro.WebBrowser,e:nexacro.WebUserNotifyEventInfo)
+{
+	try
+	{
+		// parent의 최상의 Form에 이벤트 발생시킴
+		var oForm = this;
+		if (oForm && oForm.fnEditorCallback)
+		{
+			if( (e.userdata == "onload_win") || (e.userdata == "onload_nexacro")  || (e.userdata == "onload_title"))
+			{
+				var initHeight = this.divContactWrite.form.webEditor.getOffsetHeight();
+				this.fnResize(obj.getOffsetWidth(), initHeight-this.fvRtnHeight);
+			}
+			
+			oForm.fnEditorCallback(e.userdata);
+		}
+	}
+	catch(e){
+		trace("SampleNaverEditor.xfdl :: webEditor_onusernotify() => " + e.message);
+	}
+};
+
+/**
+* @description 댓글 삭제 함수
+*/
+this.dsReplyDelete = function() {
+	
+	this.dsReply.deleteRow(this.dsReply.rowposition);
+	this.ufnTransaction("saveReplyDelete"
+		,"nexa/saveReply.do"
+		,"dsReply=dsReply:u" //저장
+		,"" 
+		,""
+		,"fnCallBack");
+	
+}
+/************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+
+/**
+* @description 웹 에디터 온로드 성공시
+*/
+this.divContactWrite_webEditor_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+	this.fvDocWeb = this.divContactWrite.form.webEditor.getProperty("document").getProperty("all");
+};
+
+/**
+* @description 뒤로가기 버튼 클릭시
+*/
+this.divContactWrite_btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("form::Kopo1012fm.xfdl");
+};
+
+/**
+* @description 댓글쓰기 버튼 클릭시
+*/
+this.divContactWrite_btnReplyWrite_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var nRow = 0;
+	if (this.dsReply.rowcount == 0)
+	{   
+		nRow=0;
+	}else{
+		if(this.dsReply.rowposition==0)
+		{
+			nRow=1;
+		}else{
+			nRow=this.dsReply.rowposition+1;   
+		}
+	}
+	var nRow = this.dsReply.insertRow(nRow);
+	if(this.ufnIsNull(this.divContactWrite.form.txtReply.value)) {
+		this.ufnAlert("msg.com.repnone")
+		return false;
+	}
+	
+	this.dsReply.setColumn(nRow,"CONBOARD_NO",this.fvApp.avWorkFrame.objParam.CONBOARD_NO);
+	this.dsReply.setColumn(nRow,"USERID",this.fvApp.gdsMember.getColumn(0,"USERID"));
+	this.dsReply.setColumn(nRow,"ADMREP_CONTENT",this.divContactWrite.form.txtReply.value);
+	
+	var strSvcUrl = "nexa/saveReply.do";  
+	var inData    = "dsReply=dsReply:U";
+	var outData   = "";
+	var strArg    = "";
+	
+	this.ufnTransaction("saveReply", strSvcUrl, inData, outData, strArg, "fnCallBack", true);
+	this.ufnAlert("msg.com.repwrite");
+};
+
+/**
+* @description 삭제버튼 클릭시
+*/
+this.divContactWrite_btnReplyDelete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.dsReplyDelete();
+}; ]]></Script>
+    <Objects>
+      <Dataset id="dsContactBoard">
+        <ColumnInfo>
+          <Column id="CONBOARD_NO" type="STRING" size="256"/>
+          <Column id="USERID" type="STRING" size="256"/>
+          <Column id="CONBOARD_TITLE" type="STRING" size="256"/>
+          <Column id="CONBOARD_CONTENT" type="STRING" size="256"/>
+          <Column id="CONBOARD_HIT" type="STRING" size="256"/>
+          <Column id="CONBOARD_WRITEDATE" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSearch">
+        <ColumnInfo>
+          <Column id="CONBOARD_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsReply">
+        <ColumnInfo>
+          <Column id="ADMREP_NO" type="INT" size="256"/>
+          <Column id="USERID" type="STRING" size="256"/>
+          <Column id="CONBOARD_NO" type="INT" size="256"/>
+          <Column id="ADMREP_CONTENT" type="STRING" size="256"/>
+          <Column id="ADMREP_DATE" type="DATE" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="divContactWrite.form.edtConNo" propid="value" datasetid="dsContactBoard" columnid="CONBOARD_NO"/>
+      <BindItem id="item1" compid="divContactWrite.form.edtId" propid="value" datasetid="dsContactBoard" columnid="NAME"/>
+      <BindItem id="item3" compid="divContactWrite.form.edtTitle" propid="value" datasetid="dsContactBoard" columnid="CONBOARD_TITLE"/>
+      <BindItem id="item4" compid="divContactWrite.form.webEditor" propid="accessibilityaction" datasetid="dsContactBoard" columnid="CONBOARD_CONTENT"/>
+      <BindItem id="item2" compid="divContactWrite.form.mskConBoardWriteDate" propid="value" datasetid="dsContactBoard" columnid="CONBOARD_WRITEDATE"/>
+    </Bind>
+  </Form>
+</FDL>

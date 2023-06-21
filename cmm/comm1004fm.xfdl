@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="FormFindPw" width="1280" height="720" titletext="비밀번호 찾기" onload="FormFindPw_onload">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Static id="staCenter" taborder="2" text="" left="0" top="0" width="50.00%" height="50.00%"/>
+        <Div id="divPwFind" taborder="0" text="" left="staCenter:-200" top="staCenter:-100" width="400" height="300">
+          <Layouts>
+            <Layout>
+              <Button id="btnOK" taborder="2" text="확인" left="80" top="225" width="120" height="50" background="pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" color="white" onclick="divPwFind_btnOK_onclick"/>
+              <Button id="btnCancel" taborder="3" text="취소" left="205" top="225" width="120" height="50" background="pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" color="white" onclick="divLogin_btnJoin_onclick"/>
+              <Static id="staPhone" taborder="4" text="핸드폰" left="39" top="89" width="80" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;휴먼매직체&quot;"/>
+              <Edit id="edtUserID" taborder="0" left="118" top="40" width="240" height="50" border="1px solid pink"/>
+              <Static id="staID" taborder="5" text="아이디" left="39" top="40" width="80" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;휴먼매직체&quot;"/>
+              <MaskEdit id="mskPhone" left="118" top="89" width="240" height="50" border="1px solid pink" textAlign="left" format="###-####-####" type="string" taborder="1" onchanged="divJoin_mskPhone_onchanged" onkeydown="divPwFind_mskPhone_onkeydown"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <ImageViewer id="imgLoginLogo" taborder="1" text="" left="staCenter:-130" top="staCenter:-254" image="url('imagerc::drum.png')" stretch="fixaspectratio" border="1px solid #ffffff" width="260" height="150"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*	개발 표준화 작업
+*	@MenuPath C:\Users\CNCNetworks\Documents\TOBESOFT\Nexacro N\projects\Seok2Drum\cmm
+*	@FileName cmmJoin1002fm.xfdl
+*	@Creator 최정석
+*	@CreateDate 2023/05/18
+*	@Desction 해당 폼 정보 설명
+******************소스 수정 이력**********************************************
+*	date		Modifier	Description
+********************************************************************************
+*	2023/05/18		최정석		최초 생성
+*	
+*
+*/
+
+/*************************************************************************
+* FORM 변수 선언 영역 (fv)
+**************************************************************************/
+this.fvApp = nexacro.getApplication();
+
+/**************************************************************************
+* FORM EVENT 영역(onload)
+**************************************************************************/
+
+/**
+* @description 화면 화면이 load될 때 처리할 로직(필수)
+*/
+this.FormFindPw_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.ufnFormOnLoad(this);
+	this.dsFindPw.clearData();
+};
+
+/************************************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+************************************************************************************************/
+
+/**
+* @description 로그인페이지로 가기
+*/
+this.divLogin_btnJoin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("cmm::comm1001fm.xfdl");
+};
+
+/**
+* @description 찾기 버튼 클릭시 트랜잭션
+*/
+this.divPwFind_btnOK_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{			
+	if(this.ufnIsNull(this.divPwFind.form.edtUserID.value)) {
+		this.ufnAlert("msg.join.idnull");
+		this.divPwFind.form.edtUserID.setFocus();
+		return;
+	}else if(this.ufnIsNull(this.divPwFind.form.mskPhone.value)) {
+		this.ufnAlert("msg.join.phonenull");
+		this.divPwFind.form.mskPhone.setFocus();
+		return;
+	}
+	
+	var sId = this.divPwFind.form.edtUserID.value;
+	var sPh = this.divPwFind.form.mskPhone.value;
+	this.ufnTransaction("pwFind"
+		,"nexa/PwFind.do"
+		,"" 
+		,"dsFindPw=dsFindPw" //받아오는 부분
+		,"pID=" + nexacro.wrapQuote(sId) + " pPHONE=" + nexacro.wrapQuote(sPh) //파라미터로 보내는 부분
+		,"fnCallback");
+};
+
+/**
+* @description 비밀번호 입력후 엔터키로 확인버튼
+*/
+this.divPwFind_mskPhone_onkeydown = function(obj:nexacro.MaskEdit,e:nexacro.KeyEventInfo)
+{
+	if(e.keycode==13) {
+		this.divPwFind.form.btnOK.click();
+	}
+};
+
+/**************************************************************************
+* CALLBACK 콜백 처리부분(Transaction, Popup)
+**************************************************************************/
+
+/**
+* @description 비밀번호 찾기 결과 콜백
+*/
+this.fnCallback = function (svcId, errCd, errMsg)
+{	
+	if(svcId == "pwFind" ) {		
+		if (this.dsFindPw.rowcount > 0) {
+			
+			var sMsgId = "msg.pwfind.result";
+			var arrArg =  [this.dsFindPw.getColumn(0,"PASSWORD")];
+			var sPopId = "popMsgAbstractComplete";
+			var sCallback = "fnMsgCallback";		
+			this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);	
+			
+		}else{
+			this.ufnAlert("msg.pwfind.undefined")
+			return;
+		} 
+	}
+};
+
+/**
+* @description 메시지 알림 콜백
+*/
+this.fnMsgCallback = function(strId, strVal)
+{
+	if(strId == "popMsgAbstractComplete"){
+		if(strVal) {
+			this.go("cmm::comm1001fm.xfdl")
+		}
+	}
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsFindPw">
+        <ColumnInfo>
+          <Column id="PASSWORD" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="divPwFind.form.mskPhone" propid="value" datasetid="dsMember" columnid="PHONE"/>
+    </Bind>
+  </Form>
+</FDL>

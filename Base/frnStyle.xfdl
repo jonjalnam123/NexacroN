@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frnStyle" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Button id="Button00" taborder="0" text="Button00" left="50" top="50" width="379" height="119" cssclass="btn_TF_Save"/>
+        <Button id="Button01" taborder="1" text="Button01" left="464" top="49" width="192" height="81"/>
+        <Button id="Button00_00" taborder="2" text="Button00" left="50" top="181" width="379" height="119"/>
+        <Button id="Button02" taborder="3" text="Button02" left="561" top="162" width="131" height="58"/>
+        <Button id="Button03" taborder="4" text="DELETE" left="236" top="352" width="100" height="100" cssclass="btn_TF_DELETE" onclick="Button03_onclick"/>
+        <Combo id="Combo00" taborder="5" text="Combo00" left="460" top="360" width="206" height="30"/>
+        <CheckBox id="CheckBox00" taborder="6" text="CheckBox00" left="349" top="504" width="199" height="170"/>
+        <Button id="Button04" taborder="7" text="Home" left="110" top="350" width="100" height="100" cssclass="btn_TF_Home" onclick="Button04_onclick"/>
+        <Button id="Button05" taborder="8" text="Button05" left="649" top="429" width="210" height="85" cssclass="btn_TF_Save"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Button03_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.alert("삭제")
+};
+
+this.Button04_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.alert("홈가기")
+};
+]]></Script>
+  </Form>
+</FDL>

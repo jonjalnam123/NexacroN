@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Main" width="1050" height="698" titletext="New Form">
+    <Layouts>
+      <Layout height="698" width="1050">
+        <Static id="staCenter" taborder="0" text="" left="0" top="0" width="50%" height="50%" cssclass="sta_MF_Bg"/>
+        <ImageViewer id="ImageViewer00" taborder="1" text="" left="staCenter:-250" top="staCenter:-250" width="500" height="500" image="url('imagerc::KakaoTalk_20230503_095106561.jpg')" stretch="fixaspectratio" border="1px solid #ffffff"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

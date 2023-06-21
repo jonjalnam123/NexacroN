@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ADL version="2.0">
+  <Application id="Application_Desktop" screenid="Desktop_screen" onload="Application_onload" licenseurl="NexacroN_client_license.xml">
+    <Layout>
+      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" left="0" top="0" width="1280" height="720" titletext="Seok2Drum">
+        <VFrameSet id="VFrameSet" separatesize="0,0,0,*,0">
+          <Frames>
+            <ChildFrame id="Top" formurl="FrameBase::Frame3000fm.xfdl" showtitlebar="false" dragmovetype="none"/>
+            <ChildFrame id="Work" showtitlebar="false" dragmovetype="none" formurl="form::Kopo1010fm.xfdl" showcascadetitletext="true" showtitleicon="false"/>
+            <ChildFrame id="Footer" formurl="FrameBase::Frame3001fm.xfdl" showtitlebar="false" dragmovetype="none"/>
+            <ChildFrame id="Login" formurl="cmm::comm1001fm.xfdl" dragmovetype="none" showtitlebar="false"/>
+            <ChildFrame id="AdminLogin" formurl="admin::Kopo1110fm.xfdl" dragmovetype="none" showtitlebar="false"/>
+          </Frames>
+        </VFrameSet>
+      </MainFrame>
+    </Layout>
+    <Style url="xcssrc::basic.xcss"/>
+  </Application>
+  <Script type="xscript5.1"><![CDATA[this.avVFrameSet   = "";
+this.avTopFrame    = "";
+this.avHFrameSet   = "";
+this.avLeftFrame   = "";
+this.avVFrameSet1  = "";
+this.avMdiFrame    = "";
+this.avWorkFrame   = "";
+this.avLoginFrame  = "";
+
+this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
+{
+    this.avVFrameSet   = this.mainframe.VFrameSet;
+    this.avTopFrame    = this.mainframe.VFrameSet.Top;
+    this.avWorkFrame   = this.mainframe.VFrameSet.Work;
+	this.avFooterFrame = this.mainframe.VFrameSet.Footer;
+	this.avLoginFrame  = this.mainframe.VFrameSet.Login;
+};]]></Script>
+</ADL>

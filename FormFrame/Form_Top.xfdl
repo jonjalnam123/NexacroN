@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Top" width="1298" height="50" titletext="New Form" cssclass="sta_LOGIN_Bg" onload="Form_Top_onload" scrolltype="none">
+    <Layouts>
+      <Layout height="50" mobileorientation="landscape" width="1298">
+        <Static id="Static01" taborder="3" text="" left="248" top="0" height="50" cssclass="sta_TF_Bg" right="0" onclick="Static01_onclick"/>
+        <Static id="Static00" taborder="0" text="" left="0" top="0" width="248" height="50" cssclass="sta_LF_NexacroLogo"/>
+        <Menu id="Menu00" taborder="1" left="206" top="96" width="514" height="48" innerdataset="dsMenu" captioncolumn="MENU_NAME" idcolumn="MENU_ID" levelcolumn="MENU_LEVEL" userdatacolumn="FORM_URL" onmenuclick="Menu00_onmenuclick"/>
+        <Div id="divMenu" taborder="2" text="" left="300" top="0" height="50" right="50">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="4" top="6" width="133" height="16" text="&lt;b v='true'&gt;&lt;fc v='#f5a11d'&gt;운영자&lt;/fc&gt;&lt;/b&gt;님 환영합니다." usedecorate="true" right="68" onclick="Static02_onclick"/>
+        <Button id="btnLogout" taborder="5" text="로그아웃" top="6" height="16" cssclass="btn_TF_Logout" right="7" width="60"/>
+        <Button id="btnPre" taborder="6" top="25" width="24" height="24" cssclass="btn_TF_Prev" right="31"/>
+        <Button id="btnNext" taborder="7" top="25" width="24" height="24" cssclass="btn_TF_Next" right="7"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+this.Menu00_onmenuclick = function(obj:nexacro.Menu,e:nexacro.MenuClickEventInfo)
+{
+	
+};
+
+//메뉴 선택하면 왼쪽에 정보 보여지게 하는 것
+this.Form_Top_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fvApp.gdsMenu.filter("MENU_LEVEL=='0'"); //레벨 0 값 가진애들 보여줌
+	
+	//Dataset.copyData( objDataset [, bFilteredOnly] )
+	//dsmenu = top에 만들어놓은 데이터 셋 gdsmenu = 전역 데이터 셋 
+	this.dsMenu.copyData(this.fvApp.gdsMenu, true); //dsmenu 데이터셋에  gdsmenu에 있는 데이터 셋을 카피 한다 전역변수를 지역변수로 카피
+	this.fvApp.gdsMenu.filter(""); //필터를 풀 때는 조건을 주지 않는다, DataSet 에 로드된 데이터를 조건에 만족하는 데이터(Row) 만 보이게 필터링하는 메소드입니다.
+	
+	this.fnCreateMenu();
+};
+
+var objBtn = "";
+var nX = 0; //임의로 선언한 변수
+var nGap = 50;
+
+this.fnCreateMenu  = function() {
+	
+	// dsMenu rowcount
+	for(var i=0; i<this.dsMenu.rowcount; i++){ //rowcount가 돌아가면서
+		var sMenuId = this.dsMenu.getColumn(i, "MENU_ID"); //아이디 구한다
+		var sMenuName = this.dsMenu.getColumn(i, "MENU_NAME"); //네임 구한다
+		
+		//nexacro.getTextSize( strText, strFont [, nLimitWidth, strWordWrap] );
+		var objSize = nexacro.getTextSize(sMenuName, "bold 15px 'Verdana, Malgun Gothic'"); //nx,ny 를 구하기 위해서 씀 텍스트의 크기
+		
+		trace(objSize.nx);
+		
+		//동적으로 버튼 생성하기
+		// new init - strName,vLeft, vTop, vWidth, vHeight
+		objBtn = new Button(sMenuId, nX, 5, objSize.nx, 40); //nx=메소드가 가지고 있는 가로 길이
+		
+		// addCild , Form.addChild( strChildID, objComp )
+		this.divMenu.addChild(sMenuId, objBtn); //sMenuId 에 오브젝트 메뉴 추가\
+		
+		//uId = 변경 정보를 식별하기 위한 고유 ID 속성값입니다.
+		objBtn.uId = sMenuId;
+		objBtn.set_text(sMenuName);
+		objBtn.set_cssclass("btn_TF_Menu"); //꾸미는 것
+		
+		// show 
+		objBtn.setEventHandler("onclick",this.fnMenuClick,this); //동적 이벤트 생성
+		objBtn.show(); 
+		
+		nX += (objSize.nx + nGap); 
+	}
+	
+	//스타트페이지에 gdsMenuDataset에서 MENU_ID가 10인애들을 나타내주려고 씀
+	this.fvApp.gdsMenu.filter("MENU_ID.substring(0,2) == '10'");
+}
+					//클릭 메뉴 만들때 기본값 obj, e 넣어야됨
+this.fnMenuClick = function(obj, e) { //0번째 ~ 2번째 글자 까지 나눠서 보여지게 함 10,20,30 
+	this.fvApp.gdsMenu.filter("MENU_ID.substring(0,2) == '" + obj.uId + "'");
+	
+}
+
+]]></Script>
+    <Objects>
+      <Dataset id="dsMenu">
+        <ColumnInfo>
+          <Column id="MENU_ID" type="STRING" size="256"/>
+          <Column id="MENU_NAME" type="STRING" size="256"/>
+          <Column id="MENU_LEVEL" type="STRING" size="256"/>
+          <Column id="FORM_URL" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

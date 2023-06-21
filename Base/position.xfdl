@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="position" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Button id="Button00" taborder="0" text="Button00" left="20" top="20" width="150" height="50"/>
+        <Button id="Button01" taborder="1" text="기준" left="27" top="130" width="133" height="40" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="2" text="Button02" left="165" top="130" width="133" height="40"/>
+        <Button id="Button03" taborder="3" text="Button03" left="303" top="130" width="133" height="40"/>
+        <Button id="Button04" taborder="4" text="Button04" left="441" top="130" width="133" height="40"/>
+        <Button id="Button02_00" taborder="5" text="Button02" left="176" top="220" width="85" height="44"/>
+        <Button id="Button03_00" taborder="6" text="Button03" left="260" top="220" width="82" height="44"/>
+        <Button id="Button04_00" taborder="7" text="Button04" left="341" top="220" width="146" height="64"/>
+        <Button id="Button01_00" taborder="8" text="기준" left="63" top="220" width="114" height="44"/>
+        <Button id="Button05" taborder="9" text="Button05" top="24" width="136" height="48" right="19"/>
+        <Button id="Button06" taborder="10" text="Button06" left="978" top="84" height="52" right="12"/>
+        <Button id="Button07" taborder="11" text="교육" left="45" top="326" width="301" height="64" fittocontents="width" onclick="Button07_onclick"/>
+        <Button id="Button08" taborder="12" text="Button08" left="Button07:28" top="316" width="330" height="69"/>
+        <Button id="Button09" taborder="13" text="투비소프트" left="42" top="414" width="322" height="54" onclick="Button09_onclick"/>
+        <Button id="Button10" taborder="14" text="Button10" left="Button09:29" top="414" width="295" height="54"/>
+        <Button id="Button11" taborder="15" text="Button11" top="170" width="130" height="44" right="440"/>
+        <Button id="Button11_00" taborder="16" text="Button11" top="170" width="130" height="44" right="170"/>
+        <Button id="Button11_01" taborder="17" text="Button11" top="170" width="130" height="44" right="305"/>
+        <Button id="Button11_02" taborder="18" text="Button11" top="170" width="130" height="44" right="35"/>
+        <Button id="Button12" taborder="19" text="조회" top="326" height="40" width="130" right="26"/>
+        <Button id="Button12_00" taborder="20" text="입력" top="281" height="40" width="130" right="26"/>
+        <Button id="Button12_01" taborder="21" text="삭제" top="371" height="40" width="130" right="26"/>
+        <Button id="Button12_02" taborder="22" text="더 보기" top="461" height="40" width="130" right="26"/>
+        <Button id="Button12_03" taborder="23" text="목록" top="416" height="40" width="130" right="26"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Button07_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+this.Button09_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+  </Form>
+</FDL>

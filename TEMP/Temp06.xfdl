@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Temp06" width="1038" height="650" titletext="New Form">
+    <Layouts>
+      <Layout height="650" mobileorientation="landscape" width="1038">
+        <Static id="Static00_00_00_00" taborder="0" text="h35" width="140" height="35" cssclass="sta_WF_GSize" visible="false" right="678" top="0"/>
+        <Static id="Static00" taborder="1" text="w10" left="0" top="0" width="10" height="650" cssclass="sta_WF_GSize" visible="false"/>
+        <Static id="Static00_00_00_00_00" taborder="2" text="h35" width="140" height="35" cssclass="sta_WF_GSize" visible="false" right="678" top="35"/>
+        <Static id="Static00_00" taborder="3" text="w10" top="0" width="10" height="650" cssclass="sta_WF_GSize" visible="false" right="0"/>
+        <Static id="Static00_00_00_00_00_00_00_00" taborder="4" text="H10" width="140" cssclass="sta_WF_GSize" visible="false" right="429" top="640" bottom="0"/>
+        <Static id="Static01" taborder="5" text="화면 유형 - Master DetailH" left="10" top="0" width="200" height="35" cssclass="sta_WF_TitleMain"/>
+        <Grid id="Grid00_00" taborder="9" top="70" binddataset="Dataset00" bottom="10" autosizingtype="none" autofittype="col" width="504" right="10">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="COL_CHK"/>
+                <Cell col="1" text="CORP_CODE"/>
+                <Cell col="2" text="CORP_NAME"/>
+                <Cell col="3" text="CORP_CEO"/>
+                <Cell col="4" text="CORP_EMP_NUM"/>
+                <Cell col="5" text="CORP_DEPT_CD"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:COL_CHK"/>
+                <Cell col="1" text="bind:CORP_CODE"/>
+                <Cell col="2" text="bind:CORP_NAME"/>
+                <Cell col="3" text="bind:CORP_CEO"/>
+                <Cell col="4" text="bind:CORP_EMP_NUM"/>
+                <Cell col="5" text="bind:CORP_DEPT_CD"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid00" taborder="6" left="10" top="70" binddataset="Dataset00" bottom="10" autosizingtype="none" autofittype="col" width="504">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="COL_CHK"/>
+                <Cell col="1" text="CORP_CODE"/>
+                <Cell col="2" text="CORP_NAME"/>
+                <Cell col="3" text="CORP_CEO"/>
+                <Cell col="4" text="CORP_EMP_NUM"/>
+                <Cell col="5" text="CORP_DEPT_CD"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:COL_CHK"/>
+                <Cell col="1" text="bind:CORP_CODE"/>
+                <Cell col="2" text="bind:CORP_NAME"/>
+                <Cell col="3" text="bind:CORP_CEO"/>
+                <Cell col="4" text="bind:CORP_EMP_NUM"/>
+                <Cell col="5" text="bind:CORP_DEPT_CD"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01_00" taborder="7" text="조회결과" left="13" top="40" width="177" height="35" cssclass="sta_WF_TitleMain"/>
+        <Static id="Static00_01" taborder="8" text="W10" left="514" top="75" width="10" height="50" cssclass="sta_WF_GSize" visible="false"/>
+        <Button id="btn01_02" taborder="10" left="461" top="41" width="24" height="24" cssclass="btn_WF_Add"/>
+        <Button id="btn01_02_00" taborder="11" left="490" top="41" width="24" height="24" cssclass="btn_WF_Del"/>
+        <Button id="btn01_02_00_00" taborder="13" top="45" height="24" cssclass="btn_WF_Del" right="10" width="24"/>
+        <Button id="btn01_02_01" taborder="12" left="975" top="45" height="24" cssclass="btn_WF_Add" width="24"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="COL_CHK" type="STRING" size="256"/>
+          <Column id="CORP_CODE" type="STRING" size="32"/>
+          <Column id="CORP_NAME" type="STRING" size="32"/>
+          <Column id="CORP_CEO" type="STRING" size="256"/>
+          <Column id="CORP_EMP_NUM" type="STRING" size="256"/>
+          <Column id="CORP_DEPT_CD" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">265</Col>
+            <Col id="CORP_DEPT_CD">KR10</Col>
+            <Col id="COL_CHK">1</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">265</Col>
+            <Col id="CORP_DEPT_CD">KR30</Col>
+            <Col id="COL_CHK">1</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">265</Col>
+            <Col id="CORP_DEPT_CD">KR20</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">JP</Col>
+            <Col id="CORP_NAME">Japen Corp.</Col>
+            <Col id="CORP_CEO">ひでみ</Col>
+            <Col id="CORP_EMP_NUM">25</Col>
+            <Col id="CORP_DEPT_CD">JP10</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">JP</Col>
+            <Col id="CORP_NAME">Japen Corp.</Col>
+            <Col id="CORP_CEO">ひでみ</Col>
+            <Col id="CORP_EMP_NUM">25</Col>
+            <Col id="CORP_DEPT_CD">JP20</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">JP</Col>
+            <Col id="CORP_NAME">Japen Corp.</Col>
+            <Col id="CORP_CEO">ひでみ</Col>
+            <Col id="CORP_EMP_NUM">25</Col>
+            <Col id="CORP_DEPT_CD">JP30</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">CN</Col>
+            <Col id="CORP_NAME">China Corp.</Col>
+            <Col id="CORP_CEO">英美</Col>
+            <Col id="CORP_EMP_NUM">600</Col>
+            <Col id="CORP_DEPT_CD">CN10</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">CN</Col>
+            <Col id="CORP_NAME">China Corp.</Col>
+            <Col id="CORP_CEO">英美</Col>
+            <Col id="CORP_EMP_NUM">600</Col>
+            <Col id="CORP_DEPT_CD">CN20</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">CN</Col>
+            <Col id="CORP_NAME">China Corp.</Col>
+            <Col id="CORP_CEO">英美</Col>
+            <Col id="CORP_EMP_NUM">600</Col>
+            <Col id="CORP_DEPT_CD">CN30</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">200</Col>
+            <Col id="CORP_DEPT_CD">KR40</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">200</Col>
+            <Col id="CORP_DEPT_CD">KR50</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">양인범</Col>
+            <Col id="CORP_EMP_NUM">200</Col>
+            <Col id="CORP_DEPT_CD">KR10</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">양인범</Col>
+            <Col id="CORP_EMP_NUM">300</Col>
+            <Col id="CORP_DEPT_CD">KR10</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">양인범</Col>
+            <Col id="CORP_EMP_NUM">300</Col>
+            <Col id="CORP_DEPT_CD">KR30</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

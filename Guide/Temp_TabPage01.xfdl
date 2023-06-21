@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="TPLDSN005M00" width="1015" height="230" titletext="인적정보" onload="TPLDSN005M00_onload">
+    <Layouts>
+      <Layout height="230" width="1015">
+        <Static id="sta01_00_00_01" taborder="36" left="795" top="148" height="75" cssclass="sta_WF_DetailArea" visible="true" right="5"/>
+        <Static id="sta01_00_02" taborder="37" left="462" top="148" width="210" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+        <Static id="sta01_00_01_00" taborder="38" left="462" top="185" width="210" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+        <Static id="sta01_00_00_00" taborder="34" left="795" top="42" height="38" cssclass="sta_WF_DetailArea" visible="true" right="5"/>
+        <Static id="sta01_00_01" taborder="35" left="462" top="42" width="210" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+        <Static id="sta01_00" taborder="32" left="462" top="5" width="210" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+        <Static id="sta10" taborder="11" left="129" top="79" height="70" cssclass="sta_WF_DetailArea" visible="true" right="5"/>
+        <Static id="sta08" taborder="12" left="129" top="185" width="210" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+        <Static id="sta11" taborder="13" left="129" top="148" width="210" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+        <Static id="sta07" taborder="14" left="129" top="42" width="210" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+        <Static id="sta01" taborder="15" left="129" top="5" width="210" height="38" cssclass="sta_WF_DetailArea" visible="true"/>
+        <Static id="sta12" taborder="0" text="주민등록번호" left="5" top="5" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <Static id="sta02" taborder="1" text="결혼여부" left="5" top="42" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <Static id="sta03" taborder="2" text="경력시작일" left="338" top="148" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <Static id="sta04" taborder="3" text="병역 구분" left="671" top="42" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <Static id="sta17" taborder="4" text="경력 일수" left="5" top="185" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <Static id="sta15" taborder="5" text="결혼기념일" left="338" top="42" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <Static id="sta13" taborder="6" text="생년월일" left="338" top="5" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <Static id="sta14" taborder="7" text="양력/음력 구분" left="671" top="5" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <Static id="sta16" taborder="8" text="최종학력" left="5" top="148" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <Static id="sta18" taborder="9" text="개발자 등급" left="338" top="185" width="125" height="38" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <Static id="sta06" taborder="10" text="자택주소" left="5" top="79" width="125" height="70" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <MaskEdit id="msk00" taborder="16" left="134" top="10" width="145" height="28"/>
+        <Calendar id="cal00" taborder="17" left="467" top="10" width="145" height="28"/>
+        <Radio id="rdo01" taborder="19" left="136" top="47" width="145" height="28" innerdataset="dsMarried" codecolumn="code" datacolumn="data" direction="vertical"/>
+        <Calendar id="cal01" taborder="20" left="467" top="47" width="145" height="28"/>
+        <Combo id="cbo00" taborder="21" text="cbo00" left="134" top="153" width="145" height="28"/>
+        <Calendar id="cal02" taborder="22" left="467" top="153" width="145" height="28"/>
+        <Edit id="edt00" taborder="23" left="134" top="190" width="145" height="28"/>
+        <Combo id="cbo01" taborder="24" text="cbo01" left="467" top="190" width="145" height="28"/>
+        <Radio id="rdo02" taborder="25" left="800" top="47" width="145" height="28" innerdataset="dsMilitary" codecolumn="code" datacolumn="data" direction="vertical"/>
+        <Edit id="edt02" taborder="26" left="134" top="116" width="328" height="28" text="\"/>
+        <MaskEdit id="msk01" taborder="27" left="134" top="84" width="145" height="28"/>
+        <Static id="sta06_00" taborder="28" text="메모" left="671" top="148" width="125" height="75" cssclass="sta_WF_DetailLabel" visible="true"/>
+        <TextArea id="txt00" taborder="29" left="800" top="153" height="62" right="24"/>
+        <Edit id="edt01" taborder="30" left="466" top="116" height="28" right="24"/>
+        <Button id="btn01" taborder="31" text="우편번호 검색" left="283" top="84" width="110" height="28"/>
+        <Static id="sta01_00_00" taborder="33" left="795" top="5" height="38" cssclass="sta_WF_DetailArea" visible="true" right="5"/>
+        <Radio id="rdo00" taborder="18" left="800" top="10" width="145" height="28" innerdataset="dsBirth" codecolumn="code" datacolumn="data" direction="vertical"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsMarried">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">기혼</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">미혼</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBirth">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">음력</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">양력</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMilitary">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">군필</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">미필</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item4" compid="divDetail.form.tab00.Tabpage1.form.cal00_00" propid="value" datasetid="dsList" columnid="Column3"/>
+      <BindItem id="item1" compid="div00.form.rdo00_00" propid="value" datasetid="dsInfo" columnid="MARRIED"/>
+    </Bind>
+  </Form>
+</FDL>

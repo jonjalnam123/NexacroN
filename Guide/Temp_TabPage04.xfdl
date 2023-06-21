@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="TPLDSN005M00" width="1015" height="230" titletext="발령사항" onload="TPLDSN005M00_onload">
+    <Layouts>
+      <Layout height="230" width="1015">
+        <Grid id="grd00" taborder="0" left="5" top="35" height="190" binddataset="dsListTab4" autofittype="col" right="5">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="143"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="70"/>
+              </Columns>
+              <Rows>
+                <Row size="28" band="head"/>
+                <Row size="28" band="head"/>
+                <Row size="28"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="업무명"/>
+                <Cell col="1" colspan="2" text="참여기간"/>
+                <Cell col="3" rowspan="2" text="고객사"/>
+                <Cell col="4" rowspan="2" text="근무회사"/>
+                <Cell col="5" rowspan="2" text="역할"/>
+                <Cell col="6" colspan="4" text="개발환경"/>
+                <Cell row="1" col="1" text="FROM_DT"/>
+                <Cell row="1" col="2" text="TO_DT"/>
+                <Cell row="1" col="6" text="OS"/>
+                <Cell row="1" col="7" text="개발언어"/>
+                <Cell row="1" col="8" text="DBMS"/>
+                <Cell row="1" col="9" text="TOOL"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:TASK"/>
+                <Cell col="1" text="bind:FROM_DT"/>
+                <Cell col="2" text="bind:TO_DT"/>
+                <Cell col="3" text="bind:CUSTOMER_NAME"/>
+                <Cell col="4" text="bind:COMPANY"/>
+                <Cell col="5" text="bind:POSITION"/>
+                <Cell col="6" text="bind:OS"/>
+                <Cell col="7" text="bind:DEVELOPER_LANGUAGE"/>
+                <Cell col="8" text="bind:DBMS"/>
+                <Cell col="9" text="bind:TOOL"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn01" taborder="1" top="5" width="24" height="24" cssclass="btn_WF_Add" right="35"/>
+        <Button id="btn02" taborder="2" top="5" width="24" height="24" cssclass="btn_WF_Del" right="6"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsListTab4">
+        <ColumnInfo>
+          <Column id="TASK" type="STRING" size="256"/>
+          <Column id="FROM_DT" type="STRING" size="256"/>
+          <Column id="TO_DT" type="STRING" size="256"/>
+          <Column id="CUSTOMER_NAME" type="STRING" size="256"/>
+          <Column id="COMPANY" type="STRING" size="256"/>
+          <Column id="POSITION" type="STRING" size="256"/>
+          <Column id="OS" type="STRING" size="256"/>
+          <Column id="DEVELOPER_LANGUAGE" type="STRING" size="256"/>
+          <Column id="DBMS" type="STRING" size="256"/>
+          <Column id="TOOL" type="STRING" size="256"/>
+          <Column id="ETC" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="TASK">마이플랫폼 CS/센터 기술지원</Col>
+            <Col id="FROM_DT">20100102</Col>
+            <Col id="CUSTOMER_NAME">한국전력</Col>
+            <Col id="COMPANY">투비소프트</Col>
+            <Col id="TO_DT">20120502</Col>
+            <Col id="POSITION">기술지원</Col>
+            <Col id="OS">WIndow</Col>
+            <Col id="DEVELOPER_LANGUAGE">MiPlatform</Col>
+            <Col id="DBMS">ORACLE</Col>
+            <Col id="TOOL">PID</Col>
+          </Row>
+          <Row>
+            <Col id="TASK">ABC원가관리</Col>
+            <Col id="FROM_DT">20100102</Col>
+            <Col id="CUSTOMER_NAME">한국중국업</Col>
+            <Col id="COMPANY">투비소프트</Col>
+            <Col id="TO_DT">20120502</Col>
+            <Col id="POSITION">기술지원</Col>
+            <Col id="OS">WIndow</Col>
+            <Col id="DEVELOPER_LANGUAGE">MiPlatform</Col>
+            <Col id="DBMS">ORACLE</Col>
+            <Col id="TOOL">PID</Col>
+          </Row>
+          <Row>
+            <Col id="TASK">신경영정보시스템</Col>
+            <Col id="FROM_DT">20100102</Col>
+            <Col id="CUSTOMER_NAME">농심(주)</Col>
+            <Col id="COMPANY">투비소프트</Col>
+            <Col id="TO_DT">20120502</Col>
+            <Col id="POSITION">개발</Col>
+            <Col id="OS">WIndow</Col>
+            <Col id="DEVELOPER_LANGUAGE">XPLATFORM</Col>
+            <Col id="DBMS">ORACLE</Col>
+            <Col id="TOOL">UxStudio</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item4" compid="divDetail.form.tab00.Tabpage1.form.cal00_00" propid="value" datasetid="dsList" columnid="Column3"/>
+    </Bind>
+  </Form>
+</FDL>

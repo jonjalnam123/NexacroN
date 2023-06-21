@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="frn_Cal" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Calendar id="Calendar00" taborder="0" left="145" top="60" width="245" height="60" usetrailingday="true"/>
+        <Spin id="Spin00" taborder="1" left="432" top="64" width="304" height="56"/>
+        <Calendar id="Calendar00_00" taborder="2" left="135" top="170" width="245" height="240" usetrailingday="true" type="monthonly"/>
+        <Calendar id="Calendar00_00_00" taborder="3" left="736" top="250" width="245" height="60" usetrailingday="true" type="spin"/>
+        <Calendar id="Calendar00_00_01" taborder="4" left="400" top="170" width="245" height="240" usetrailingday="true" type="monthonly"/>
+        <Calendar id="Calendar01" taborder="5" left="665" top="357" width="231" height="65" weekformat="S M T W T F S"/>
+        <Edit id="Edit00" taborder="6" left="140" top="480" width="274" height="84" displaynulltext="ID를 입력하세요"/>
+        <Edit id="Edit00_00" taborder="7" left="424" top="480" width="274" height="84" value="123456789000" text="123456789000" textAlign="left"/>
+        <MaskEdit id="MaskEdit00" taborder="8" left="265" top="592" width="285" height="68" format="AAAA-####" type="string"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.MaskEdit00_onchanged = function(obj:nexacro.MaskEdit,e:nexacro.ChangeEventInfo)
+{
+	
+};
+]]></Script>
+  </Form>
+</FDL>

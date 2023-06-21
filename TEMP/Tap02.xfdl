@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Tap02" width="1015" height="230" titletext="New Form">
+    <Layouts>
+      <Layout height="230" mobileorientation="landscape" width="1015">
+        <Div id="Div00" taborder="1" text="Div00" left="3" top="4" background="green" height="222" width="1010"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

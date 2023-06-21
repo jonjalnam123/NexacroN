@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="FormFirstPage" width="1280" height="470" titletext="메인 페이지">
+    <Layouts>
+      <Layout height="470" width="1280">
+        <Div id="divMain" taborder="0" text="" left="100" top="0" right="100" bottom="0">
+          <Layouts>
+            <Layout>
+              <WebBrowser id="WebBrowserMain" taborder="0" left="0" top="30" minwidth="500" maxwidth="" minheight="283" maxheight="" right="0" bottom="30" onloadcompleted="divMain_WebBrowserMain_onloadcompleted"/>
+              <Grid id="grdMenuList" taborder="1" left="-400" top="-1" width="300" scrollbardecbuttonsize="0" scrollbarincbuttonsize="0" scrollbarsize="10" autofittype="col" treeusecheckbox="false" treeuseline="false" mouseovertype="cell" treeuseimage="false" useselcolor="true" scrollbartrackbarsize="200" binddataset="dsSub" autosizingtype="row" bottom="30" extendsizetype="row" visible="false">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="title"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:title"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*	개발 표준화 작업
+*	@MenuPath C:\Users\CNCNetworks\Documents\TOBESOFT\Nexacro N\projects\Seok2Drum\form
+*	@FileName Kopo1010fm.xfdl
+*	@Creator 최정석
+*	@CreateDate 2023/06/01
+*	@Desction 해당 폼 정보 설명
+******************소스 수정 이력**********************************************
+*	date		Modifier	Description
+********************************************************************************
+*	2023/06/01		최정석		최초 생성
+*	
+*
+*/
+
+/**************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+**************************************************************************/
+
+/**
+* @description dsSub 데이터 셋에 onrowposchanged 이벤트 
+*/
+this.dsSub_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo)
+{
+	var sURL = this.dsSub.getColumn(this.dsSub.rowposition, "url");
+	
+	//운영반영시 밑에 HTML로 바꿔야함. 이게 하단 '전체보기' 기능 사용 가능한 부분
+	//this.WebBrowser00.set_url("http://demo.nexacro.com/EduPlay/test/_web_/File/webbrowser.html?sURL="+sURL);	
+    //테스트시 --> 근데 아래와 해도 전체보기 가능하지? 2020.03.17test
+	this.divMain.form.WebBrowserMain.set_url("https://www.youtube.com/embed/"+sURL);	
+    this.resetScroll();
+	
+};
+
+/**
+* @description WebBrowser '전체보기' 기능 사용하기 위해 html에 iframe 형식으로 오픈
+*/
+this.divMain_WebBrowserMain_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+	this.divMain.form.WebBrowserMain.setProperty("allowfullscreen", ""); // webbrowser에 allowfullscreen 세팅
+	this.divMain.form.WebBrowserMain.callMethod("set_allowfullscreen"); // 링크된 html 의 함수 호출
+};]]></Script>
+    <Objects>
+      <Dataset id="dsSub" progressload="false" onrowposchanged="dsSub_onrowposchanged">
+        <ColumnInfo>
+          <Column id="mainiD" type="string" size="10"/>
+          <Column id="id" type="string" size="10"/>
+          <Column id="title" type="string" size="50"/>
+          <Column id="url" type="string" size="10"/>
+          <Column id="publishedAt" type="string" size="10"/>
+          <Column id="viewCount" type="int" size="10"/>
+          <Column id="likeCount" type="int" size="10"/>
+          <Column id="description" type="string" size="10"/>
+          <Column id="sort_key" type="string" size="10"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="url">J96xvH723_g</Col>
+            <Col id="title">석이드럼</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

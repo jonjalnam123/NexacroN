@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Temp07" width="1038" height="650" titletext="New Form">
+    <Layouts>
+      <Layout height="650" mobileorientation="landscape" width="1038">
+        <Static id="Static00_00" taborder="0" text="w10" top="0" width="10" height="650" cssclass="sta_WF_GSize" visible="false" right="0"/>
+        <Static id="Static00" taborder="1" text="w10" left="0" top="0" width="10" height="650" cssclass="sta_WF_GSize" visible="false"/>
+        <Static id="Static00_00_00_00_00" taborder="2" text="h35" width="140" height="35" cssclass="sta_WF_GSize" visible="false" right="478" top="0"/>
+        <Static id="Static01" taborder="3" text="화면유형 - Tab" left="10" top="0" width="99" height="35" cssclass="sta_WF_TitleMain"/>
+        <Div id="Div00" taborder="4" text="" left="10" top="35" height="46" cssclass="div_WF_Search" right="10">
+          <Layouts>
+            <Layout>
+              <Static id="sta00_00" taborder="0" text="검색 조건" left="357" top="8" width="91" height="28" cssclass="sta_WF_SearchLabel"/>
+              <Static id="sta01_00_00" taborder="1" text="검색 구분" left="7" top="8" width="83" height="28" cssclass="sta_WF_SearchLabel"/>
+              <Combo id="Combo00" taborder="2" text="이름" left="90" top="8" width="167" height="28" value="" index="-1"/>
+              <Edit id="Edit01" taborder="3" left="448" top="8" width="167" height="28"/>
+              <Button id="Button00" taborder="4" left="587" top="8" width="28" height="28" cssclass="btn_WF_Find"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="Button00" taborder="5" text="조회" top="6" width="50" height="24" cssclass="btn_WF_FrmMain" right="116"/>
+        <Button id="Button00_00" taborder="6" text="추가" top="6" width="50" height="24" cssclass="btn_WF_FrmMain" right="63"/>
+        <Button id="Button00_01" taborder="7" text="저장" top="6" height="24" cssclass="btn_WF_FrmMain" right="10" width="50"/>
+        <Static id="Static01_00" taborder="8" text="조회결과" left="10" top="81" width="56" height="35" cssclass="sta_WF_TitleMain"/>
+        <Static id="Static00_00_00_00_00_00" taborder="9" text="h35" width="140" height="35" cssclass="sta_WF_GSize" visible="false" right="418" top="81"/>
+        <Div id="Div01" taborder="10" text="Div01" left="10" top="116" height="228" background="green" right="10">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="법인/회사" left="151" top="38" height="38" cssclass="sta_WF_DetailLabel" width="125"/>
+              <Static id="Static01" taborder="1" text="" left="276" top="0" width="164" height="38" cssclass="sta_WF_DetailArea" onclick="Div01_Static01_onclick"/>
+              <Static id="Static00_00" taborder="2" text="사원번호" left="151" top="0" height="38" cssclass="sta_WF_DetailLabel" width="125"/>
+              <Static id="Static00_01" taborder="3" text="입사일자" left="151" top="76" height="38" cssclass="sta_WF_DetailLabel" width="125"/>
+              <Static id="Static00_02" taborder="4" text="회사 이메일" left="151" top="190" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static00_03" taborder="5" text="급여 이체 은행" left="151" top="114" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static00_04" taborder="6" text="전화번호(휴대폰)" left="151" top="152" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static01_00" taborder="7" text="" left="276" top="38" width="164" height="38" cssclass="sta_WF_DetailArea"/>
+              <Static id="Static01_01" taborder="8" left="276" top="190" height="38" cssclass="sta_WF_DetailArea" right="0"/>
+              <Static id="Static01_02" taborder="9" left="276" top="152" width="164" height="38" cssclass="sta_WF_DetailArea"/>
+              <Static id="Static01_03" taborder="10" text="" left="276" top="76" width="164" height="38" cssclass="sta_WF_DetailArea"/>
+              <Static id="Static01_04" taborder="11" text="" left="276" top="114" width="164" height="38" cssclass="sta_WF_DetailArea"/>
+              <Static id="Static01_02_00" taborder="12" left="565" top="152" width="164" height="38" cssclass="sta_WF_DetailArea"/>
+              <Static id="Static00_04_00" taborder="13" text="전화번호(집)" left="440" top="152" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static00_03_00" taborder="14" text="계좌번호" left="440" top="114" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static01_04_00" taborder="15" left="565" top="114" width="164" height="38" cssclass="sta_WF_DetailArea"/>
+              <Static id="Static00_01_00" taborder="16" text="퇴사 여부" left="440" top="76" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static01_03_00" taborder="17" left="565" top="76" width="164" height="38" cssclass="sta_WF_DetailArea"/>
+              <Static id="Static01_00_00" taborder="18" left="565" top="38" width="164" height="38" cssclass="sta_WF_DetailArea"/>
+              <Static id="Static00_05" taborder="19" text="부서명" left="440" top="38" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static00_00_00" taborder="20" text="성명" left="440" top="0" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static01_05" taborder="21" left="565" top="0" width="164" height="38" cssclass="sta_WF_DetailArea"/>
+              <Static id="Static01_02_00_00" taborder="22" top="152" height="38" cssclass="sta_WF_DetailArea" right="0" left="854"/>
+              <Static id="Static00_04_00_00" taborder="23" text="전화번호(사무실)" left="729" top="152" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static01_04_00_00" taborder="24" left="854" top="114" height="38" cssclass="sta_WF_DetailArea" right="0"/>
+              <Static id="Static00_03_00_00" taborder="25" text="예금주" left="729" top="114" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static01_03_00_00" taborder="26" left="854" top="76" height="38" cssclass="sta_WF_DetailArea" right="0"/>
+              <Static id="Static00_01_00_00" taborder="27" text="퇴사일자" left="729" top="76" height="38" cssclass="sta_WF_DetailLabel" width="125"/>
+              <Static id="Static01_00_00_00" taborder="28" left="854" top="38" height="38" cssclass="sta_WF_DetailArea" right="0"/>
+              <Static id="Static00_05_00" taborder="29" text="직급" left="729" top="38" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static01_05_00" taborder="30" left="854" top="0" height="38" cssclass="sta_WF_DetailArea" right="0"/>
+              <Static id="Static00_00_00_00" taborder="31" text="성명(영문)" left="729" top="0" width="125" height="38" cssclass="sta_WF_DetailLabel"/>
+              <Static id="Static02" taborder="32" left="0" top="0" width="151" height="228" cssclass="sta_WF_DetailArea"/>
+              <ImageViewer id="ImageViewer00" taborder="33" left="3" top="4" width="145" height="186" image="url('theme://images/file_icon_PDF.png')"/>
+              <Button id="Button00" taborder="34" left="38" top="198" width="74" height="24" cssclass="btn_WF_FrmSub" text="사진등록"/>
+              <Edit id="Edit00" taborder="35" left="281" top="5" width="149" height="28"/>
+              <Edit id="Edit00_00" taborder="36" left="281" top="43" width="149" height="28"/>
+              <Calendar id="Calendar00" taborder="37" left="281" top="81" width="149" height="28"/>
+              <Combo id="Combo00" taborder="38" text="Combo00" left="281" top="119" width="149" height="28"/>
+              <Edit id="Edit00_01" taborder="39" left="281" top="157" width="149" height="28"/>
+              <Edit id="Edit00_01_00" taborder="40" left="281" top="195" width="279" height="28"/>
+              <Edit id="Edit00_02" taborder="41" left="571" top="5" width="149" height="28"/>
+              <Edit id="Edit00_03" taborder="42" left="571" top="43" width="149" height="28"/>
+              <Radio id="Radio00" taborder="43" left="571" top="80" width="106" height="31" direction="vertical" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">D</Col>
+                      <Col id="datacolumn">재직</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">O</Col>
+                      <Col id="datacolumn">퇴사</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <Edit id="Edit00_03_00" taborder="44" left="571" top="119" width="149" height="28"/>
+              <Edit id="Edit00_03_00_00" taborder="45" left="571" top="157" width="149" height="28"/>
+              <Edit id="Edit00_03_00_01" taborder="46" left="862" top="119" width="149" height="28"/>
+              <Edit id="Edit00_03_00_02" taborder="47" left="862" top="157" width="149" height="28"/>
+              <Calendar id="Calendar01" taborder="48" left="862" top="81" width="149" height="28"/>
+              <Combo id="Combo01" taborder="49" text="Combo01" left="862" top="43" width="149" height="28"/>
+              <Edit id="Edit00_02_00" taborder="50" left="862" top="5" width="149" height="28" value="Jung Seok" text="Jung Seok"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01_00_00" taborder="11" text="상세정보" left="12" top="344" width="56" height="35" cssclass="sta_WF_TitleMain"/>
+        <Tab id="Tab00" taborder="12" tabindex="0" left="10" top="376" right="10" bottom="10" onchanged="Tab00_onchanged" showtabbuttonicon="false" showextrabutton="true">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="인적사항"/>
+            <Tabpage id="Tabpage2" text="학력정보" url="TEMP::Tap01.xfdl"/>
+            <Tabpage id="Tabpage4" text="경력사항">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="0" top="35" height="179" binddataset="Dataset00" right="0" autofittype="col">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="28" band="head"/>
+                          <Row size="28" band="head"/>
+                          <Row size="28"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell colspan="2" text="재직기간"/>
+                          <Cell col="2" rowspan="2" text="재직회사"/>
+                          <Cell col="3" rowspan="2" text="직위"/>
+                          <Cell col="4" rowspan="2" text="담당업무"/>
+                          <Cell row="1" text="입사일"/>
+                          <Cell row="1" col="1" text="퇴사일"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:COL_CHK"/>
+                          <Cell col="1" text="bind:CORP_CODE"/>
+                          <Cell col="2" text="bind:CORP_NAME"/>
+                          <Cell col="3" text="bind:CORP_CEO"/>
+                          <Cell col="4" text="bind:CORP_EMP_NUM"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Static id="Static00_00_00_00_00_00" taborder="1" text="h35" width="140" height="35" cssclass="sta_WF_GSize" visible="false" right="418" top="0"/>
+                  <Button id="Button00" taborder="2" width="24" height="24" cssclass="btn_WF_Add" right="26" top="5" text=""/>
+                  <Button id="Button00_00" taborder="3" height="24" cssclass="btn_WF_Del" width="24" right="0" top="5"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage5" text="발령사항">
+              <Layouts>
+                <Layout/>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage3" text="인사서류 첨부"/>
+          </Tabpages>
+        </Tab>
+        <Static id="Static00_00_00_00_00_00_00" taborder="13" text="h35" width="140" cssclass="sta_WF_GSize" visible="false" right="408" top="640" height="10"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Tab00_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	
+};
+
+this.Div01_Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="COL_CHK" type="STRING" size="256"/>
+          <Column id="CORP_CODE" type="STRING" size="32"/>
+          <Column id="CORP_NAME" type="STRING" size="32"/>
+          <Column id="CORP_CEO" type="STRING" size="256"/>
+          <Column id="CORP_EMP_NUM" type="STRING" size="256"/>
+          <Column id="CORP_DEPT_CD" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">265</Col>
+            <Col id="CORP_DEPT_CD">KR10</Col>
+            <Col id="COL_CHK">1</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">265</Col>
+            <Col id="CORP_DEPT_CD">KR30</Col>
+            <Col id="COL_CHK">1</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">265</Col>
+            <Col id="CORP_DEPT_CD">KR20</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">JP</Col>
+            <Col id="CORP_NAME">Japen Corp.</Col>
+            <Col id="CORP_CEO">ひでみ</Col>
+            <Col id="CORP_EMP_NUM">25</Col>
+            <Col id="CORP_DEPT_CD">JP10</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">JP</Col>
+            <Col id="CORP_NAME">Japen Corp.</Col>
+            <Col id="CORP_CEO">ひでみ</Col>
+            <Col id="CORP_EMP_NUM">25</Col>
+            <Col id="CORP_DEPT_CD">JP20</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">JP</Col>
+            <Col id="CORP_NAME">Japen Corp.</Col>
+            <Col id="CORP_CEO">ひでみ</Col>
+            <Col id="CORP_EMP_NUM">25</Col>
+            <Col id="CORP_DEPT_CD">JP30</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">CN</Col>
+            <Col id="CORP_NAME">China Corp.</Col>
+            <Col id="CORP_CEO">英美</Col>
+            <Col id="CORP_EMP_NUM">600</Col>
+            <Col id="CORP_DEPT_CD">CN10</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">CN</Col>
+            <Col id="CORP_NAME">China Corp.</Col>
+            <Col id="CORP_CEO">英美</Col>
+            <Col id="CORP_EMP_NUM">600</Col>
+            <Col id="CORP_DEPT_CD">CN20</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="CORP_CODE">CN</Col>
+            <Col id="CORP_NAME">China Corp.</Col>
+            <Col id="CORP_CEO">英美</Col>
+            <Col id="CORP_EMP_NUM">600</Col>
+            <Col id="CORP_DEPT_CD">CN30</Col>
+            <Col id="COL_CHK">0</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">200</Col>
+            <Col id="CORP_DEPT_CD">KR40</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">홍길동</Col>
+            <Col id="CORP_EMP_NUM">200</Col>
+            <Col id="CORP_DEPT_CD">KR50</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">양인범</Col>
+            <Col id="CORP_EMP_NUM">200</Col>
+            <Col id="CORP_DEPT_CD">KR10</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">양인범</Col>
+            <Col id="CORP_EMP_NUM">300</Col>
+            <Col id="CORP_DEPT_CD">KR10</Col>
+          </Row>
+          <Row>
+            <Col id="COL_CHK">0</Col>
+            <Col id="CORP_CODE">KR</Col>
+            <Col id="CORP_NAME">Korea Corp.</Col>
+            <Col id="CORP_CEO">양인범</Col>
+            <Col id="CORP_EMP_NUM">300</Col>
+            <Col id="CORP_DEPT_CD">KR30</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="Dataset01">
+        <ColumnInfo>
+          <Column id="Work" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Work">Do</Col>
+          </Row>
+          <Row>
+            <Col id="Work">Ou</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
