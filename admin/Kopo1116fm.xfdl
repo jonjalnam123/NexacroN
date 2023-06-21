@@ -421,7 +421,7 @@ this.divRoom_calRoomReserveDate_oncloseup = function(obj:nexacro.Calendar,e:nexa
 {
 	if(this.divRoom.form.calRoomReserveDate.value < this.ufnGetDate()) { //날짜 확인 알림
 		this.ufnAlert("msg.date.today")
-	}
+	} 
 };]]></Script>
     <Bind>
       <BindItem id="item0" compid="divRoom.form.txtRoomInfo" propid="value" datasetid="dsRoom" columnid="ROOM_INFO"/>
