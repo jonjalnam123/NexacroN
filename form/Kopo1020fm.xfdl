@@ -29,7 +29,7 @@
                     </Band>
                     <Band id="body">
                       <Cell text="bind:COMBOARD_NO" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
-                      <Cell col="1" text="bind:USERID" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
+                      <Cell col="1" text="bind:NAME" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
                       <Cell col="2" text="expr:REP_CNT == 0 ? COMBOARD_TITLE : COMBOARD_TITLE + &quot; [댓글 :&quot; + REP_CNT + &quot;] 개&quot;" textAlign="left" font="16px/normal &quot;한컴 고딕&quot;"/>
                       <Cell col="3" text="bind:COMBOARD_HIT" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
                       <Cell col="4" text="bind:COMBOARD_WRITEDATE" displaytype="date" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>

@@ -29,7 +29,7 @@
                     </Band>
                     <Band id="body">
                       <Cell text="bind:CONBOARD_NO" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
-                      <Cell col="1" text="bind:USERID" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
+                      <Cell col="1" text="bind:NAME" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
                       <Cell col="2" textAlign="left" font="16px/normal &quot;한컴 고딕&quot;" text="expr:REP_CNT == 0 ? CONBOARD_TITLE : CONBOARD_TITLE + &quot; [댓글 :&quot; + REP_CNT + &quot;] 개&quot;"/>
                       <Cell col="3" text="bind:CONBOARD_HIT" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
                       <Cell col="4" text="bind:CONBOARD_WRITEDATE" displaytype="date" textAlign="center" font="16px/normal &quot;한컴 고딕&quot;"/>
@@ -159,6 +159,7 @@ this.FormContact_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.ufnFormOnLoad(this);
 	this.fnPageInit();
+	trace(this.dsContactBoard.saveXML());
 };
 
 /**************************************************************************
@@ -170,7 +171,8 @@ this.FormContact_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 */
 this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-
+	
+	
 	// 조회조건 설정
 	// 데이터를 넘길 경우 데이터셋에 추가해서 넘기는 방식과
 	// 아규먼트를 추가해서 넘기는 방식 모두 사용가능
