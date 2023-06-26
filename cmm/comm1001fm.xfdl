@@ -5,19 +5,19 @@
       <Layout height="720" width="1280">
         <Static id="staCenter" taborder="0" text="" left="0" top="0" width="50%" height="50%"/>
         <ImageViewer id="imgMainLogo" taborder="1" text="" left="staCenter:-130" top="staCenter:-254" image="url('imagerc::drum.png')" stretch="fixaspectratio" border="1px solid #ffffff" width="260" height="150"/>
-        <Div id="divLogin" taborder="2" text="" left="staCenter:-200" top="staCenter:-100" width="400" height="300">
+        <Div id="divLogin" taborder="2" text="" left="staCenter:-185" top="staCenter:-87" width="370" height="275">
           <Layouts>
             <Layout>
-              <CheckBox id="chkIdSave" taborder="2" text="아이디 저장" left="264" top="156" width="86" height="14" font="10pt &quot;휴먼매직체&quot;"/>
-              <Button id="btnLogin" taborder="3" text="로그인" left="80" top="225" width="120" height="50" onclick="divLogin_btnLogin_onclick" background="pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" color="white"/>
-              <Button id="btnJoin" taborder="4" text="회원가입" left="205" top="225" width="120" height="50" background="pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" color="white" onclick="divLogin_btnJoin_onclick"/>
-              <Static id="staFindId" taborder="5" text="아이디 찾기" left="88" top="187" width="65" height="14" onclick="divLogin_staFindId_onclick" font="10pt &quot;휴먼매직체&quot;" cursor="pointer"/>
-              <Static id="staFindPw" taborder="6" text="비밀번호 찾기" left="160" top="187" width="77" height="14" onclick="divLogin_staFindPw_onclick" font="10pt &quot;휴먼매직체&quot;" cursor="pointer"/>
-              <Static id="staAdminLogin" taborder="7" text="관리자 로그인" left="244" top="187" width="77" height="14" onclick="divLogin_staAdminLogin_onclick" font="10pt &quot;휴먼매직체&quot;" cursor="pointer"/>
-              <Static id="staPw" taborder="8" text="비밀번호" left="39" top="89" width="80" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;휴먼매직체&quot;"/>
-              <Edit id="edtPassWord" taborder="1" left="118" top="89" width="240" height="50" border="1px solid pink" password="true" text="2184" onkeydown="divLogin_edtPassWord_onkeydown"/>
-              <Edit id="edtUserID" taborder="0" left="118" top="40" width="240" height="50" border="1px solid pink" text="peter2184"/>
-              <Static id="staID" taborder="9" text="아이디" left="39" top="40" width="80" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;휴먼매직체&quot;"/>
+              <CheckBox id="chkIdSave" taborder="2" text="아이디 저장" left="245" top="149" width="94" height="18" font="12pt/normal &quot;휴먼매직체&quot;"/>
+              <Button id="btnLogin" taborder="3" text="로그인" left="61" top="225" width="120" height="50" onclick="divLogin_btnLogin_onclick" background="pink" font="bold 16pt/normal &quot;휴먼매직체&quot;" color="white"/>
+              <Button id="btnJoin" taborder="4" text="회원가입" left="186" top="225" width="120" height="50" background="pink" font="bold 16pt/normal &quot;휴먼매직체&quot;" color="white" onclick="divLogin_btnJoin_onclick"/>
+              <Static id="staFindId" taborder="5" text="아이디 찾기" left="24" top="177" width="99" height="23" onclick="divLogin_staFindId_onclick" font="14pt/normal &quot;휴먼매직체&quot;" cursor="pointer"/>
+              <Static id="staFindPw" taborder="6" text="비밀번호 찾기" left="126" top="177" width="111" height="23" onclick="divLogin_staFindPw_onclick" font="14pt/normal &quot;휴먼매직체&quot;" cursor="pointer"/>
+              <Static id="staAdminLogin" taborder="7" text="관리자 로그인" left="240" top="177" width="111" height="23" onclick="divLogin_staAdminLogin_onclick" font="14pt/normal &quot;휴먼매직체&quot;" cursor="pointer"/>
+              <Static id="staPw" taborder="8" text="비밀번호" left="20" top="89" width="89" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;"/>
+              <Edit id="edtPassWord" taborder="1" left="109" top="89" width="240" height="50" border="1px solid pink" password="true" text="2184" onkeydown="divLogin_edtPassWord_onkeydown"/>
+              <Edit id="edtUserID" taborder="0" left="109" top="40" width="240" height="50" border="1px solid pink" text="peter2184"/>
+              <Static id="staID" taborder="9" text="아이디" left="20" top="40" width="89" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -56,7 +56,7 @@ this.FormLogin_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.ufnFormOnLoad(this);
 	
-	// 아이디 저장하기가 true 일때 아이디 가져오기
+	// 아이디 저장하기가 true 일때 아이디 가져오기\
 	var sUserId = nexacro.getPrivateProfile("USER_ID");	
 	if(sUserId != null && sUserId.length > 0) { 
 		this.divLogin.form.edtUserID.set_value(sUserId);
@@ -160,11 +160,14 @@ this.fnCallback = function (svcId, errCd, errMsg) {
 	if(this.fnLoginCnt > 0) { 
 		this.fvApp.avVFrameSet.set_separatesize("150,*,100,0,0");
 		this.visibleMemberAdminBtn();
+		
+		var sIdLogin = this.fvApp.gdsMember.getColumn(0,"NAME")
+		this.fvApp.avTopFrame.form.divTop.form.edtWelcome.set_value(sIdLogin + "님 안녕하세요."); //로그인할때 탑에 사용자 인사
+		
 	}else{
 		this.ufnAlert("msg.login.idpwcheck");
 		this.fvApp.gdsMember.clearData();
-		this.reload();			
-		
+		this.reload();
 		return;
 	}
 };

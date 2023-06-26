@@ -70,18 +70,35 @@ this.divLogin_btnJoin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 */
 this.divIdFind_btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {		
-	if(this.ufnIsNull(this.divIdFind.form.edtName.value)) {
-		this.ufnAlert("msg.join.namenull");
-		this.divIdFind.form.edtName.setFocus();
+	if(this.ufnIsNull(this.divIdFind.form.edtName.value)) { //아이디 미입력시 알림
+		
+		var sMsgId = "msg.join.namenull";
+		var arrArg = "";
+		var sPopId = "popMsgAbstractCompleteIdCheck";
+		var sCallback = "fnMsgCallback";
+		
+		this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);
 		return;
-	}else if(this.ufnIsNull(this.divIdFind.form.edtEmail.value)) {
-		this.ufnAlert("msg.join.emailnull");
-		this.divIdFind.form.edtEmail.setFocus();
+		
+	}else if(this.ufnIsNull(this.divIdFind.form.edtEmail.value)) {// 이메일 미입력시 알림
+		
+		var sMsgId = "msg.join.emailnull";
+		var arrArg = "";
+		var sPopId = "popMsgAbstractCompleteEmailCheck";
+		var sCallback = "fnMsgCallback";
+		
+		this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);
 		return;
 	}
 	
+	
+	this.ufnClearValidation(this.dsMember);
+	this.ufnSetValidation(this.dsMember,"EMAIL", "이메일", "required,isemail");
+	if (this.ufnValidation(this.dsMember, "A") == false) return;
+	
 	var sName 	= this.divIdFind.form.edtName.value;
 	var sEmail 	= this.divIdFind.form.edtEmail.value;
+	
 	this.ufnTransaction("IdFind"
 		,"nexa/IdFind.do"
 		,"" 
@@ -96,6 +113,7 @@ this.divIdFind_btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventI
 this.divIdFind_edtEmail_onkeydown = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
 {
 	if(e.keycode==13) {
+		obj.updateToDataset();
 		this.divIdFind.form.btnOk.click();
 	}
 };
@@ -110,7 +128,8 @@ this.divIdFind_edtEmail_onkeydown = function(obj:nexacro.Edit,e:nexacro.KeyEvent
 this.fnCallback = function (svcId, errCd, errMsg)
 {	
 	if(svcId == "IdFind") {
-		if (this.dsFindId.rowcount > 0) {
+		if (this.dsFindId.rowcount > 0) { //아이디 값 있으면 알림으로 보여주기
+			
 			var sMsgId = "msg.idfind.result";
 			var arrArg =  [this.dsFindId.getColumn(0,"USERID")];
 			var sPopId = "popMsgAbstractComplete";
@@ -118,11 +137,16 @@ this.fnCallback = function (svcId, errCd, errMsg)
 			
 			this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);
 			
-			//this.ufnAlert("msg.idfind.result", [this.dsFindId.getColumn(0,"USERID")]);
-			
 		}else{
-			this.ufnAlert("msg.idfind.undefined")
+			
+			var sMsgId = "msg.idfind.undefined"; //아이디 값 없으면 알림으로 보여주기
+			var arrArg = "";
+			var sPopId = "popMsgAbstractCompleteidpwfalse";
+			var sCallback = "fnMsgCallback";
+			
+			this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);
 			return;
+			
 		} 
 	}
 };
@@ -136,6 +160,19 @@ this.fnMsgCallback = function(strId, strVal)
 		if(strVal) {
 			this.go("cmm::comm1001fm.xfdl")
 		}
+	}else if(strId == "popMsgAbstractCompleteIdCheck") {
+		if(strVal) {
+			this.divIdFind.form.edtName.setFocus();
+		}
+	}else if(strId == "popMsgAbstractCompleteEmailCheck") {
+		if(strVal) {
+			this.divIdFind.form.edtEmail.setFocus();
+			
+		}else if(strId == "popMsgAbstractCompleteidpwfalse") {
+			if(strVal) {
+				
+			}
+		}
 	}
 };
 ]]></Script>
@@ -145,6 +182,17 @@ this.fnMsgCallback = function(strId, strVal)
           <Column id="USERID" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="dsMember">
+        <ColumnInfo>
+          <Column id="EMAIL" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="divIdFind.form.edtEmail" propid="value" datasetid="dsMember" columnid="EMAIL"/>
+    </Bind>
   </Form>
 </FDL>

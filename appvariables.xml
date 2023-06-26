@@ -1552,6 +1552,21 @@
           <Col id="MSG_TEXT">특수문자를 포함해서 입력 해 주세요.</Col>
           <Col id="MSG_TYPE">A</Col>
         </Row>
+        <Row>
+          <Col id="MSG_ID">msg.comu.replrequest</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_TEXT">댓글을 작성해 주세요.</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.com.replcheck</Col>
+          <Col id="MSG_TEXT">리플달기로 달아주세요.</Col>
+          <Col id="MSG_TYPE">A</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.com.replchecktorepl</Col>
+          <Col id="MSG_TEXT">메인 댓글은 댓글쓰기를 눌러주세요.</Col>
+          <Col id="MSG_TYPE">A</Col>
+        </Row>
       </Rows>
     </Dataset>
     <Dataset id="gdsMember">

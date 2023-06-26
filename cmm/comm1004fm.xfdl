@@ -69,18 +69,30 @@ this.divLogin_btnJoin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 */
 this.divPwFind_btnOK_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {			
-	if(this.ufnIsNull(this.divPwFind.form.edtUserID.value)) {
-		this.ufnAlert("msg.join.idnull");
-		this.divPwFind.form.edtUserID.setFocus();
+	if(this.ufnIsNull(this.divPwFind.form.edtUserID.value)) { //아이디 값 없을때 알림 
+		
+		var sMsgId = "msg.join.idnull";
+		var arrArg = "";
+		var sPopId = "popMsgAbstractCompleteidnull";
+		var sCallback = "fnMsgCallback";
+		
+		this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);
 		return;
-	}else if(this.ufnIsNull(this.divPwFind.form.mskPhone.value)) {
-		this.ufnAlert("msg.join.phonenull");
-		this.divPwFind.form.mskPhone.setFocus();
+		
+	}else if(this.ufnIsNull(this.divPwFind.form.mskPhone.value)) { //핸드폰 값 없을때 알림
+		
+		var sMsgId = "msg.join.phonenull";
+		var arrArg = "";
+		var sPopId = "popMsgAbstractCompletephonenull";
+		var sCallback = "fnMsgCallback";
+		
+		this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);
 		return;
 	}
 	
 	var sId = this.divPwFind.form.edtUserID.value;
 	var sPh = this.divPwFind.form.mskPhone.value;
+	
 	this.ufnTransaction("pwFind"
 		,"nexa/PwFind.do"
 		,"" 
@@ -95,6 +107,7 @@ this.divPwFind_btnOK_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventI
 this.divPwFind_mskPhone_onkeydown = function(obj:nexacro.MaskEdit,e:nexacro.KeyEventInfo)
 {
 	if(e.keycode==13) {
+		obj.updateToDataset();
 		this.divPwFind.form.btnOK.click();
 	}
 };
@@ -132,6 +145,14 @@ this.fnMsgCallback = function(strId, strVal)
 	if(strId == "popMsgAbstractComplete"){
 		if(strVal) {
 			this.go("cmm::comm1001fm.xfdl")
+		}
+	}else if (strId == "popMsgAbstractCompleteidnull") {
+		if(strVal) {
+			this.divPwFind.form.edtUserID.setFocus(); 
+		}
+	}else if (strId == "popMsgAbstractCompletephonenull") {
+		if(strVal) {
+			this.divPwFind.form.mskPhone.setFocus();
 		}
 	}
 };

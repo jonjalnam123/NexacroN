@@ -5,16 +5,16 @@
       <Layout height="720" width="1280">
         <Static id="staCenter" taborder="2" text="" left="0" top="0" width="50.00%" height="50.00%"/>
         <ImageViewer id="imgLoginLogo" taborder="1" text="" left="staCenter:-130" top="staCenter:-254" image="url('imagerc::drum.png')" stretch="fixaspectratio" border="1px solid #ffffff" width="260" height="150"/>
-        <Div id="divLogin" taborder="0" text="" left="staCenter:-200" top="staCenter:-100" width="400" height="300">
+        <Div id="divLogin" taborder="0" text="" left="staCenter:-185" top="staCenter:-87" width="370" height="275">
           <Layouts>
             <Layout>
-              <CheckBox id="chkIdSave" taborder="2" text="아이디 저장" left="264" top="156" width="86" height="15" onclick="divLogin_chkIdSave_onclick"/>
-              <Button id="btnLogin" taborder="3" text="로그인" left="80" top="225" width="120" height="50" background="pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" color="white" onclick="divLogin_btnLogin_onclick"/>
-              <Button id="btnCancel" taborder="4" text="취소" left="205" top="225" width="120" height="50" background="pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" color="white" onclick="divLogin_btnCancel_onclick"/>
-              <Static id="staPw" taborder="5" text="비밀번호" left="39" top="89" width="80" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;휴먼매직체&quot;"/>
-              <Edit id="edtPassWord" taborder="1" left="118" top="89" width="240" height="50" border="1px solid pink" text="1234" onkeydown="divLogin_edtPassWord_onkeydown" onchanged="divLogin_edtPassWord_onchanged" password="true"/>
-              <Edit id="edtUserID" taborder="0" left="118" top="40" width="240" height="50" border="1px solid pink" text="Admin"/>
-              <Static id="staID" taborder="6" text="아이디" left="39" top="40" width="80" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;휴먼매직체&quot;"/>
+              <CheckBox id="chkIdSave" taborder="2" text="아이디 저장" left="245" top="156" width="94" height="18" onclick="divLogin_chkIdSave_onclick" font="12pt/normal &quot;휴먼매직체&quot;"/>
+              <Button id="btnLogin" taborder="3" text="로그인" left="61" top="225" width="120" height="50" background="pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" color="white" onclick="divLogin_btnLogin_onclick"/>
+              <Button id="btnCancel" taborder="4" text="취소" left="186" top="225" width="120" height="50" background="pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" color="white" onclick="divLogin_btnCancel_onclick"/>
+              <Static id="staPw" taborder="5" text="비밀번호" left="20" top="89" width="89" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;"/>
+              <Edit id="edtPassWord" taborder="1" left="109" top="89" width="240" height="50" border="1px solid pink" text="1234" onkeydown="divLogin_edtPassWord_onkeydown" onchanged="divLogin_edtPassWord_onchanged" password="true"/>
+              <Edit id="edtUserID" taborder="0" left="109" top="40" width="240" height="50" border="1px solid pink" text="Admin"/>
+              <Static id="staID" taborder="6" text="아이디" left="20" top="40" width="89" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -79,6 +79,8 @@ this.AdminLogin_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.fnCallback = function (svcId, errCd, errMsg) {
 	if(this.fnLoginCnt > 0) {
 		this.fvApp.avVFrameSet.set_separatesize("150,*,100,0,0");
+		var sIdLogin = this.fvApp.gdsMember.getColumn(0,"NAME")
+		this.fvApp.avTopFrame.form.divTop.form.edtWelcome.set_value(sIdLogin + "님 안녕하세요.");
 	}
 	else {
 		this.ufnAlert("msg.login.idpwcheck");

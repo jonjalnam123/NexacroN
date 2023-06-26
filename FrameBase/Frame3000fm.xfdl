@@ -8,17 +8,27 @@
             <Layout>
               <ImageViewer id="imgLogoPhoto" taborder="1" text="" image="url('imagerc::bannerLast.jpg')" stretch="fit" left="0" cursor="pointer" top="0" onclick="divTop_imgLogoPhoto_onclick" bottom="0" border="0px none" right="0"/>
               <Static id="sta01" taborder="6" left="0" top="117" background="#ff7a90" right="0" bottom="0"/>
-              <Static id="sta00" taborder="2" left="0" top="9" width="50.00%" height="57" text=""/>
+              <Static id="sta00" taborder="2" left="0" top="9" width="50.00%" height="57" text="" onclick="divTop_sta00_onclick"/>
               <Menu id="mnuMenu" taborder="0" innerdataset="gdsMenu" captioncolumn="MENU_NAME" idcolumn="MENU_ID" levelcolumn="MENU_LEVEL" userdatacolumn="FORM_URL" font="bold 20px/normal &quot;한컴 고딕&quot;" color="white" wordSpacing="0px" cursor="pointer" background="#ff7a90" onmenuclick="divTop_mnuMenu_onmenuclick" left="sta00:-357" top="117" width="800" bottom="0"/>
               <Button id="btnAdminReserve" taborder="3" text="예약관리" width="80" right="185" borderRadius="0px" font="bold 21px/normal &quot;한컴 고딕&quot;" color="white" bottom="104" top="0" background="none" border="0px none" onclick="divTop_btnAdminReserve_onclick" onmouseenter="divTop_btnAdminReserve_onmouseenter" onmouseleave="divTop_btnAdminReserve_onmouseleave"/>
               <Button id="btnAdminMember" taborder="4" text="회원관리" width="80" right="100" borderRadius="0px" font="bold 21px/normal &quot;한컴 고딕&quot;" color="white" bottom="104" top="0" background="none" border="0px none" onclick="divTop_btnAdminMember_onclick" onmouseenter="divTop_btnAdminMember_onmouseenter" onmouseleave="divTop_btnAdminMember_onmouseleave"/>
               <Button id="btnLogOut" taborder="5" text="로그아웃" top="0" width="80" right="15" borderRadius="0px" font="bold 21px/normal &quot;한컴 고딕&quot;" color="white" bottom="104" border="0px none" background="none" onclick="divTop_btnLogOut_onclick" onmouseenter="divTop_btnLogOut_onmouseenter" onmouseleave="divTop_btnLogOut_onmouseleave"/>
+              <Edit id="edtWelcome" taborder="7" top="93" border="0px none" readonly="true" displaynulltext="이름없음" bottom="33" right="0" font="bold 14px/normal &quot;한컴 고딕&quot;" color="white" width="140"/>
             </Layout>
           </Layouts>
         </Div>
       </Layout>
     </Layouts>
-    <Objects/>
+    <Objects>
+      <Dataset id="dsName">
+        <ColumnInfo>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
     <Script type="xscript5.1"><![CDATA[/**
 *	개발 표준화 작업
 *	@MenuPath C:\Users\CNCNetworks\Documents\TOBESOFT\Nexacro N\projects\Seok2Drum\FrameBase
@@ -47,12 +57,17 @@ this.fvApp = nexacro.getApplication();
 */
 this.FrameTop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {	
+
 	this.ufnFormOnLoad(this);
 	this.fvApp.avWorkFrame.set_formurl("form::Kopo1010fm.xfdl")
+	
+	this.divTop.form.edtWelcome.set_background("none"); //사용자 표시 해주기
+	this.divTop.form.edtWelcome.set_borderRadius("20px");
+	
 };
 
 /*************************************************************************
-* 사용자 FUNCTION 영역
+* 사용자 FUNCTION 영역s
 **************************************************************************/
 /**
 * @description fnOpenForm 함수
@@ -78,6 +93,7 @@ this.fnMsgCallback = function(strId, strVal)
 	if(strId == "popMsgAbstractComplete"){
 		if(strVal) {
 			this.fvApp.avVFrameSet.set_separatesize("0,0,0,*,0");
+			this.fvApp.gdsMember.clearData()
 			this.reload();
 		}
 	}
@@ -189,6 +205,8 @@ this.btn00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	trace(this.fvApp.gdsMenu.saveXML());
 }	
 ]]></Script>
-    <Bind/>
+    <Bind>
+      <BindItem id="item0" compid="divTop.form.edtWelcome" propid="value" datasetid="dsName" columnid="NAME"/>
+    </Bind>
   </Form>
 </FDL>

@@ -4,27 +4,30 @@
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
         <Static id="staCenter" taborder="1" text="" left="0" top="0" width="50%" height="50%"/>
-        <Div id="divJoin" taborder="0" text="" left="staCenter:-240" top="staCenter:-145" width="480" height="431">
+        <Div id="divJoin" taborder="0" text="" left="staCenter:-240" top="staCenter:-160" width="480" height="460">
           <Layouts>
             <Layout>
-              <Edit id="edtUserID" taborder="0" left="120" top="0" width="250" height="50" border="1px solid pink"/>
-              <Static id="staID" taborder="11" text="아이디" left="0" top="0" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;Arial&quot;,&quot;휴먼매직체&quot;"/>
-              <Static id="staPassWord" taborder="12" text="비밀번호" left="0" top="49" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;Arial&quot;,&quot;휴먼매직체&quot;"/>
-              <Edit id="edtName" taborder="3" left="120" top="98" width="360" height="50" border="1px solid pink"/>
-              <Static id="staName" taborder="13" text="이름" left="0" top="98" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;Arial&quot;,&quot;휴먼매직체&quot;"/>
-              <Static id="staPhone" taborder="14" text="핸드폰" left="0" top="147" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;Arial&quot;,&quot;휴먼매직체&quot;"/>
-              <MaskEdit id="mskPhone" left="120" top="147" width="360" height="50" border="1px solid pink" textAlign="left" format="###-####-####" type="string" taborder="4" onchanged="divJoin_mskPhone_onchanged"/>
-              <Edit id="edtAdr" taborder="5" left="120" top="196" width="250" height="50" border="1px solid pink"/>
-              <Static id="staAdr" taborder="15" text="우편번호" left="0" top="196" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;Arial&quot;,&quot;휴먼매직체&quot;"/>
-              <Edit id="edtAdRd" taborder="7" left="120" top="245" width="360" height="50" border="1px solid pink"/>
-              <Static id="staAdrd" taborder="16" text="상세주소" left="0" top="245" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;Arial&quot;,&quot;휴먼매직체&quot;"/>
-              <Edit id="edtEmail" taborder="8" left="120" top="294" width="360" height="50" border="1px solid pink" text="ex)mark1234@naver.com" displaynulltext="ex) mark1234@naver.com" onkeydown="divJoin_edtEmail_onkeydown"/>
-              <Static id="staEmail" taborder="17" text="이메일" left="0" top="294" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="10pt &quot;Arial&quot;,&quot;휴먼매직체&quot;"/>
-              <Button id="btnIdCheck" taborder="1" text="아이디 중복" left="388" top="0" width="92" height="40" color="white" background="pink" onclick="divJoin_btnIdCheck_onclick"/>
-              <Button id="btnFindAdr" taborder="6" text="주소 찾기" left="388" top="201" width="92" height="40" background="pink" color="white" onclick="divJoin_btnFindAdr_onclick"/>
-              <Button id="btnOk" taborder="9" text="확인" left="130" top="381" width="120" height="50" background="pink" color="white" onclick="divJoin_btnOk_onclick" font="bold 14pt/normal &quot;Arial&quot;,&quot;휴먼매직체&quot;"/>
-              <Button id="btnCancel" taborder="10" text="취소" left="253" top="381" width="120" height="50" background="pink" color="white" font="bold 14pt/normal &quot;Arial&quot;,&quot;휴먼매직체&quot;" onclick="divJoin_btnCancel_onclick"/>
-              <Edit id="edtPassWord" taborder="2" left="120" top="49" width="360" height="50" border="1px solid pink" password="true" displaynulltext="특수문자 포함 13자리까지 입력 해 주세요."/>
+              <Edit id="edtUserID" taborder="0" left="120" top="0" width="253" height="50" border="1px solid pink"/>
+              <Static id="staID" taborder="12" text="아이디" left="0" top="0" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Static id="staPassWord" taborder="13" text="비밀번호" left="0" top="49" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Edit id="edtName" taborder="3" left="120" top="147" width="360" height="50" border="1px solid pink"/>
+              <Static id="staName" taborder="14" text="이름" left="0" top="147" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Static id="staPhone" taborder="15" text="핸드폰" left="0" top="196" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <MaskEdit id="mskPhone" left="120" top="196" width="360" height="50" border="1px solid pink" textAlign="left" format="###-####-####" type="string" taborder="4" onchanged="divJoin_mskPhone_onchanged"/>
+              <Edit id="edtAdr" taborder="5" left="120" top="245" width="253" height="50" border="1px solid pink"/>
+              <Static id="staAdr" taborder="16" text="우편번호" left="0" top="245" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Edit id="edtAdRd" taborder="6" left="120" top="294" width="360" height="50" border="1px solid pink"/>
+              <Static id="staAdrd" taborder="17" text="상세주소" left="0" top="294" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Edit id="edtEmail" taborder="7" left="120" top="343" width="360" height="50" border="1px solid pink" text="ex)mark1234@naver.com" displaynulltext="ex) mark1234@naver.com" onkeydown="divJoin_edtEmail_onkeydown"/>
+              <Static id="staEmail" taborder="18" text="이메일" left="0" top="343" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Button id="btnIdCheck" taborder="10" text="아이디 중복" left="383" top="5" width="92" height="40" color="white" background="pink" onclick="divJoin_btnIdCheck_onclick" font="12pt/normal &quot;휴먼매직체&quot;"/>
+              <Button id="btnFindAdr" taborder="11" text="주소 찾기" left="383" top="250" width="92" height="40" background="pink" color="white" onclick="divJoin_btnFindAdr_onclick" font="12pt/normal &quot;휴먼매직체&quot;"/>
+              <Button id="btnOk" taborder="8" text="확인" left="130" top="410" width="120" background="pink" color="white" onclick="divJoin_btnOk_onclick" font="bold 16pt/normal &quot;휴먼매직체&quot;" height="50"/>
+              <Button id="btnCancel" taborder="9" text="취소" left="253" top="410" width="120" background="pink" color="white" font="bold 16pt/normal &quot;휴먼매직체&quot;" onclick="divJoin_btnCancel_onclick" height="50"/>
+              <Edit id="edtPassWord" taborder="1" left="120" top="49" width="253" height="50" border="1px solid pink" password="true" displaynulltext="특수문자 포함 13자리까지 입력 해 주세요."/>
+              <Edit id="edtPasswordDoubleCheck" taborder="2" left="120" top="98" width="253" height="50" border="1px solid pink" displaynulltext="위 와 동일하게 입력 해 주세요." password="true"/>
+              <Static id="staName00" taborder="19" text="비밀번호 &#13;&#10;확인" left="0" top="98" width="120" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center"/>
+              <Button id="btnPassWordShow" taborder="20" text="비밀번호 보기" left="383" top="54" width="92" height="40" background="pink" color="white" font="12pt/normal &quot;휴먼매직체&quot;" onclick="divJoin_btnPassWordShow_onclick" onkillfocus="divJoin_btnPassWordShow_onkillfocus"/>
             </Layout>
           </Layouts>
           <InitValue/>
@@ -72,6 +75,22 @@ this.FormJoin_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 /************************************************************************************************
 * 각 COMPONENT 별 EVENT 영역
 ************************************************************************************************/
+/**
+* @description 패스워드 형식의 비밀번호 보기 버튼
+*/
+this.divJoin_btnPassWordShow_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divJoin.form.edtPassWord.set_password(false);
+	this.divJoin.form.edtPasswordDoubleCheck.set_password(false);
+};
+
+/**
+* @description 취소버튼 클릭시 기능
+*/
+this.divJoin_btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("cmm::comm1001fm.xfdl");
+};
 
 /**
 * @description 우편번호 찾기 팝업 호출
@@ -101,21 +120,20 @@ this.webPost_onusernotify = function(obj:nexacro.WebBrowser,e:nexacro.WebUserNot
 };
 
 /**
-* @description 취소버튼 클릭시 기능
-*/
-this.divJoin_btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.go("cmm::comm1001fm.xfdl");
-};
-
-/**
 * @description 아이디중복 버튼 기능
 */
 this.divJoin_btnIdCheck_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	if(this.ufnIsNull(this.divJoin.form.edtUserID.value)) {
-		this.ufnAlert("msg.join.idcheckbrforenull")
-		this.divJoin.form.edtUserID.setFocus();
+		
+		var sMsgId = "msg.join.idcheckbrforenull";
+		var arrArg = "";
+		var sPopId = "popMsgAbstractCompleteIdCheck";
+		var sCallback = "fnMsgCallback";
+		
+		this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);
+		
+		
 	}else {
 		var sId = this.divJoin.form.edtUserID.value;
 		this.ufnTransaction("trCheck"
@@ -134,7 +152,7 @@ this.divJoin_btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 {	
 	
 	if(this.ufnIsNull(this.dsMember.getColumn(this.dsMember.rowposition,"IDCHECK")))
-	{
+	{	
 		this.ufnAlert("msg.join.idchecknull"); 
 		return false;	
 	}
@@ -147,31 +165,32 @@ this.divJoin_btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 		,"paramID=" + nexacro.wrapQuote(sId) //에디트에 입력된 값 파라미터로
 		,"fnCallback");
 	
-	if(!this.ufnIsNull(this.divJoin.form.edtPassWord.value)){
-		 
-		 if(!this.ufnIsSpecialChar(this.divJoin.form.edtPassWord.value)) {
-			 this.ufnAlert("msg.join.pwchecktuksu");
-			 this.divJoin.form.edtPassWord.setFocus();
-			 return;
-		 } 
+	
+	if(!this.ufnIsNull(this.divJoin.form.edtPassWord.value)){ //비밀번호 값이 있으면 
 		
-		 
-
+		if(!this.ufnIsSpecialChar(this.divJoin.form.edtPassWord.value)) { //특수기호 사용해서 유효성 검사
+			this.ufnAlert("msg.join.pwchecktuksu");
+			this.divJoin.form.edtPassWord.setFocus();
+			return;
+		}	
 	}
 	
 	this.ufnClearValidation(this.dsMember);
 	this.ufnSetValidation(this.dsMember, "USERID", "아이디", "required");
 	this.ufnSetValidation(this.dsMember, "PASSWORD", "비밀번호", "required,length:13");
+	this.ufnSetValidation(this.dsMember, "PASSWORDDOUBL", "비밀번호 확인", "required,equalto:PASSWORD");
 	this.ufnSetValidation(this.dsMember, "NAME", "이름", "required");
-	this.ufnSetValidation(this.dsMember, "PHONE", "핸드폰", "required");
+	this.ufnSetValidation(this.dsMember, "PHONE", "핸드폰", "required,digits");
 	this.ufnSetValidation(this.dsMember, "ADR", "우편번호", "required,digits");
 	this.ufnSetValidation(this.dsMember, "ADRD", "상세주소", "required");
 	this.ufnSetValidation(this.dsMember, "EMAIL", "이메일", "required,isemail");
 	if (this.ufnValidation(this.dsMember, "A") == false) return;
 	
 	if(this.fnMemberCnt > 0) {
+		
 		this.ufnAlert("msg.join.idchekagain")
 		return;
+		
 	}else if (this.dsMember.getColumn(0,"IDCHECK") == "Y") {
 		this.ufnTransaction("trJoin"
 			,"nexa/saveMember.do"
@@ -198,7 +217,7 @@ this.divJoin_edtEmail_onkeydown = function(obj:nexacro.Edit,e:nexacro.KeyEventIn
 **************************************************************************/
 
 /**
-* @description 입력되지 않은 부분들 알림으로 알려주기
+* @description 입력되지 않은 부분들 알림으로 알려주기 콜백
 */
 this.fnCallback = function(svcId, errCd, errMsg) {
 	if(svcId == "trCheck") {	
@@ -234,12 +253,25 @@ this.fnMsgCallback = function(strId, strVal)
 			this.go("cmm::comm1001fm.xfdl");
 		}
 	}
+};
+
+/**
+* @description 아이디 중복 버튼 메세지 알림 콜백
+*/
+this.fnMsgCallback = function(strId, strVal)
+{
+	if(strId == "popMsgAbstractCompleteIdCheck"){
+		if(strVal) {
+			this.divJoin.form.edtUserID.setFocus(true);
+		}
+	}
 };]]></Script>
     <Objects>
       <Dataset id="dsMember">
         <ColumnInfo>
           <Column id="USERID" type="STRING" size="256"/>
           <Column id="PASSWORD" type="STRING" size="256"/>
+          <Column id="PASSWORDDOUBL" type="STRING" size="256"/>
           <Column id="NAME" type="STRING" size="256"/>
           <Column id="PHONE" type="STRING" size="256"/>
           <Column id="ADR" type="STRING" size="256"/>
@@ -259,6 +291,7 @@ this.fnMsgCallback = function(strId, strVal)
       <BindItem id="item6" compid="divJoin.form.edtEmail" propid="value" datasetid="dsMember" columnid="EMAIL"/>
       <BindItem id="item1" compid="divJoin.form.edtPassWord" propid="value" datasetid="dsMember" columnid="PASSWORD"/>
       <BindItem id="item7" compid="divJoin.form.btnCancel" propid="text" datasetid="dsCancel" columnid="Cancel_Name"/>
+      <BindItem id="item8" compid="divJoin.form.edtPasswordDoubleCheck" propid="value" datasetid="dsMember" columnid="PASSWORDDOUBL"/>
     </Bind>
   </Form>
 </FDL>

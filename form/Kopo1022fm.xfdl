@@ -15,7 +15,7 @@
               <Button id="btnCancel" taborder="6" text="뒤로" top="5" height="40" background="pink" color="white" font="bold 16pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="102" right="0" onclick="divContactWrite_btnCancel_onclick"/>
               <Static id="staDate" taborder="7" text="작성일" left="720" top="51" cssclass="sta_WF_DetailLabel" height="50" visible="true" background="pink" color="white" border="1px solid pink" font="bold 14pt/normal &quot;휴먼매직체&quot;" textAlign="center" width="100"/>
               <Edit id="edtId" taborder="8" left="450" top="51" width="270" height="50" border="1px solid pink" readonly="true" background="white" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
-              <Grid id="grdFileList" taborder="9" left="0" binddataset="dsFile" autofittype="col" ondrop="divContactWrite_grdFileList_ondrop" oncellclick="divContactWrite_grdFileList_oncellclick" bottom="10" height="59" border="1px solid pink" width="420">
+              <Grid id="grdFileList" taborder="9" left="0" binddataset="dsFile" autofittype="col" ondrop="divContactWrite_grdFileList_ondrop" oncellclick="divContactWrite_grdFileList_oncellclick" bottom="10" height="59" border="1px solid pink" width="420" nodatatext="등록된 파일이 없습니다.">
                 <Formats>
                   <Format id="default">
                     <Columns>
@@ -43,20 +43,20 @@
               <Button id="btnFileClick" taborder="10" text="파일 선택" height="38" borderRadius="0px" color="white" font="bold 14pt/normal &quot;휴먼매직체&quot;" onclick="divContactWrite_btnFileClick_onclick" bottom="97" right="0" width="90"/>
               <ImageViewer id="imgRoom" taborder="12" text="" stretch="fit" ondrop="divRoom_imgRoom_ondrop" visible="true" border="1px solid pink" top="160" left="0" bottom="80" width="420"/>
               <MaskEdit id="mskConBoardWriteDate" taborder="11" top="51" height="50" type="string" format="####-##-##" textAlign="center" readonly="true" left="staDate:-1" right="0" border="1px solid pink" background="white" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
-              <Grid id="grdComRep" taborder="13" binddataset="dsComRep" oncellclick="divContactWrite_grdComRep_oncellclick" autofittype="col" bottom="10" height="125" nodatatext="등록된 댓글이 없습니다." left="430" right="315" border="1px solid pink" autosizingtype="row" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;">
+              <Grid id="grdComRep" taborder="13" binddataset="dsComRep" oncellclick="divContactWrite_grdComRep_oncellclick" autofittype="col" bottom="10" height="125" nodatatext="등록된 댓글이 없습니다." left="430" right="315" border="1px solid pink" autosizingtype="none" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;" oncelldblclick="divContactWrite_grdComRep_oncelldblclick">
                 <Formats>
                   <Format id="default">
                     <Columns>
-                      <Column size="80"/>
-                      <Column size="190"/>
-                      <Column size="100"/>
-                      <Column size="60"/>
+                      <Column size="35"/>
+                      <Column size="180"/>
+                      <Column size="70"/>
+                      <Column size="50"/>
                     </Columns>
                     <Rows>
-                      <Row size="24"/>
+                      <Row size="32"/>
                     </Rows>
                     <Band id="body">
-                      <Cell text="bind:USERID" wordWrap="char" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
+                      <Cell text="bind:NAME" wordWrap="char" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
                       <Cell col="1" text="expr:comp.parent.parent.parent.fnDepth(REP_DEPTH,REP_CONTENT)" wordWrap="char" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
                       <Cell col="2" text="bind:REP_DATE" displaytype="date" wordWrap="char" font="14px/normal &quot;Verdana&quot;,&quot;Malgun Gothic&quot;"/>
                       <Cell col="3" displaytype="buttoncontrol" edittype="button" text="리플달기" wordWrap="char"/>
@@ -66,7 +66,7 @@
               </Grid>
               <Button id="btnWriteRep" taborder="14" text="댓글쓰기" width="90" onclick="btnWriteRep_onclick" borderRadius="0px" color="white" font="bold 14pt/normal &quot;휴먼매직체&quot;" right="0" bottom="54" height="38"/>
               <Button id="btnDeleteRep" taborder="15" text="댓글삭제" width="90" borderRadius="0px" color="white" font="bold 14pt/normal &quot;휴먼매직체&quot;" right="0" bottom="11" height="38" onclick="divContactWrite_btnDeleteRep_onclick"/>
-              <TextArea id="txtComRep" taborder="16" bottom="10" height="125" right="95" width="215" border="1px solid pink"/>
+              <TextArea id="txtComRep" taborder="16" bottom="10" height="125" right="95" width="215" border="1px solid pink" displaynulltext="달려 있는 댓글의 이름을 클릭하면 태그가되고 리플을 달 수 있습니다."/>
               <Button id="btnUpdate" taborder="17" text="수정" top="5" height="40" background="pink" color="white" font="bold 16pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="102" right="106" onclick="divContactWrite_btnUpdate_onclick"/>
               <Button id="btnDelete" taborder="18" text="삭제" top="5" height="40" background="pink" color="white" font="bold 16pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="102" right="212" onclick="divContactWrite_divBtnG_btnDelete_onclick"/>
               <Button id="btnOk" taborder="19" text="글쓰기" top="5" height="40" background="pink" color="white" font="bold 16pt/normal &quot;휴먼매직체&quot;" borderRadius="0px" width="102" right="106" onclick="divContactWrite_divBtnG_btnOk_onclick"/>
@@ -127,6 +127,7 @@
           <Column id="REP_DEPTH" type="STRING" size="256"/>
           <Column id="REP_PARENT" type="STRING" size="256"/>
           <Column id="REP_ORDER" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -166,7 +167,9 @@ this.fvDeleteFileName = "";
 */
 this.FormCommnunityWrite_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+
 	this.ufnFormOnLoad(this);
+	trace("온로드 엑셈=====" + this.dsComRep.saveXML());
 	
 	if(this.fvApp.avWorkFrame.objParam.Flag == "ComWrite") {
 		
@@ -209,6 +212,9 @@ this.FormCommnunityWrite_onload = function(obj:nexacro.Form,e:nexacro.LoadEventI
 			this.divContactWrite.form.btnDelete.set_visible(false);
 			this.divContactWrite.form.btnOk.set_visible(false);
 			this.divContactWrite.form.btnUpdate.set_visible(false);
+			
+			this.divContactWrite.form.grdFileList.setFormatColProperty(1,"size",0); //그리드 컬럼 숨기기
+			
 			
 		}
 		
@@ -341,20 +347,27 @@ this.fnSelectComment = function () {
 */
 this.divContactWrite_btnDeleteRep_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {	
+
+	trace(this.divContactWrite.form.grdComRep.getCellValue(this.dsComRep.rowposition,3));
+
 	if(this.dsComRep.getColumn(this.dsComRep.rowposition,"USERID") == this.fvApp.gdsMember.getColumn(0,"USERID"))
-	{
-		this.dsComRep.deleteRow(this.dsComRep.rowposition);
+	{	
+		//this.dsComRep.deleteRow(this.dsComRep.rowposition);
+		this.dsComRep.setColumn(this.dsComRep.rowposition,"REP_CONTENT","삭제된 댓글 입니다.");
+		this.dsComRep.setColumn(this.dsComRep.rowposition,"NAME","");
+
 		this.ufnTransaction("comDeleteReply"
 			,"nexa/comDeleteReply.do"
 			,"dsComRep=dsComRep:u" 
 			,"" 
 			,"" 
 			,"fnCallback");
+		
 	}else if(this.fvApp.gdsMember.getColumn(0,"USERID") == "Admin")
 	{	
 		//댓글삭제
 		this.dsComRep.deleteRow(this.dsComRep.rowposition);
-		this.ufnTransaction("comDeleteReply"
+		this.ufnTransaction("comDeleteReply" 
 			,"nexa/comDeleteReply.do"
 			,"dsComRep=dsComRep:u" 
 			,"" 
@@ -451,7 +464,7 @@ this.fnCallback = function (svcId, errCd, errMsg) {
 		var arrArg = "";
 		var sPopId = "popMsgAbstractCompleteUpdate";
 		var sCallback = "fnMsgCallbacku";		
-			
+		
 		this.ufnAlert(sMsgId, arrArg, sPopId, sCallback);	
 		
 	}else{
@@ -484,7 +497,7 @@ this.fnEditorCallback = function(sType)
 		if(this.fvApp.avWorkFrame.objParam.Flag == "ComModify") 
 		{
 			var sContents = this.dsComBoard.getColumn(this.dsComBoard.rowposition,"COMBOARD_CONTENT");
-			this.fvDocWeb.getProperty("ir1").setProperty("value",sContents);
+			this.fvDocWeb.getProperty("ir1").setProperty("value",sContents); 
 			this.fvDocWeb.getProperty("editorSetBtn").callMethod("click");	  
 		}
 	}
@@ -611,7 +624,7 @@ this.fnDepth = function(argDepth,argComment)
 		{
 			return argComment;
 		} else {
-			return this.fnLpad(rtnString, argDepth," ") + " L " + argComment ;
+			return this.fnLpad(rtnString, argDepth," ") + "└ " + argComment ;
 		}
 	}else {
 		return argComment;
@@ -626,6 +639,7 @@ this.fnLpad = function (str, padLen, padStr)
 	if(padStr.length > padLen) {
 		return str;
 	}
+	
 	str += "";
 	padStr += "";
 	while(str.length < padLen)
@@ -747,16 +761,28 @@ this.divContactWrite_btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.C
 */
 this.btnWriteRep_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	if(this.ufnIsNull(this.divContactWrite.form.txtComRep.value)) {
+		this.divContactWrite.form.txtComRep.setFocus();
+		this.ufnAlert("msg.comu.replrequest")
+		return;
+	}else if(this.divContactWrite.form.txtComRep.value == "@" + this.divContactWrite.form.grdComRep.getCellValue(this.dsComRep.rowposition,0)+ " "){
+		this.ufnAlert("msg.com.replcheck")
+		return;
+	}else if (this.divContactWrite.form.txtComRep.value == "@") {
+		this.ufnAlert("msg.com.replcheck")
+		return;
+	}
+	
 	var nRow = this.dsComRep.insertRow();
 	this.dsComRep.setColumn(nRow, "REP_NO","");
 	this.dsComRep.setColumn(nRow, "USERID", this.fvApp.gdsMember.getColumn(0,"USERID"));
+	this.dsComRep.setColumn(nRow,"NAME", this.fvApp.gdsMember.getColumn(0,"NAME"));
 	this.dsComRep.setColumn(nRow, "COMBOARD_NO",this.fvApp.avWorkFrame.objParam.COMBOARD_NO);
 	this.dsComRep.setColumn(nRow, "REP_CONTENT",this.divContactWrite.form.txtComRep.value);
 	this.dsComRep.setColumn(nRow, "REP_DEPTH",1);
 	this.dsComRep.setColumn(nRow, "REP_PARENT","");
 	this.dsComRep.setColumn(nRow, "REP_ORDER",this.fnMaxOrder(1));
 	this.fnInsertComment();
-	
 	
 };
 
@@ -766,8 +792,11 @@ this.btnWriteRep_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.divContactWrite_grdComRep_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	if(e.col== 3) {
-		if(this.divContactWrite.form.txtComRep.value == ""){
+		if(this.ufnIsNull(this.divContactWrite.form.txtComRep.value)){
 			this.ufnAlert("msg.combaord.replynull")
+			return;
+		}else if(this.divContactWrite.form.txtComRep.value.indexOf("@") < 0){
+			this.ufnAlert("msg.com.replchecktorepl")
 			return;
 		}else{
 			var nRow = this.dsComRep.insertRow(e.row + 1);
@@ -775,6 +804,7 @@ this.divContactWrite_grdComRep_oncellclick = function(obj:nexacro.Grid,e:nexacro
 			var parent = this.dsComRep.getColumn(e.row, "REP_NO");
 			this.dsComRep.setColumn(nRow, "REP_NO","");
 			this.dsComRep.setColumn(nRow, "USERID", this.fvApp.gdsMember.getColumn(0,"USERID"));
+			this.dsComRep.setColumn(nRow,"NAME",this.fvApp.gdsMember.getColumn(0,"NAME"));
 			this.dsComRep.setColumn(nRow, "COMBOARD_NO",this.fvApp.avWorkFrame.objParam.COMBOARD_NO);
 			this.dsComRep.setColumn(nRow, "REP_CONTENT",this.divContactWrite.form.txtComRep.value);
 			this.dsComRep.setColumn(nRow, "REP_DEPTH", (nexacro.toNumber(this.dsComRep.getColumn(e.row, "REP_DEPTH"))+1));
@@ -782,6 +812,21 @@ this.divContactWrite_grdComRep_oncellclick = function(obj:nexacro.Grid,e:nexacro
 			this.dsComRep.setColumn(nRow, "REP_ORDER",this.fnMaxOrder(parent));
 			this.fnInsertComment();
 		}
+	}
+};
+
+
+
+/**
+* @description 댓글 @태그 처럼 보이게 만들기
+*/
+this.divContactWrite_grdComRep_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.col == 0) {
+		this.divContactWrite.form.txtComRep.set_value("@" + this.divContactWrite.form.grdComRep.getCellValue(this.dsComRep.rowposition,0) + " ");
+		this.divContactWrite.form.txtComRep.setFocus();
+	}else{
+		this.divContactWrite.form.txtComRep.set_value("");
 	}
 };
 ]]></Script>

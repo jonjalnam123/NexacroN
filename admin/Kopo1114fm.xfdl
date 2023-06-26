@@ -152,7 +152,16 @@ this.divAdminMember_btnSel_onclick = function(obj:nexacro.Button,e:nexacro.Click
 */
 this.divAdminMember_btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+	this.ufnClearValidation(this.fvApp.gdsMember);
+	this.ufnSetValidation(this.fvApp.gdsMember, "USERID", "아이디", "required");
+	this.ufnSetValidation(this.fvApp.gdsMember, "PASSWORD", "비밀번호", "required");
+	this.ufnSetValidation(this.fvApp.gdsMember, "NAME", "이름", "required");
+	this.ufnSetValidation(this.fvApp.gdsMember, "PHONE", "핸드폰", "required,digits");
+	this.ufnSetValidation(this.fvApp.gdsMember, "ADR", "우편번호", "required,digits");
+	this.ufnSetValidation(this.fvApp.gdsMember, "ADRD", "상세주소", "required");
+	this.ufnSetValidation(this.fvApp.gdsMember, "EMAIL", "이메일", "required,isemail");
+	if (this.ufnValidation(this.fvApp.gdsMember, "A") == false) return;
+
 	this.ufnTransaction("saveMemberSave"
 		,"nexa/saveMember.do"
 		,"inMember=gdsMember:u" //저장
@@ -228,6 +237,7 @@ this.webPost_onusernotify = function(obj:nexacro.WebBrowser,e:nexacro.WebUserNot
 this.divAdminMember_btnAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.fvApp.gdsMember.addRow();
+
 };
 
 /**
